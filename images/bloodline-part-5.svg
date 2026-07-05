@@ -1,0 +1,42 @@
+<svg viewBox="0 0 680 340" preserveAspectRatio="xMidYMid slice" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Neon-noir constellation of one large node fragmenting into two family lines of smaller nodes">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#221b12"/><stop offset="0.55" stop-color="#16120c"/><stop offset="1" stop-color="#0e0b08"/>
+        </linearGradient>
+        <radialGradient id="uvglow" cx="0.18" cy="0.5" r="0.7">
+          <stop offset="0" stop-color="#b388ff" stop-opacity="0.4"/><stop offset="0.5" stop-color="#b388ff" stop-opacity="0.12"/><stop offset="1" stop-color="#b388ff" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000000" opacity="0.18"/></pattern>
+      </defs>
+      <rect x="0" y="0" width="680" height="340" fill="url(#sky)"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#uvglow)"/>
+      <!-- Conti node, cracked -->
+      <circle cx="120" cy="170" r="16" fill="none" stroke="#ffb454" stroke-width="1.6" opacity="0.9"/>
+      <line x1="112" y1="158" x2="128" y2="182" stroke="#ffb454" stroke-width="1.2" opacity="0.9"/>
+      <text x="120" y="210" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#f0e7d8" letter-spacing="3">CONTI</text>
+      <!-- Team 1 line (upper) -->
+      <g stroke="#b388ff" stroke-width="1" opacity="0.75">
+        <line x1="136" y1="160" x2="260" y2="90"/><line x1="260" y1="90" x2="390" y2="75"/><line x1="260" y1="90" x2="380" y2="120"/><line x1="390" y1="75" x2="520" y2="65"/>
+      </g>
+      <circle cx="260" cy="90" r="8" fill="#b388ff"/>
+      <text x="260" y="68" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#b3a892" letter-spacing="2">BLACK BASTA</text>
+      <circle cx="390" cy="75" r="5" fill="#b388ff" opacity="0.85"/>
+      <text x="390" y="57" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#79705f" letter-spacing="2">KARAKURT</text>
+      <circle cx="380" cy="120" r="5" fill="#b388ff" opacity="0.85"/>
+      <text x="418" y="124" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#79705f" letter-spacing="2">AKIRA</text>
+      <circle cx="520" cy="65" r="4" fill="#b388ff" opacity="0.7"/>
+      <text x="556" y="69" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#79705f" letter-spacing="2">BLACKBYTE</text>
+      <!-- Team 2 line (lower) -->
+      <g stroke="#b388ff" stroke-width="1" opacity="0.75">
+        <line x1="136" y1="180" x2="255" y2="245"/><line x1="255" y1="245" x2="365" y2="255"/><line x1="365" y1="255" x2="475" y2="265"/><line x1="475" y1="265" x2="575" y2="275"/>
+      </g>
+      <circle cx="255" cy="245" r="6" fill="#b388ff" opacity="0.9"/>
+      <text x="255" y="230" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#79705f" letter-spacing="2">QUANTUM</text>
+      <circle cx="365" cy="255" r="6" fill="#b388ff" opacity="0.9"/>
+      <text x="365" y="240" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#79705f" letter-spacing="2">ROYAL</text>
+      <circle cx="475" cy="265" r="6" fill="#b388ff" opacity="0.9"/>
+      <text x="475" y="250" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#79705f" letter-spacing="2">BLACKSUIT</text>
+      <circle cx="575" cy="275" r="5" fill="#b388ff" opacity="0.75"/>
+      <text x="575" y="298" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#79705f" letter-spacing="2">CHAOS</text>
+      <rect x="0" y="0" width="680" height="340" fill="url(#scan)"/>
+    </svg>

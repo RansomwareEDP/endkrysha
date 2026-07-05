@@ -1,0 +1,35 @@
+<svg viewBox="0 0 680 340" preserveAspectRatio="xMidYMid slice" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Neon-noir illustration of parallel glowing tracks converging on a central hub node">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#221b12"/><stop offset="0.55" stop-color="#16120c"/><stop offset="1" stop-color="#0e0b08"/>
+        </linearGradient>
+        <radialGradient id="uvglow" cx="0.72" cy="0.5" r="0.6">
+          <stop offset="0" stop-color="#b388ff" stop-opacity="0.4"/><stop offset="0.5" stop-color="#b388ff" stop-opacity="0.12"/><stop offset="1" stop-color="#b388ff" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000000" opacity="0.18"/></pattern>
+      </defs>
+      <rect x="0" y="0" width="680" height="340" fill="url(#sky)"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#uvglow)"/>
+      <!-- four tracks converging on hub -->
+      <g stroke="#b388ff" stroke-width="1.1" opacity="0.8" fill="none">
+        <path d="M30 60 L300 60 L490 168"/>
+        <path d="M30 130 L280 130 L490 172"/>
+        <path d="M30 210 L280 210 L490 178"/>
+        <path d="M30 280 L300 280 L490 182"/>
+      </g>
+      <!-- track labels -->
+      <text x="34" y="48" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#b3a892" letter-spacing="2">GANDCRAB &rarr; REVIL</text>
+      <text x="34" y="118" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#b3a892" letter-spacing="2">DARKSIDE &rarr; ALPHV</text>
+      <text x="34" y="198" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#b3a892" letter-spacing="2">MAZE &rarr; EGREGOR</text>
+      <text x="34" y="268" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#b3a892" letter-spacing="2">BABUK &middot; HIVE AFFILIATES</text>
+      <!-- track nodes -->
+      <g fill="#b388ff">
+        <circle cx="300" cy="60" r="4"/><circle cx="280" cy="130" r="4"/><circle cx="280" cy="210" r="4"/><circle cx="300" cy="280" r="4"/>
+      </g>
+      <!-- hub -->
+      <circle cx="490" cy="175" r="13" fill="#ffb454"/>
+      <circle cx="490" cy="175" r="24" fill="none" stroke="#ffb454" stroke-width="0.9" opacity="0.45"/>
+      <text x="490" y="220" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#f0e7d8" letter-spacing="4">LOCKBIT</text>
+      <text x="490" y="238" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#79705f" letter-spacing="2">THE CONVERGENCE HUB</text>
+      <rect x="0" y="0" width="680" height="340" fill="url(#scan)"/>
+    </svg>

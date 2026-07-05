@@ -32,6 +32,9 @@
     .photo::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 25%, var(--neon-soft), transparent 60%); opacity: 0.5; }
     .photo .photo-tag { position: absolute; left: 0.9rem; bottom: 0.8rem; z-index: 2; font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); background: rgba(17,15,11,0.6); border: 1px solid var(--rule); border-radius: 4px; padding: 0.3rem 0.55rem; backdrop-filter: blur(3px); }
     .photo .photo-ico { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 1; font-family: var(--mono); font-size: 1.6rem; color: rgba(240,231,216,0.22); }
+    .photo img.art { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo.has-art::before { opacity: 0.25; }
+    .photo.has-art::after { opacity: 0.2; }
 
     /* TICKER */
     .ticker { overflow: hidden; border-bottom: 1px solid var(--rule); background: var(--bg-2); position: relative; z-index: 5; }
@@ -251,7 +254,7 @@
       </div>
 
       <a class="dispatch-feature reveal" href="after-garantex.html" data-topic="financial">
-        <div class="photo"><span class="photo-ico">&#9974;</span><span class="photo-tag">Feature &middot; Garantex / exchange floor</span></div>
+        <div class="photo has-art"><img class="art" src="images/after-garantex.svg" alt="" loading="lazy"><span class="photo-tag">Feature &middot; Federation Tower, Moscow City</span></div>
         <div class="feat-body">
           <div class="feat-meta"><span class="pill">Financial Layer</span><span>Jun 18, 2026</span><span>11 min</span></div>
           <h3>After Garantex: where the cash-out moved next</h3>
@@ -262,35 +265,35 @@
 
       <div class="dispatch-grid" id="grid">
         <a class="dispatch reveal" href="operation-endgame.html" data-topic="enforcement">
-          <div class="photo"><span class="photo-ico">&#9636;</span><span class="photo-tag">Takedown / server racks</span></div>
+          <div class="photo has-art"><img class="art" src="images/operation-endgame.svg" alt="" loading="lazy"><span class="photo-tag">Endgame &middot; the layer left standing</span></div>
           <div class="d-body"><div class="d-meta">Enforcement Strategy</div><h4>Operation Endgame: the layer it cannot reach</h4><p class="d-excerpt">The best campaign of its kind ever run against the machinery beneath ransomware. The dependency that decides whether the rest grows back sits outside its target set by design.</p><div class="d-foot">Jun 19, 2026 &middot; 10 min</div></div>
         </a>
         <a class="dispatch reveal" href="bloodline-part-1.html" data-topic="bloodline">
-          <div class="photo"><span class="photo-ico">&#9651;</span><span class="photo-tag">The Bloodline &middot; Part 1</span></div>
+          <div class="photo has-art"><img class="art" src="images/bloodline-part-1.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 1</span></div>
           <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 1 of 7</div><h4>The Common Ancestor</h4><p class="d-excerpt">The modern ransomware world traces to a dozen people who learned the trade together. Every lineage in this series begins with the same man, the same trojan, and the same club.</p><div class="d-foot">Jul 3, 2026 &middot; 10 min</div></div>
         </a>
         <a class="dispatch reveal" href="evil-corp-part-1.html" data-topic="bloodline">
-          <div class="photo"><span class="photo-ico">&#9670;</span><span class="photo-tag">The Bloodline &middot; Part 2</span></div>
+          <div class="photo has-art"><img class="art" src="images/evil-corp-part-1.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 2</span></div>
           <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 2 of 7</div><h4>A Lamborghini Named Thief</h4><p class="d-excerpt">Maksim Yakubets built the most damaging cybercrime enterprise in history, then drove it through Moscow with plates that read THIEF. The car was a status report on the roof above his head.</p><div class="d-foot">Jul 3, 2026 &middot; 13 min</div></div>
         </a>
         <a class="dispatch reveal" href="evil-corp-part-2.html" data-topic="bloodline">
-          <div class="photo"><span class="photo-ico">&#9633;</span><span class="photo-tag">The Bloodline &middot; Part 3</span></div>
+          <div class="photo has-art"><img class="art" src="images/evil-corp-part-2.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 3</span></div>
           <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 3 of 7</div><h4>The Roof Over Evil Corp</h4><p class="d-excerpt">A former FSB officer became Yakubets's father-in-law. The indictments came, the sanctions came, and the group simply changed its name. This is what a roof actually buys.</p><div class="d-foot">Jul 3, 2026 &middot; 14 min</div></div>
         </a>
         <a class="dispatch reveal" href="bloodline-part-4.html" data-topic="bloodline">
-          <div class="photo"><span class="photo-ico">&#9650;</span><span class="photo-tag">The Bloodline &middot; Part 4</span></div>
+          <div class="photo has-art"><img class="art" src="images/bloodline-part-4.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 4</span></div>
           <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 4 of 7</div><h4>The Corporation</h4><p class="d-excerpt">TrickBot and Conti ran departments, salaries, HR, and performance reviews. At the top of the org chart sat a man who had shared a room with Yakubets and Bogachev a decade earlier.</p><div class="d-foot">Jul 3, 2026 &middot; 12 min</div></div>
         </a>
         <a class="dispatch reveal" href="bloodline-part-5.html" data-topic="bloodline">
-          <div class="photo"><span class="photo-ico">&#9672;</span><span class="photo-tag">The Bloodline &middot; Part 5</span></div>
+          <div class="photo has-art"><img class="art" src="images/bloodline-part-5.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 5</span></div>
           <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 5 of 7</div><h4>The Diaspora</h4><p class="d-excerpt">Conti did not die in 2022. It decentralized. Get the internal team structure right, and a dozen successor names resolve into two family lines.</p><div class="d-foot">Jul 3, 2026 &middot; 13 min</div></div>
         </a>
         <a class="dispatch reveal" href="bloodline-part-6.html" data-topic="bloodline">
-          <div class="photo"><span class="photo-ico">&#9974;</span><span class="photo-tag">The Bloodline &middot; Part 6</span></div>
+          <div class="photo has-art"><img class="art" src="images/bloodline-part-6.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 6</span></div>
           <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 6 of 7</div><h4>The Parallel Track</h4><p class="d-excerpt">A second world, GandCrab to REvil, DarkSide to ALPHV, LockBit, and the Maze cartel, industrialized the business model. One lineage is named down to the founder. Another has never leaked a single name.</p><div class="d-foot">Jul 3, 2026 &middot; 14 min</div></div>
         </a>
         <a class="dispatch reveal" href="bloodline-part-7.html" data-topic="bloodline">
-          <div class="photo"><span class="photo-ico">&#9636;</span><span class="photo-tag">The Bloodline &middot; Part 7</span></div>
+          <div class="photo has-art"><img class="art" src="images/bloodline-part-7.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 7</span></div>
           <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 7 of 7</div><h4>The Constants</h4><p class="d-excerpt">The brands are designed to be discarded. What persists is the Money, the Metal, and the Krysha, and the decisive blows against this ecosystem were never delivered from outside.</p><div class="d-foot">Jul 3, 2026 &middot; 15 min</div></div>
         </a>
       </div>

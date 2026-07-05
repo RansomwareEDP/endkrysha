@@ -1,0 +1,45 @@
+<svg viewBox="0 0 680 340" preserveAspectRatio="xMidYMid slice" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Neon-noir illustration of Federation Tower and the Moscow City skyline at night">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#221b12"/><stop offset="0.55" stop-color="#16120c"/><stop offset="1" stop-color="#0e0b08"/>
+        </linearGradient>
+        <radialGradient id="redglow" cx="0.8" cy="0.16" r="0.6">
+          <stop offset="0" stop-color="#ff4757" stop-opacity="0.55"/><stop offset="0.5" stop-color="#ff4757" stop-opacity="0.16"/><stop offset="1" stop-color="#ff4757" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="amberglow" cx="0.12" cy="0.95" r="0.6">
+          <stop offset="0" stop-color="#ffb454" stop-opacity="0.22"/><stop offset="1" stop-color="#ffb454" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="win" width="9" height="11" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="3" height="4" fill="#ffb454" opacity="0.5"/></pattern>
+        <pattern id="winr" width="9" height="11" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="3" height="4" fill="#ff7d6b" opacity="0.45"/></pattern>
+        <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000000" opacity="0.18"/></pattern>
+      </defs>
+      <rect x="0" y="0" width="680" height="340" fill="url(#sky)"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#redglow)"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#amberglow)"/>
+      <g opacity="0.6">
+        <rect x="40" y="214" width="40" height="86" fill="#120f0a"/><rect x="92" y="198" width="32" height="102" fill="#120f0a"/><rect x="588" y="200" width="46" height="100" fill="#120f0a"/><rect x="640" y="222" width="30" height="78" fill="#120f0a"/>
+      </g>
+      <g>
+        <rect x="118" y="196" width="28" height="104" fill="#0d0b08"/><rect x="118" y="196" width="28" height="104" fill="url(#win)" opacity="0.5"/>
+        <rect x="200" y="150" width="26" height="150" fill="#0d0b08"/><rect x="200" y="150" width="26" height="150" fill="url(#win)" opacity="0.5"/>
+        <rect x="232" y="120" width="30" height="180" fill="#0d0b08"/><rect x="232" y="120" width="30" height="180" fill="url(#win)" opacity="0.5"/>
+        <rect x="294" y="126" width="34" height="174" fill="#0e0a07"/><rect x="294" y="126" width="34" height="174" fill="url(#winr)" opacity="0.55"/>
+        <rect x="372" y="104" width="40" height="196" fill="#0d0b08"/><rect x="372" y="104" width="40" height="196" fill="url(#win)" opacity="0.55"/>
+        <rect x="416" y="78" width="46" height="222" fill="#0c0a07"/><rect x="416" y="78" width="46" height="222" fill="url(#win)" opacity="0.6"/>
+        <polygon points="435,78 443,78 439,48" fill="#0c0a07"/><circle cx="439" cy="50" r="2" fill="#ff4757"/>
+        <rect x="470" y="134" width="26" height="166" fill="#0d0b08"/><rect x="470" y="134" width="26" height="166" fill="url(#win)" opacity="0.5"/>
+        <rect x="502" y="152" width="30" height="148" fill="#0d0b08"/><rect x="502" y="152" width="30" height="148" fill="url(#win)" opacity="0.5"/>
+        <rect x="540" y="172" width="30" height="128" fill="#0d0b08"/><rect x="540" y="172" width="30" height="128" fill="url(#win)" opacity="0.45"/>
+      </g>
+      <g stroke="#f0e7d8" stroke-width="0.6" opacity="0.13" fill="none">
+        <line x1="90" y1="72" x2="168" y2="50"/><line x1="168" y1="50" x2="252" y2="62"/><line x1="252" y1="62" x2="318" y2="40"/><line x1="318" y1="40" x2="424" y2="46"/><line x1="424" y1="46" x2="512" y2="68"/><line x1="512" y1="68" x2="596" y2="52"/><line x1="252" y1="62" x2="300" y2="118"/><line x1="424" y1="46" x2="396" y2="100"/>
+      </g>
+      <g fill="#ff4757">
+        <g opacity="0.25"><circle cx="90" cy="72" r="3.2"/><circle cx="168" cy="50" r="3.2"/><circle cx="252" cy="62" r="3.2"/><circle cx="318" cy="40" r="3.2"/><circle cx="424" cy="46" r="3.2"/><circle cx="512" cy="68" r="3.2"/><circle cx="596" cy="52" r="3.2"/></g>
+        <circle cx="90" cy="72" r="1.3"/><circle cx="168" cy="50" r="1.3"/><circle cx="252" cy="62" r="1.3"/><circle cx="318" cy="40" r="1.3"/><circle cx="424" cy="46" r="1.3"/><circle cx="512" cy="68" r="1.3"/><circle cx="596" cy="52" r="1.3"/>
+      </g>
+      <rect x="0" y="298" width="680" height="2" fill="#ff4757" opacity="0.4"/>
+      <rect x="0" y="300" width="680" height="40" fill="#0a0805"/>
+      <g opacity="0.12" fill="#ff4757"><rect x="372" y="300" width="40" height="34"/><rect x="416" y="300" width="46" height="34"/><rect x="294" y="300" width="34" height="34"/></g>
+      <rect x="0" y="0" width="680" height="340" fill="url(#scan)"/>
+    </svg>

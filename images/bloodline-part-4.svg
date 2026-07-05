@@ -1,0 +1,36 @@
+<svg viewBox="0 0 680 340" preserveAspectRatio="xMidYMid slice" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Neon-noir corporate org chart rendered as a glowing constellation">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#221b12"/><stop offset="0.55" stop-color="#16120c"/><stop offset="1" stop-color="#0e0b08"/>
+        </linearGradient>
+        <radialGradient id="uvglow" cx="0.5" cy="0.2" r="0.75">
+          <stop offset="0" stop-color="#b388ff" stop-opacity="0.35"/><stop offset="0.5" stop-color="#b388ff" stop-opacity="0.1"/><stop offset="1" stop-color="#b388ff" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000000" opacity="0.18"/></pattern>
+      </defs>
+      <rect x="0" y="0" width="680" height="340" fill="url(#sky)"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#uvglow)"/>
+      <!-- connective lines -->
+      <line x1="340" y1="70" x2="170" y2="160" stroke="#b388ff" stroke-width="1.2" opacity="0.8"/>
+      <line x1="340" y1="70" x2="340" y2="160" stroke="#b388ff" stroke-width="1.2" opacity="0.8"/>
+      <line x1="340" y1="70" x2="510" y2="160" stroke="#b388ff" stroke-width="1.2" opacity="0.8"/>
+      <g stroke="#b388ff" stroke-width="0.7" opacity="0.5">
+        <line x1="170" y1="160" x2="110" y2="255"/><line x1="170" y1="160" x2="175" y2="255"/>
+        <line x1="340" y1="160" x2="285" y2="255"/><line x1="340" y1="160" x2="350" y2="255"/>
+        <line x1="510" y1="160" x2="465" y2="255"/><line x1="510" y1="160" x2="545" y2="255"/>
+      </g>
+      <!-- CEO node -->
+      <circle cx="340" cy="70" r="10" fill="#ffb454"/>
+      <circle cx="340" cy="70" r="19" fill="none" stroke="#ffb454" stroke-width="0.8" opacity="0.45"/>
+      <text x="340" y="42" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#f0e7d8" letter-spacing="4">STERN</text>
+      <!-- managers -->
+      <circle cx="170" cy="160" r="7" fill="#b388ff"/><text x="170" y="140" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#b3a892" letter-spacing="2">MANGO</text>
+      <circle cx="340" cy="160" r="7" fill="#b388ff"/><text x="368" y="152" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#b3a892" letter-spacing="2">TARGET</text>
+      <circle cx="510" cy="160" r="7" fill="#b388ff"/><text x="510" y="140" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#b3a892" letter-spacing="2">BENTLEY</text>
+      <!-- workforce -->
+      <g fill="#79705f">
+        <circle cx="110" cy="255" r="4"/><circle cx="175" cy="255" r="4"/><circle cx="285" cy="255" r="4"/><circle cx="350" cy="255" r="4"/><circle cx="465" cy="255" r="4"/><circle cx="545" cy="255" r="4"/>
+      </g>
+      <text x="340" y="300" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#79705f" letter-spacing="3">CODERS &middot; TESTERS &middot; ADMINS &middot; REVERSERS &middot; OSINT &middot; HR</text>
+      <rect x="0" y="0" width="680" height="340" fill="url(#scan)"/>
+    </svg>

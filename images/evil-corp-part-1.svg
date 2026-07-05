@@ -1,0 +1,43 @@
+<svg viewBox="0 0 680 340" preserveAspectRatio="xMidYMid slice" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Neon-noir illustration of a low-slung supercar at night with a glowing license plate reading thief in Cyrillic">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#221b12"/><stop offset="0.55" stop-color="#16120c"/><stop offset="1" stop-color="#0e0b08"/>
+        </linearGradient>
+        <radialGradient id="uvglow" cx="0.5" cy="0.92" r="0.7">
+          <stop offset="0" stop-color="#b388ff" stop-opacity="0.55"/><stop offset="0.5" stop-color="#b388ff" stop-opacity="0.16"/><stop offset="1" stop-color="#b388ff" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="amberglow" cx="0.12" cy="0.2" r="0.6">
+          <stop offset="0" stop-color="#ffb454" stop-opacity="0.18"/><stop offset="1" stop-color="#ffb454" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000000" opacity="0.18"/></pattern>
+      </defs>
+      <rect x="0" y="0" width="680" height="340" fill="url(#sky)"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#amberglow)"/>
+      <!-- skyline silhouette -->
+      <g opacity="0.5" fill="#100d09">
+        <rect x="0" y="150" width="48" height="120"/><rect x="56" y="120" width="34" height="150"/><rect x="98" y="160" width="40" height="110"/><rect x="540" y="130" width="40" height="140"/><rect x="588" y="158" width="34" height="112"/><rect x="628" y="120" width="40" height="150"/>
+      </g>
+      <!-- ground glow -->
+      <rect x="0" y="150" width="680" height="190" fill="url(#uvglow)"/>
+      <line x1="0" y1="262" x2="680" y2="262" stroke="#b388ff" stroke-width="0.8" opacity="0.25"/>
+      <!-- supercar silhouette -->
+      <g>
+        <path d="M150 250 L168 250 Q176 224 210 220 L300 214 Q330 196 376 196 L452 198 Q496 202 512 222 L540 248 L540 252 Q540 260 530 260 L160 260 Q150 260 150 252 Z" fill="#0c0a07" stroke="#b388ff" stroke-width="1.1" opacity="0.95"/>
+        <path d="M236 214 L300 210 Q322 200 360 200 L430 202 Q452 206 466 220 L236 220 Z" fill="#171018" stroke="#b388ff" stroke-width="0.7" opacity="0.7"/>
+        <!-- underglow -->
+        <ellipse cx="345" cy="262" rx="190" ry="10" fill="#b388ff" opacity="0.28"/>
+        <!-- wheels -->
+        <circle cx="232" cy="258" r="26" fill="#0a0805" stroke="#b388ff" stroke-width="1.2"/><circle cx="232" cy="258" r="11" fill="#16120c" stroke="#b388ff" stroke-width="0.6" opacity="0.7"/>
+        <circle cx="470" cy="258" r="26" fill="#0a0805" stroke="#b388ff" stroke-width="1.2"/><circle cx="470" cy="258" r="11" fill="#16120c" stroke="#b388ff" stroke-width="0.6" opacity="0.7"/>
+        <!-- headlight -->
+        <path d="M524 232 L540 240 L538 246 L520 242 Z" fill="#ffb454" opacity="0.85"/>
+        <path d="M540 240 L640 232 L640 248 L540 246 Z" fill="#ffb454" opacity="0.12"/>
+      </g>
+      <!-- license plate -->
+      <g transform="translate(150 244)">
+        <rect x="0" y="0" width="92" height="26" rx="3" fill="#ece3d2" stroke="#b388ff" stroke-width="1"/>
+        <text x="46" y="19" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="15" font-weight="600" fill="#1a1712" letter-spacing="3">&#1042;&#1054;&#1056;</text>
+      </g>
+      <text x="246" y="262" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#79705f" letter-spacing="2">217 / 777</text>
+      <rect x="0" y="0" width="680" height="340" fill="url(#scan)"/>
+    </svg>
