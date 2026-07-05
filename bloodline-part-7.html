@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Constants &middot; End Krysha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #110f0b; --bg-2: #1a1611; --bg-3: #221d16;
+      --cream: #f0e7d8; --cream-dim: #b3a892; --cream-faint: #79705f;
+      --rule: rgba(240,231,216,0.1); --rule-strong: rgba(240,231,216,0.25);
+      --neon: #b388ff; --neon-soft: rgba(179,136,255,0.5);
+      --neon-glow: 0 0 6px rgba(179,136,255,0.8), 0 0 18px rgba(179,136,255,0.45), 0 0 40px rgba(179,136,255,0.2);
+      --amber: #ffb454; --amber-soft: rgba(255,180,84,0.5);
+      --serif: 'Fraunces', Georgia, serif; --mono: 'IBM Plex Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--serif); background: var(--bg); color: var(--cream); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body::after {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: 0.4;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0, rgba(0,0,0,0.12) 1px, transparent 1px, transparent 3px);
+    }
+    ::selection { background: var(--neon); color: var(--bg); }
+    .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--neon); box-shadow: var(--neon-glow); z-index: 200; }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1rem 2.5rem; background: rgba(17,15,11,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule-strong); }
+    .nav-brand { font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none; color: var(--cream); display: flex; align-items: center; gap: 0.6rem; }
+    .nav-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--neon); box-shadow: var(--neon-glow); }
+    .nav-back { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); text-decoration: none; }
+    .nav-back:hover { color: var(--neon); }
+    .a-head { max-width: 760px; margin: 0 auto; padding: 4.5rem 2rem 2.5rem; position: relative; z-index: 2; }
+    .a-cat { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--neon); display: inline-block; border: 1px solid var(--neon-soft); border-radius: 4px; padding: 0.3rem 0.7rem; margin-bottom: 1.8rem; }
+    .a-series { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-left: 0.6rem; }
+    .a-title { font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 400; line-height: 1.06; letter-spacing: -0.015em; }
+    .a-dek { margin-top: 1.6rem; font-size: 1.35rem; font-weight: 300; line-height: 1.5; color: var(--cream-dim); font-style: italic; }
+    .a-byline { margin-top: 2rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream-faint); }
+    .a-byline b { color: var(--cream); font-weight: 500; }
+    .a-byline .sep { color: var(--neon); }
+    .a-hero-photo { position: relative; max-width: 1100px; margin: 1.5rem auto 0; height: 52vh; min-height: 360px; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); background: var(--bg); z-index: 2; }
+    .a-hero-photo svg.hero-art { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; display: block; }
+    .a-hero-photo::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, transparent 50%, rgba(14,11,8,0.55));
+    }
+    .a-hero-photo .cap { position: absolute; left: 1rem; bottom: 0.9rem; z-index: 2; font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-faint); background: rgba(17,15,11,0.55); padding: 0.3rem 0.55rem; border-radius: 4px; backdrop-filter: blur(3px); }
+    .a-body { max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem 2rem; position: relative; z-index: 2; }
+    .a-body p { font-size: 1.18rem; font-weight: 300; line-height: 1.78; color: var(--cream); margin-bottom: 1.5rem; }
+    .a-body p .drop { float: left; font-size: 4.2rem; line-height: 0.78; font-weight: 500; color: var(--neon); padding: 0.3rem 0.7rem 0 0; text-shadow: 0 0 16px var(--neon-soft); }
+    .a-body h2 { font-family: var(--mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin: 3rem 0 1.4rem; display: flex; align-items: center; gap: 0.9rem; }
+    .a-body h2::before { content: ''; width: 1.6rem; height: 1px; background: var(--amber); box-shadow: 0 0 8px var(--amber-soft); }
+    .a-body strong { color: var(--cream); font-weight: 500; }
+    .a-body a { color: var(--neon); text-decoration: none; border-bottom: 1px solid var(--neon-soft); }
+    .conf { font-family: var(--mono); font-size: 0.56rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.12rem 0.42rem; border-radius: 3px; vertical-align: middle; white-space: nowrap; }
+    .conf.confirmed { color: #7ee0a8; border: 1px solid rgba(126,224,168,0.45); }
+    .conf.credible { color: var(--amber); border: 1px solid var(--amber-soft); }
+    .conf.inference { color: var(--neon); border: 1px solid var(--neon-soft); }
+    .pullquote { font-size: 1.9rem; font-weight: 400; line-height: 1.3; color: var(--cream); border-left: 2px solid var(--neon); padding: 0.4rem 0 0.4rem 1.8rem; margin: 2.5rem 0; }
+    .pullquote em { font-style: italic; color: var(--neon); text-shadow: 0 0 12px var(--neon-soft); }
+    figure { max-width: 920px; margin: 3rem auto; position: relative; z-index: 2; }
+    .fig-frame { background: linear-gradient(145deg, var(--bg-3), var(--bg-2)); border: 1px solid var(--rule); border-radius: 14px; padding: 1.8rem 1.8rem 1.4rem; }
+    .fig-title { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.4rem; }
+    figcaption { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.06em; line-height: 1.7; color: var(--cream-faint); margin-top: 1.1rem; text-align: center; }
+    .roster { width: 100%; border-collapse: collapse; font-family: var(--mono); }
+    .roster th { font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); text-align: left; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--rule-strong); }
+    .roster td { font-size: 0.68rem; line-height: 1.55; color: var(--cream-dim); padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    .roster td b { color: var(--cream); font-weight: 500; }
+    .roster td .mono-dim { color: var(--cream-faint); }
+    @media (max-width: 760px) { .roster th:nth-child(2), .roster td:nth-child(2) { display: none; } }
+    .exhibit { max-width: 720px; margin: 3rem auto; background: #ece3d2; color: #1a1712; border-radius: 6px; padding: 2.2rem 2.4rem; font-family: var(--mono); position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: rotate(-0.6deg); z-index: 2; }
+    .exhibit::after { content: 'PUBLIC RECORD'; position: absolute; top: 1rem; right: 1.4rem; font-size: 0.55rem; letter-spacing: 0.18em; color: #6b1f18; border: 1px solid #9a2b22; padding: 0.2rem 0.5rem; border-radius: 3px; }
+    .exhibit .ex-h { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6b1f18; margin-bottom: 1rem; font-weight: 600; max-width: 80%; }
+    .exhibit .ex-line { font-size: 0.8rem; line-height: 1.95; color: #2a241c; }
+    .exhibit .ex-line b { color: #1a1712; }
+    .exhibit .ex-cap { margin-top: 1.2rem; font-size: 0.56rem; letter-spacing: 0.06em; color: #6b6356; line-height: 1.6; }
+    .method { max-width: 680px; margin: 3rem auto 0; padding: 1.6rem 1.7rem; background: var(--bg-2); border: 1px solid var(--rule); border-left: 2px solid var(--amber); border-radius: 10px; position: relative; z-index: 2; }
+    .method h3 { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.9rem; }
+    .method p { font-size: 0.92rem; font-weight: 300; line-height: 1.7; color: var(--cream-dim); margin-bottom: 0.8rem; }
+    .method .key { font-family: var(--mono); font-size: 0.62rem; line-height: 1.9; color: var(--cream-faint); }
+    .method .key b { color: var(--cream-dim); }
+    .srclist { list-style: none; margin-top: 0.6rem; }
+    .srclist li { font-family: var(--mono); font-size: 0.62rem; line-height: 1.75; color: var(--cream-faint); padding-left: 1rem; text-indent: -1rem; }
+    .srclist a { color: var(--cream-dim); text-decoration: none; border-bottom: 1px solid var(--rule-strong); }
+    .srclist a:hover { color: var(--neon); }
+    .a-foot { max-width: 680px; margin: 0 auto; padding: 1rem 2rem 0; position: relative; z-index: 2; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 2rem 0; border-top: 1px solid var(--rule); }
+    .tags span { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-faint); border: 1px solid var(--rule); border-radius: 4px; padding: 0.3rem 0.6rem; }
+    .nextpart { max-width: 680px; margin: 2rem auto 0; position: relative; z-index: 2; }
+    .nextpart a { display: block; text-decoration: none; color: inherit; background: linear-gradient(145deg, var(--bg-3), var(--bg-2)); border: 1px solid var(--neon-soft); border-radius: 14px; padding: 1.6rem 1.8rem; transition: transform 0.2s, box-shadow 0.2s; }
+    .nextpart a:hover { transform: translateY(-3px); box-shadow: 0 0 26px var(--neon-soft); }
+    .nextpart .np-k { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
+    .nextpart h4 { font-size: 1.45rem; font-weight: 500; margin-top: 0.5rem; line-height: 1.2; }
+    .nextpart .np-r { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--neon); margin-top: 0.9rem; }
+    .related { max-width: 1100px; margin: 2rem auto 0; padding: 3rem 2rem 4rem; border-top: 1px solid var(--rule-strong); position: relative; z-index: 2; }
+    .rel-h { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-faint); margin-bottom: 1.8rem; }
+    .rel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .rel { text-decoration: none; color: inherit; background: var(--bg-2); border: 1px solid var(--rule); border-radius: 12px; padding: 1.4rem 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+    .rel:hover { border-color: var(--neon); transform: translateY(-3px); }
+    .rel .rc { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); }
+    .rel h4 { font-size: 1.15rem; font-weight: 500; margin-top: 0.6rem; line-height: 1.25; }
+    .rel:hover h4 { color: var(--neon); }
+    footer { border-top: 1px solid var(--rule-strong); position: relative; z-index: 2; }
+    .footer-inner { padding: 2.5rem 0 3.5rem; text-align: center; }
+    .footer-tagline { font-style: italic; font-weight: 300; font-size: 1.05rem; color: var(--cream-dim); }
+    .footer-tagline b { font-weight: 500; color: var(--amber); }
+    .footer-meta { margin-top: 1rem; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream-faint); }
+    @media (max-width: 760px) { .rel-grid { grid-template-columns: 1fr; } .nav-brand { letter-spacing: 0.18em; } }
+  </style>
+</head>
+<body>
+  <div class="progress" id="prog"></div>
+
+  <nav>
+    <a class="nav-brand" href="index.html#top"><span class="dot"></span>End&nbsp;Krysha</a>
+    <a class="nav-back" href="index.html#dispatches">&larr; All Dispatches</a>
+  </nav>
+
+  <div class="a-head">
+    <span class="a-cat">Protection Layer</span><span class="a-series">The Bloodline &middot; Part 7 of 7</span>
+    <h1 class="a-title">The Constants</h1>
+    <p class="a-dek">Six parts of this series followed people and brands. The brands are designed to be discarded. What persists is the Money, the Metal, and the Krysha, and the record of a decade says the decisive blows against this ecosystem were never delivered from outside.</p>
+    <div class="a-byline">
+      <span>By <b>Reno</b></span><span class="sep">&#10022;</span>
+      <span>July 3, 2026</span><span class="sep">&#10022;</span>
+      <span>15 min read</span><span class="sep">&#10022;</span>
+      <span>Open Research</span>
+    </div>
+  </div>
+
+  <div class="a-hero-photo">
+    <svg class="hero-art" viewBox="0 0 680 340" preserveAspectRatio="xMidYMid slice" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Neon-noir illustration of three glowing pillars labeled money, metal and krysha holding up a roof, with faded brand names beneath">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#221b12"/><stop offset="0.55" stop-color="#16120c"/><stop offset="1" stop-color="#0e0b08"/>
+        </linearGradient>
+        <radialGradient id="uvglow" cx="0.5" cy="0.3" r="0.75">
+          <stop offset="0" stop-color="#b388ff" stop-opacity="0.35"/><stop offset="0.5" stop-color="#b388ff" stop-opacity="0.1"/><stop offset="1" stop-color="#b388ff" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000000" opacity="0.18"/></pattern>
+      </defs>
+      <rect x="0" y="0" width="680" height="340" fill="url(#sky)"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#uvglow)"/>
+      <!-- roof -->
+      <path d="M120 100 L340 45 L560 100 L560 112 L120 112 Z" fill="none" stroke="#ffb454" stroke-width="1.6" opacity="0.9"/>
+      <text x="340" y="88" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#ffb454" letter-spacing="4">KRYSHA</text>
+      <!-- pillars -->
+      <g stroke="#b388ff" stroke-width="1.4" opacity="0.9" fill="none">
+        <rect x="165" y="112" width="46" height="150"/>
+        <rect x="317" y="112" width="46" height="150"/>
+        <rect x="469" y="112" width="46" height="150"/>
+      </g>
+      <text x="188" y="290" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#b3a892" letter-spacing="3">MONEY</text>
+      <text x="340" y="290" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#b3a892" letter-spacing="3">METAL</text>
+      <text x="492" y="290" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="9" fill="#b3a892" letter-spacing="3">PEOPLE</text>
+      <!-- faded discarded brand names -->
+      <g font-family="'IBM Plex Mono', monospace" font-size="8" fill="#79705f" opacity="0.55">
+        <text x="120" y="322" letter-spacing="2">CONTI</text>
+        <text x="205" y="322" letter-spacing="2">REVIL</text>
+        <text x="285" y="322" letter-spacing="2">DARKSIDE</text>
+        <text x="395" y="322" letter-spacing="2">ROYAL</text>
+        <text x="470" y="322" letter-spacing="2">LOCKBIT</text>
+        <text x="570" y="322" letter-spacing="2">MAZE</text>
+      </g>
+      <rect x="0" y="0" width="680" height="340" fill="url(#scan)"/>
+    </svg>
+    <span class="cap">Brands rot, structures persist &middot; illustration</span>
+  </div>
+
+  <article class="a-body">
+    <p><span class="drop">E</span>very brand named in this series is dead or renamed: Zeus, Dridex, Ryuk, Conti, Black Basta, Royal, REvil, DarkSide, Maze. Most of the people are still working. That asymmetry is the whole finding. Operator brands are ephemeral; the services beneath them are not. Bulletproof hosting, laundering, and access malware are shared across the ecosystem, sold to whoever pays, and they persist through every rebrand and takedown above them. Treat those enablers as cross-cutting nodes rather than appendages of individual gangs, and the concentration points appear. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <h2>The Metal</h2>
+    <p>The clearest chokepoint in the ecosystem is a hosting company. OFAC's 2025 action against <strong>Media Land</strong> tied one provider to hosting for LockBit, Black Basta, Play, BlackSuit, and Evil Corp: five operator brands on one supplier. Its representative <strong>Aleksandr Volosovik</strong> ("Yalishanda") and associates were designated alongside it. <strong>Zservers/XHost</strong> served as LockBit's primary bulletproof host; <strong>Aeza Group</strong> hosted infostealer and ransomware infrastructure. Access was similarly industrialized: <strong>Qakbot</strong>, developed by Rustam Gallyamov and fed into Conti, Black Basta and REvil, was disrupted by the FBI's Operation Duck Hunt in August 2023, with over $24 million in cryptocurrency later seized. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The lever matters as much as the target. Seizing a hoster's servers buys weeks; boxes are cheap. Sanctioning the provider attacks the parts that are hard to replace: its reputation for not folding, its operator relationships, its payment rails. And because a hoster is a shared dependency, the pressure radiates across every group that rents from it, an efficiency no action against a single rebrandable gang can match. <span class="conf inference">Analyst inference</span></p>
+
+    <h2>The Money</h2>
+    <p>The financial layer tells a story the org charts cannot. When a group rebrands it changes its name and often its code, but it rarely changes its launderers, its OTC brokers, or its wallet habits. The FBI's assessment that DarkSide, BlackMatter, and ALPHV shared money launderers is the clearest statement of this; Chainalysis and Tetra Defense established Conti-to-Karakurt and Conti-to-Akira flows on-chain. Where the people hide behind new brands, the money keeps using the same plumbing. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The money also concentrates. A handful of services, Sergey Ivanov's <strong>UAPS/PM2BTC/Cryptex</strong> complex, the <strong>ChipMixer</strong> service, handled a disproportionate share of the ecosystem's proceeds before their designations. And it concentrates in people: Chainalysis assessed Stern (Kovalev) as among the most profitable ransomware actors ever tracked, with German reporting citing a personal wallet valued near a billion euros. A new brand with no named operators is not a dead end if its payments flow through plumbing already mapped to a prior brand. The money is frequently the first thread that survives a rebrand, and in the anonymous clusters it may be the only thread. <span class="conf credible">Credible reporting</span></p>
+
+    <h2>The Krysha</h2>
+    <p>The baseline arrangement is the dark covenant: avoid CIS targets (the keyboard-layout exclusion in the malware is its technical signature), stay inside Russia, stay useful, and you will not be pursued. But the record of this series shows something more active than tolerance. <strong>Eduard Benderskiy</strong>, Yakubets's father-in-law and a former officer of the FSB's Vympel unit, facilitated Evil Corp's FSB, SVR, and GRU contacts and shielded the group from internal Russian scrutiny after the 2019 sanctions, per the NCA. Before 2019, the NCA states, Evil Corp was <strong>tasked</strong> by Russian intelligence to conduct attacks and espionage against NATO allies: the state using a criminal capability for its own ends. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>And <strong>Oleg Nefedov</strong>, in the leaked Black Basta chats, claimed contacts of his own ("I have guys from Lubyanka and the GRU") and escaped Armenian custody with "high-level" help through a green corridor. Bogachev, Yakubets, Kovalev, Nefedov: each of the four men this series is built around is either documented or credibly reported to sit under the roof. That is not a coincidence of biography. It is the operating condition of the ecosystem's core. <span class="conf credible">Credible reporting</span></p>
+
+    <div class="pullquote">The roof is real. But the roof has a <em>price</em>, and the price is what exposed them.</div>
+
+    <p>Here is the paradox that ties the series together. State adjacency protects these groups, and state adjacency exposed the two largest of them. Conti was de-anonymized because its leadership publicly declared for the invasion, provoking the insider leak. Black Basta imploded over attacking Russian banks, provoking its leak. The identification of Kovalev as Stern was pre-empted by a persona reportedly sourcing from Russian state or insider databases, and the Zolotarjovs filing alleged the organization itself tapped government databases. Proximity to the state politicizes these groups, ties them to a regime whose actions provoke insiders, and embeds them in an environment that leaks. The most damaging blows to this ecosystem have come not from Western enforcement but from the frictions of its own protection. <span class="conf inference">Analyst inference</span></p>
+
+    <figure>
+      <div class="fig-frame">
+        <div class="fig-title">Fig. 1 &middot; A decade of disruption, side by side (per cited sources)</div>
+        <table class="roster">
+          <tr><th>Action</th><th>Year</th><th>Target</th><th>Effect</th></tr>
+          <tr><td><b>Operation Tovar</b></td><td>2014</td><td>GameOver Zeus botnet</td><td>Botnet dismantled; principals untouched</td></tr>
+          <tr><td><b>TrickBot disruption</b></td><td>2020</td><td>TrickBot infrastructure</td><td>Temporary; group recovered</td></tr>
+          <tr><td><b>Evil Corp sanctions</b></td><td>2019 / 2024</td><td>Yakubets, family, Ryzhenkov</td><td>Forced rebrands; no arrests</td></tr>
+          <tr><td><b>REvil / Kaseya actions</b></td><td>2021 / 2022</td><td>REvil infra, affiliates, FSB theater</td><td>Affiliates jailed; core stayed</td></tr>
+          <tr><td><b>OFAC TrickBot/Conti rounds</b></td><td>2023</td><td>Conti corporate layer</td><td>Monikers mapped to names</td></tr>
+          <tr><td><b>Operation Cronos</b></td><td>2024</td><td>LockBit</td><td>Infra seized; LockBitSupp unmasked</td></tr>
+          <tr><td><b>Operation Endgame</b></td><td>2024 / 25</td><td>Malware delivery layer</td><td>Loaders hit; Kovalev named as Stern</td></tr>
+          <tr><td><b>Operation Checkmate</b></td><td>2025</td><td>BlackSuit</td><td>Infrastructure seized</td></tr>
+        </table>
+        <figcaption>Inventory per DOJ, NCA, OFAC, Europol and BKA public disclosures. Pattern: infrastructure reachable, protected principals not.</figcaption>
+      </div>
+    </figure>
+
+    <h2>What a decade of actions actually taught</h2>
+    <p>Three honest judgments follow from the table. First, <strong>infrastructure seizure works but is temporary</strong>: botnets and leak sites get rebuilt, as TrickBot and LockBit both showed. Second, <strong>de-anonymization is real progress but not an endgame</strong>: naming Kovalev, Nefedov, Khoroshev, and Shchukin is a genuine achievement, and every one of them remains in Russia, beyond extradition. Third, and most important, <strong>the decisive blows have been self-inflicted</strong>: the Conti and Black Basta leaks did more to expose those organizations than any enforcement action, and Evil Corp's 2019 internal split did more to disrupt it than the simultaneous sanctions. External pressure worked best when it amplified existing internal fractures. <span class="conf inference">Analyst inference</span></p>
+
+    <p>The fracture pattern is consistent enough to treat as a property of the system. Evil Corp split over leadership conflict. Conti fractured into teams and then leaked over a political declaration. Black Basta imploded over abuse and targeting disputes. BlackSuit split along the same Team 1 / Team 2 seam that had cracked Conti. In every case the failure point was trust: money disputes, targeting decisions, perceived informants, status conflicts. Pressure that raises mistrust works with the grain of a documented weakness, and it does not require reaching the protected principals at all. <span class="conf inference">Analyst inference</span></p>
+
+    <div class="exhibit">
+      <div class="ex-h">US Treasury (OFAC), with UK and Australia &middot; bulletproof hosting designations (excerpt)</div>
+      <div class="ex-line">
+        Designated: <b>Media Land</b>, its representative <b>Aleksandr VOLOSOVIK</b> (&ldquo;Yalishanda&rdquo;) and associates<br>
+        Basis: hosting and support for <b>LockBit, Black Basta, Play, BlackSuit, Evil Corp</b><br>
+        Coordinated: <b>US &middot; UK &middot; Australia</b>, November 2025<br>
+        Signal: pressure applied to the <b>shared enabling layer</b>, not a single gang
+      </div>
+      <div class="ex-cap">Source: OFAC designation and joint UK/Australia announcements, November 2025. Public record, reproduced for analysis. One provider, five brands: the arithmetic of the enabler layer.</div>
+    </div>
+
+    <h2>Where the leverage is</h2>
+    <p>Synthesizing the series: the highest-leverage points are rarely the protected principals. The <strong>enabler layer</strong> (hosters, launderers) services many brands at once, reconstitutes slowly, and is reachable through sanctions: the best ratio of effort to ecosystem-wide effect. The <strong>financial plumbing</strong> outlives brands, so designating cash-out services and mapping leadership wallets degrades many operations simultaneously. The <strong>cross-ecosystem nodes</strong> (the FIN7 bridge, the LockBit hub) concentrate multiple lineages in single points. <strong>Internal trust</strong> is the ecosystem's binding constraint and its most reliably self-destructive one. And the <strong>anonymous cores</strong> of DarkSide, ALPHV, and Maze remain the highest-value unfinished work, most likely to fall to insider exposure or financial tracing rather than seizure. <span class="conf inference">Analyst inference</span></p>
+
+    <p>The unifying judgment, and the reason this project exists: a brand-centric strategy chases ghosts, because the brands are designed to be discarded. A people-and-infrastructure strategy targets what actually persists. The operators. The relationships. The hosters. The launderers. The wallets. And above all of it, the roof.</p>
+
+    <div class="method">
+      <h3>Sourcing &amp; confidence</h3>
+      <p>This dispatch is adapted from the project's reference study "People, Lineage, Money, and the State" (v3), and draws on OFAC designations of Media Land, Zservers, Aeza, Cryptex and ChipMixer, the joint US/UK/Australia bulletproof hosting action (November 2025), the UK NCA Evil Corp white paper (October 2024), FBI assessments of laundering continuity, Chainalysis and Tetra Defense blockchain analysis, the DOJ Qakbot disruption (August 2023), and the leaked Conti and Black Basta chat corpora. Confidence labels follow standard analytic practice.</p>
+      <p class="key"><b>Confirmed</b> &middot; multiple independent sources, including official designation or indictment language.<br><b>Credible</b> &middot; single strong source or consistent industry reporting, not yet officially confirmed.<br><b>Analyst inference</b> &middot; the project's own assessment, drawn from the evidence above.</p>
+      <ul class="srclist">
+        <li>UK Government, <a href="https://www.gov.uk/government/news/uk-smashes-russian-cybercrime-networks-responsible-for-attacks-on-uk-businesses">UK smashes Russian cybercrime networks</a> (Nov 2025).</li>
+        <li>Chainalysis, <a href="https://www.chainalysis.com/blog/ofac-targets-russian-cybercrime-infrastructure-ransomware-november-2025/">OFAC targets Russian cybercrime infrastructure</a> (Nov 2025).</li>
+        <li>UK NCA, <a href="https://www.nationalcrimeagency.gov.uk/news/nca-and-partners-take-action-against-the-most-significant-cyber-crime-group">Evil Corp: Behind the Screens</a> (Oct 1, 2024).</li>
+        <li>US DOJ, <a href="https://www.justice.gov/archives/opa/pr/qakbot-malware-disrupted-international-cyber-takedown">Qakbot disrupted in Operation Duck Hunt</a> (Aug 2023).</li>
+      </ul>
+    </div>
+  </article>
+
+  <div class="nextpart">
+    <a href="bloodline-part-1.html">
+      <div class="np-k">Series complete &middot; The Bloodline</div>
+      <h4>Start from the beginning: The Common Ancestor</h4>
+      <div class="np-r">Read Part 1 &rarr;</div>
+    </a>
+  </div>
+
+  <div class="a-foot">
+    <div class="tags"><span>Krysha</span><span>Media Land</span><span>Cryptex</span><span>Benderskiy</span><span>Enablers</span><span>Leverage</span><span>Protection Layer</span></div>
+  </div>
+
+  <div class="related">
+    <div class="rel-h">More Dispatches</div>
+    <div class="rel-grid">
+      <a class="rel" href="after-garantex.html"><div class="rc">Financial Layer</div><h4>After Garantex: where the cash-out moved next</h4></a>
+      <a class="rel" href="operation-endgame.html"><div class="rc">Enforcement Strategy</div><h4>Operation Endgame: the layer it cannot reach</h4></a>
+      <a class="rel" href="bloodline-part-6.html"><div class="rc">Threat Actors</div><h4>The Parallel Track: GandCrab, REvil, DarkSide, and LockBit</h4></a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-tagline">The <b>biggest little</b> threat intel project in the world.</p>
+      <p class="footer-meta">End Krysha &middot; A campaign of the Ransomware Ecosystem Network Observatory &middot; Beta</p>
+    </div>
+  </footer>
+
+  <script>
+    const prog = document.getElementById('prog');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      prog.style.width = pct + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
