@@ -109,6 +109,70 @@
     .sec-head .more:hover { color: var(--neon); border-color: var(--neon); }
     .sec-head.rule::after { content: ''; flex: 1; height: 1px; background: var(--rule); align-self: center; }
 
+    /* THE BLOODLINE flagship band */
+    .bl-band { position: relative; overflow: hidden; background: linear-gradient(160deg, var(--bg-3), var(--bg-2) 55%, #16120d); border: 1px solid var(--neon-soft); border-radius: 18px; box-shadow: 0 0 44px rgba(179,136,255,0.12), inset 0 0 90px rgba(179,136,255,0.045); }
+    .bl-band::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 14% 0%, rgba(179,136,255,0.16), transparent 55%), radial-gradient(ellipse at 92% 100%, rgba(255,180,84,0.07), transparent 60%); }
+    .bl-band::after { content: ''; position: absolute; top: 0; bottom: 0; left: -25%; width: 160px; pointer-events: none; background: linear-gradient(100deg, transparent, rgba(179,136,255,0.10), transparent); animation: blsweep 9s linear infinite; }
+    @keyframes blsweep { from { left: -25%; } to { left: 115%; } }
+    .bl-mast { position: relative; z-index: 1; padding: 3rem 3rem 0.4rem; }
+    .bl-kicker { font-family: var(--mono); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 1rem; }
+    .bl-kicker::before { content: ''; width: 2.2rem; height: 1px; background: var(--amber); box-shadow: 0 0 8px var(--amber-soft); }
+    .bl-title { font-size: clamp(2.8rem, 6.5vw, 5rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.015em; text-transform: uppercase; }
+    .bl-title b { font-weight: 700; color: var(--neon); text-shadow: 0 0 16px var(--neon-soft), 0 0 46px var(--neon-soft); animation: flicker 8s linear infinite; }
+    .bl-standfirst { margin-top: 1.4rem; font-size: 1.16rem; font-weight: 300; line-height: 1.65; color: var(--cream); max-width: 62ch; }
+    .bl-standfirst strong { font-weight: 500; }
+    .bl-stats { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .bl-stats span { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); border: 1px solid var(--rule); border-radius: 4px; padding: 0.42rem 0.75rem; background: rgba(17,15,11,0.55); }
+    .bl-stats b { color: var(--amber); font-weight: 600; text-shadow: 0 0 8px var(--amber-soft); }
+    .bl-actions { display: flex; align-items: center; gap: 1.7rem; margin-top: 1.9rem; flex-wrap: wrap; }
+    .bl-note { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-faint); }
+    /* lineage tree */
+    .bl-tree { position: relative; z-index: 1; padding: 0.6rem 2.2rem 0; }
+    .bl-tree svg { width: 100%; height: auto; display: block; overflow: visible; }
+    .bl-tree .lin { fill: none; stroke: rgba(179,136,255,0.5); stroke-width: 1.6; }
+    .bl-tree .lin.dash { stroke: rgba(240,231,216,0.32); stroke-dasharray: 5 6; }
+    .bl-tree .lin.draw { stroke-dasharray: 1; stroke-dashoffset: 1; }
+    .bl-tree.drawn .lin.draw { stroke-dashoffset: 0; transition: stroke-dashoffset 1.1s ease; }
+    .bl-tree .lin.fade { opacity: 0; }
+    .bl-tree.drawn .lin.fade { opacity: 1; transition: opacity 1.1s ease; }
+    .bl-tree.drawn .dl2 { transition-delay: 0.6s; }
+    .bl-tree.drawn .dl3 { transition-delay: 1.2s; }
+    .bl-node { cursor: pointer; opacity: 0; transition: opacity 0.6s ease; }
+    .bl-tree.drawn .bl-node { opacity: 1; }
+    .bl-tree.drawn .n1 { transition-delay: 0s; } .bl-tree.drawn .n2, .bl-tree.drawn .n4 { transition-delay: 0.7s; } .bl-tree.drawn .n3, .bl-tree.drawn .n5 { transition-delay: 1.1s; } .bl-tree.drawn .n6 { transition-delay: 0.9s; } .bl-tree.drawn .n7 { transition-delay: 1.8s; }
+    .bl-node circle { fill: #16120d; stroke: var(--neon); stroke-width: 1.4; filter: drop-shadow(0 0 6px rgba(179,136,255,0.45)); transition: stroke-width 0.15s; }
+    .bl-node:hover circle { stroke-width: 2.6; }
+    .bl-node.fin circle { stroke: var(--amber); filter: drop-shadow(0 0 8px rgba(255,180,84,0.55)); animation: pulse 2.6s ease-in-out infinite; }
+    .bl-num-svg { fill: var(--amber); font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; }
+    .bl-node.fin .bl-num-svg { font-size: 11px; }
+    .bl-t { fill: var(--cream); font-family: var(--serif); font-size: 15.5px; font-weight: 500; transition: fill 0.15s; }
+    .bl-node:hover .bl-t { fill: var(--neon); }
+    .bl-e { fill: var(--cream-faint); font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.12em; }
+    .bl-br { fill: rgba(255,180,84,0.65); font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.18em; }
+    .bl-br.ghost { fill: rgba(240,231,216,0.4); }
+    /* names ticker */
+    .bl-ticker { position: relative; z-index: 1; margin-top: 1.4rem; border-top: 1px solid var(--rule); overflow: hidden; }
+    .bl-track { display: flex; width: max-content; animation: ticker 38s linear infinite; }
+    .bl-track span { font-family: var(--mono); font-size: 0.56rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-faint); padding: 0.7rem 0; white-space: nowrap; }
+    .bl-track b { color: var(--amber); font-weight: 500; opacity: 0.85; }
+    .bl-track i { font-style: normal; color: var(--neon); padding: 0 1.1rem; text-shadow: 0 0 8px var(--neon-soft); }
+    /* mobile rail fallback */
+    .bl-rail { list-style: none; display: none; flex-direction: column; position: relative; z-index: 1; padding: 0.4rem 1.2rem 1.2rem; }
+    .bl-rail a { display: grid; grid-template-columns: 2.2rem 1fr auto; align-items: baseline; gap: 1rem; text-decoration: none; color: inherit; padding: 0.78rem 0.9rem; border-bottom: 1px solid var(--rule); transition: background 0.15s; }
+    .bl-rail li:last-child a { border-bottom: none; }
+    .bl-rail a:hover { background: rgba(179,136,255,0.07); }
+    .bl-num { font-family: var(--mono); font-size: 0.62rem; font-weight: 600; color: var(--amber); text-shadow: 0 0 8px var(--amber-soft); }
+    .bl-chap { font-size: 1.08rem; font-weight: 500; line-height: 1.25; }
+    .bl-rail a:hover .bl-chap { color: var(--neon); }
+    .bl-min { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-faint); }
+    @media (max-width: 760px) { .bl-tree { display: none; } .bl-rail { display: flex; } }
+    @media (prefers-reduced-motion: reduce) {
+      .bl-band::after, .bl-title b, .bl-track, .bl-node.fin circle { animation: none; }
+      .bl-tree .lin.draw { stroke-dashoffset: 0; }
+      .bl-tree .lin.fade { opacity: 1; }
+      .bl-node { opacity: 1; }
+    }
+
     /* TOPIC FILTER */
     .topics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
     .topics button { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream-dim); background: transparent; border: 1px solid var(--rule); border-radius: 20px; padding: 0.45rem 0.9rem; cursor: pointer; transition: all 0.15s; }
@@ -205,6 +269,7 @@
       nav { padding: 1rem 1.4rem; } .frame, .hero-inner { padding-left: 1.4rem; padding-right: 1.4rem; }
       .pp { grid-template-columns: repeat(2, 1fr); } .pp-cell:nth-child(2) { border-right: none; }
       .about, .layers, .cta-band, .contact { grid-template-columns: 1fr; }
+      .bl-mast { padding: 1.9rem 1.5rem 0.4rem; }
       .dispatch-feature { grid-template-columns: 1fr; } .dispatch-feature .photo { min-height: 220px; }
       .dispatch-grid { grid-template-columns: 1fr; }
     }
@@ -225,9 +290,10 @@
   <nav>
     <a class="nav-brand" href="#top"><span class="dot"></span>End&nbsp;Krysha</a>
     <ul class="nav-links">
+      <li><a href="#bloodline">The Bloodline</a></li>
       <li><a href="#dispatches">Dispatches</a></li>
-      <li><a href="#about">About</a></li>
       <li><a href="#layers">The Leverage</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="recommendations.html">Recommendations</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a class="ext" href="https://therenoproject.org/">The Observatory &rarr;</a></li>
@@ -245,7 +311,7 @@
         up. <strong>We find the roof, and we map how to bring it down.</strong>
       </p>
       <div class="hero-actions">
-        <a class="btn-primary" href="#dispatches">Read the Dispatches&nbsp;&nbsp;&rarr;</a>
+        <a class="btn-primary" href="#bloodline">Read The Bloodline&nbsp;&nbsp;&rarr;</a>
         <a class="link-arrow" href="https://research.therenoproject.org/ransomware-ecosystem-v2.6.html">See the Map</a>
       </div>
     </div>
@@ -253,10 +319,115 @@
 
   <div class="frame">
 
-    <!-- DISPATCHES -->
-    <section id="dispatches">
+    <!-- THE BLOODLINE : flagship series, permanently pinned -->
+    <section id="bloodline">
       <div class="sec-head rule">
         <span class="sec-num">01</span>
+        <span class="sec-title">The Bloodline &middot; The Flagship Series</span>
+      </div>
+      <div class="bl-band reveal">
+        <div class="bl-mast">
+          <div class="bl-kicker">Seven parts &middot; One family tree &middot; 2007 to now</div>
+          <h2 class="bl-title">The <b>Bloodline</b></h2>
+          <p class="bl-standfirst">Every major Russian ransomware brand since 2007 descends from a small circle of men who knew each other before 2014. <strong>Track the people and the chaos resolves into a family tree.</strong> Seven parts. Named, sourced, and graded.</p>
+          <div class="bl-stats">
+            <span><b>96</b>&nbsp;named individuals</span>
+            <span><b>64%</b>&nbsp;confirmed</span>
+            <span><b>48</b>&nbsp;brands</span>
+            <span><b>51</b>&nbsp;lineage edges</span>
+            <span><b>1</b>&nbsp;family tree</span>
+          </div>
+          <div class="bl-actions">
+            <a class="btn-primary" href="bloodline-part-1.html">Start with Part 1&nbsp;&nbsp;&rarr;</a>
+            <a class="link-arrow" href="bloodline-part-7.html">Skip to the conclusions</a>
+            <span class="bl-note">Companion: The Protected &middot; dossiers of the named &middot; coming soon</span>
+          </div>
+        </div>
+
+        <div class="bl-tree" role="navigation" aria-label="The Bloodline chapters as a lineage tree">
+          <svg viewBox="0 0 1000 348" xmlns="http://www.w3.org/2000/svg" aria-hidden="false">
+            <!-- lineage lines -->
+            <path class="lin draw"     pathLength="1" d="M106 122 C175 100, 205 62, 264 58"/>
+            <path class="lin draw"     pathLength="1" d="M106 138 C180 160, 222 186, 284 190"/>
+            <path class="lin draw dl2" pathLength="1" d="M296 58 L494 58"/>
+            <path class="lin draw dl2" pathLength="1" d="M316 190 L474 190"/>
+            <path class="lin dash fade dl2" d="M118 285 L452 285"/>
+            <path class="lin draw dl3" pathLength="1" d="M526 58 C670 60, 768 102, 859 140"/>
+            <path class="lin draw dl3" pathLength="1" d="M506 190 C640 190, 742 172, 858 153"/>
+            <path class="lin dash fade dl3" d="M488 285 C640 285, 764 228, 864 163"/>
+            <!-- branch labels -->
+            <text class="bl-br" x="395" y="46" text-anchor="middle">EVIL CORP</text>
+            <text class="bl-br" x="395" y="178" text-anchor="middle">TRICKBOT / CONTI</text>
+            <text class="bl-br ghost" x="285" y="273" text-anchor="middle">A SEPARATE ROOT &#183; NEVER LEAKED</text>
+            <!-- chapter nodes -->
+            <a class="bl-node n1" href="bloodline-part-1.html">
+              <circle cx="90" cy="130" r="15"/>
+              <text class="bl-num-svg" x="90" y="133.5" text-anchor="middle">01</text>
+              <text class="bl-t" x="90" y="168" text-anchor="middle">The Common Ancestor</text>
+              <text class="bl-e" x="90" y="184" text-anchor="middle">ZEUS &#183; THE BUSINESS CLUB &#183; 2007&#8211;2014</text>
+            </a>
+            <a class="bl-node n2" href="evil-corp-part-1.html">
+              <circle cx="280" cy="58" r="15"/>
+              <text class="bl-num-svg" x="280" y="61.5" text-anchor="middle">02</text>
+              <text class="bl-t" x="280" y="24" text-anchor="middle">A Lamborghini Named Thief</text>
+              <text class="bl-e" x="280" y="9" text-anchor="middle">YAKUBETS &#183; 2014&#8211;2019</text>
+            </a>
+            <a class="bl-node n3" href="evil-corp-part-2.html">
+              <circle cx="510" cy="58" r="15"/>
+              <text class="bl-num-svg" x="510" y="61.5" text-anchor="middle">03</text>
+              <text class="bl-t" x="510" y="24" text-anchor="middle">The Roof Over Evil Corp</text>
+              <text class="bl-e" x="510" y="9" text-anchor="middle">BENDERSKIY &#183; THE FSB &#183; 2019&#8211;</text>
+            </a>
+            <a class="bl-node n4" href="bloodline-part-4.html">
+              <circle cx="300" cy="190" r="15"/>
+              <text class="bl-num-svg" x="300" y="193.5" text-anchor="middle">04</text>
+              <text class="bl-t" x="300" y="228" text-anchor="middle">The Corporation</text>
+              <text class="bl-e" x="300" y="243" text-anchor="middle">STERN &#183; 2016&#8211;2022</text>
+            </a>
+            <a class="bl-node n5" href="bloodline-part-5.html">
+              <circle cx="490" cy="190" r="15"/>
+              <text class="bl-num-svg" x="490" y="193.5" text-anchor="middle">05</text>
+              <text class="bl-t" x="490" y="228" text-anchor="middle">The Diaspora</text>
+              <text class="bl-e" x="490" y="243" text-anchor="middle">BLACK BASTA &#183; ROYAL &#183; 2022&#8211;</text>
+            </a>
+            <a class="bl-node n6" href="bloodline-part-6.html">
+              <circle cx="470" cy="285" r="15"/>
+              <text class="bl-num-svg" x="470" y="288.5" text-anchor="middle">06</text>
+              <text class="bl-t" x="470" y="322" text-anchor="middle">The Parallel Track</text>
+              <text class="bl-e" x="470" y="337" text-anchor="middle">GANDCRAB &#183; REVIL &#183; DARKSIDE &#183; LOCKBIT &#183; 2018&#8211;</text>
+            </a>
+            <a class="bl-node n7 fin" href="bloodline-part-7.html">
+              <circle cx="880" cy="150" r="20"/>
+              <text class="bl-num-svg" x="880" y="154" text-anchor="middle">07</text>
+              <text class="bl-t" x="880" y="192" text-anchor="middle">The Constants</text>
+              <text class="bl-e" x="880" y="208" text-anchor="middle">THE MONEY &#183; THE METAL &#183; THE KRYSHA</text>
+            </a>
+          </svg>
+        </div>
+
+        <ol class="bl-rail">
+          <li><a href="bloodline-part-1.html"><span class="bl-num">01</span><span class="bl-chap">The Common Ancestor</span><span class="bl-min">10 min</span></a></li>
+          <li><a href="evil-corp-part-1.html"><span class="bl-num">02</span><span class="bl-chap">A Lamborghini Named Thief</span><span class="bl-min">13 min</span></a></li>
+          <li><a href="evil-corp-part-2.html"><span class="bl-num">03</span><span class="bl-chap">The Roof Over Evil Corp</span><span class="bl-min">14 min</span></a></li>
+          <li><a href="bloodline-part-4.html"><span class="bl-num">04</span><span class="bl-chap">The Corporation</span><span class="bl-min">12 min</span></a></li>
+          <li><a href="bloodline-part-5.html"><span class="bl-num">05</span><span class="bl-chap">The Diaspora</span><span class="bl-min">13 min</span></a></li>
+          <li><a href="bloodline-part-6.html"><span class="bl-num">06</span><span class="bl-chap">The Parallel Track</span><span class="bl-min">14 min</span></a></li>
+          <li><a href="bloodline-part-7.html"><span class="bl-num">07</span><span class="bl-chap">The Constants</span><span class="bl-min">15 min</span></a></li>
+        </ol>
+
+        <div class="bl-ticker" aria-hidden="true">
+          <div class="bl-track">
+            <span>BOGACHEV <b>(SLAVIK)</b> <i>&#10022;</i> YAKUBETS <b>(AQUA)</b> <i>&#10022;</i> KOVALEV <b>(STERN)</b> <i>&#10022;</i> NEFEDOV <b>(TRAMP)</b> <i>&#10022;</i> KHOROSHEV <b>(LOCKBITSUPP)</b> <i>&#10022;</i> SHCHUKIN <b>(UNKN)</b> <i>&#10022;</i> RYZHENKOV <b>(GUESTER)</b> <i>&#10022;</i> BENDERSKIY <b>(FSB &#183; THE ROOF)</b> <i>&#10022;</i> 96 NAMED &#183; 64% CONFIRMED <i>&#10022;</i>&nbsp;</span>
+            <span>BOGACHEV <b>(SLAVIK)</b> <i>&#10022;</i> YAKUBETS <b>(AQUA)</b> <i>&#10022;</i> KOVALEV <b>(STERN)</b> <i>&#10022;</i> NEFEDOV <b>(TRAMP)</b> <i>&#10022;</i> KHOROSHEV <b>(LOCKBITSUPP)</b> <i>&#10022;</i> SHCHUKIN <b>(UNKN)</b> <i>&#10022;</i> RYZHENKOV <b>(GUESTER)</b> <i>&#10022;</i> BENDERSKIY <b>(FSB &#183; THE ROOF)</b> <i>&#10022;</i> 96 NAMED &#183; 64% CONFIRMED <i>&#10022;</i>&nbsp;</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DISPATCHES -->
+    <section id="dispatches" style="padding-top:0;">
+      <div class="sec-head rule">
+        <span class="sec-num">02</span>
         <span class="sec-title">Dispatches &middot; Analysis from the Field</span>
         </div>
 
@@ -264,7 +435,6 @@
         <button class="active" data-f="all">All</button>
         <button data-f="financial">Financial</button>
         <button data-f="enforcement">Enforcement</button>
-        <button data-f="bloodline">The Bloodline</button>
       </div>
 
       <a class="dispatch-feature reveal" href="the-long-cash-out.html" data-topic="financial">
@@ -286,47 +456,6 @@
           <div class="photo has-art"><img class="art" src="images/operation-endgame.svg" alt="" loading="lazy"><span class="photo-tag">Endgame &middot; the layer left standing</span></div>
           <div class="d-body"><div class="d-meta">Enforcement Strategy</div><h4>Operation Endgame: the layer it cannot reach</h4><p class="d-excerpt">The best campaign of its kind ever run against the machinery beneath ransomware. The dependency that decides whether the rest grows back sits outside its target set by design.</p><div class="d-foot">Jun 19, 2026 &middot; 10 min</div></div>
         </a>
-        <a class="dispatch reveal" href="bloodline-part-1.html" data-topic="bloodline">
-          <div class="photo has-art"><img class="art" src="images/bloodline-part-1.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 1</span></div>
-          <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 1 of 7</div><h4>The Common Ancestor</h4><p class="d-excerpt">The modern ransomware world traces to a dozen people who learned the trade together. Every lineage in this series begins with the same man, the same trojan, and the same club.</p><div class="d-foot">Jul 3, 2026 &middot; 10 min</div></div>
-        </a>
-        <a class="dispatch reveal" href="evil-corp-part-1.html" data-topic="bloodline">
-          <div class="photo has-art"><img class="art" src="images/evil-corp-part-1.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 2</span></div>
-          <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 2 of 7</div><h4>A Lamborghini Named Thief</h4><p class="d-excerpt">Maksim Yakubets built the most damaging cybercrime enterprise in history, then drove it through Moscow with plates that read THIEF. The car was a status report on the roof above his head.</p><div class="d-foot">Jul 3, 2026 &middot; 13 min</div></div>
-        </a>
-        <a class="dispatch reveal" href="evil-corp-part-2.html" data-topic="bloodline">
-          <div class="photo has-art"><img class="art" src="images/evil-corp-part-2.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 3</span></div>
-          <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 3 of 7</div><h4>The Roof Over Evil Corp</h4><p class="d-excerpt">A former FSB officer became Yakubets's father-in-law. The indictments came, the sanctions came, and the group simply changed its name. This is what a roof actually buys.</p><div class="d-foot">Jul 3, 2026 &middot; 14 min</div></div>
-        </a>
-        <a class="dispatch reveal" href="bloodline-part-4.html" data-topic="bloodline">
-          <div class="photo has-art"><img class="art" src="images/bloodline-part-4.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 4</span></div>
-          <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 4 of 7</div><h4>The Corporation</h4><p class="d-excerpt">TrickBot and Conti ran departments, salaries, HR, and performance reviews. At the top of the org chart sat a man who had shared a room with Yakubets and Bogachev a decade earlier.</p><div class="d-foot">Jul 3, 2026 &middot; 12 min</div></div>
-        </a>
-        <a class="dispatch reveal" href="bloodline-part-5.html" data-topic="bloodline">
-          <div class="photo has-art"><img class="art" src="images/bloodline-part-5.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 5</span></div>
-          <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 5 of 7</div><h4>The Diaspora</h4><p class="d-excerpt">Conti did not die in 2022. It decentralized. Get the internal team structure right, and a dozen successor names resolve into two family lines.</p><div class="d-foot">Jul 3, 2026 &middot; 13 min</div></div>
-        </a>
-        <a class="dispatch reveal" href="bloodline-part-6.html" data-topic="bloodline">
-          <div class="photo has-art"><img class="art" src="images/bloodline-part-6.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 6</span></div>
-          <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 6 of 7</div><h4>The Parallel Track</h4><p class="d-excerpt">A second world, GandCrab to REvil, DarkSide to ALPHV, LockBit, and the Maze cartel, industrialized the business model. One lineage is named down to the founder. Another has never leaked a single name.</p><div class="d-foot">Jul 3, 2026 &middot; 14 min</div></div>
-        </a>
-        <a class="dispatch reveal" href="bloodline-part-7.html" data-topic="bloodline">
-          <div class="photo has-art"><img class="art" src="images/bloodline-part-7.svg" alt="" loading="lazy"><span class="photo-tag">The Bloodline &middot; Part 7</span></div>
-          <div class="d-body"><div class="d-meta">The Bloodline &middot; Part 7 of 7</div><h4>The Constants</h4><p class="d-excerpt">The brands are designed to be discarded. What persists is the Money, the Metal, and the Krysha, and the decisive blows against this ecosystem were never delivered from outside.</p><div class="d-foot">Jul 3, 2026 &middot; 15 min</div></div>
-        </a>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" style="padding-top:0;">
-      <div class="sec-head rule"><span class="sec-num">02</span><span class="sec-title">About the Project</span></div>
-      <div class="about reveal">
-        <div class="about-pull">Our attempt to make ransomware <em>structurally</em> expensive to run.</div>
-        <div class="about-body">
-          <p>End Krysha is the public face of a longer research program: mapping the dependencies that keep Russia and CIS ransomware operations alive, and finding the pressure points where targeted action produces <strong>measurable</strong> degradation.</p>
-          <p>Groups rebrand. Dependencies don't. The work focuses on the durable layer underneath the brands: the money, the metal, and the roof over both.</p>
-          <div class="about-sig">By Reno &middot; Open research &middot; Built in public</div>
-        </div>
       </div>
     </section>
 
@@ -355,6 +484,19 @@
       </div>
     </section>
 
+    <!-- ABOUT -->
+    <section id="about" style="padding-top:0;">
+      <div class="sec-head rule"><span class="sec-num">05</span><span class="sec-title">About the Project</span></div>
+      <div class="about reveal">
+        <div class="about-pull">Our attempt to make ransomware <em>structurally</em> expensive to run.</div>
+        <div class="about-body">
+          <p>End Krysha is the public face of a longer research program: mapping the dependencies that keep Russia and CIS ransomware operations alive, and finding the pressure points where targeted action produces <strong>measurable</strong> degradation.</p>
+          <p>Groups rebrand. Dependencies don't. The work focuses on the durable layer underneath the brands: the money, the metal, and the roof over both.</p>
+          <div class="about-sig">By Reno &middot; Open research &middot; Built in public</div>
+        </div>
+      </div>
+    </section>
+
     <!-- NEWSLETTER -->
     <section style="padding-top:0;">
       <div class="signup reveal">
@@ -365,7 +507,7 @@
 
     <!-- CONTACT -->
     <section id="contact" style="padding-top:0;">
-      <div class="sec-head rule"><span class="sec-num">05</span><span class="sec-title">Contact</span></div>
+      <div class="sec-head rule"><span class="sec-num">06</span><span class="sec-title">Contact</span></div>
       <div class="contact reveal">
         <div>
           <h3>Have a tip, a lead, or a <em>correction</em>?</h3>
@@ -401,6 +543,13 @@
         c.classList.toggle('hide', f !== 'all' && c.dataset.topic !== f);
       });
     }));
+
+    /* bloodline tree draw-on-view */
+    const blt = document.querySelector('.bl-tree');
+    if (blt) {
+      const io2 = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { blt.classList.add('drawn'); io2.disconnect(); } }), { threshold: 0.3 });
+      io2.observe(blt);
+    }
 
     /* animated network canvas */
     let NETCOLOR = '#b388ff';
