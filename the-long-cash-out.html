@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Long Cash-Out &middot; End Krysha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #15120e; --bg-2: #1c1813; --bg-3: #241f18;
+      --cream: #f0e7d8; --cream-dim: #b3a892; --cream-faint: #79705f;
+      --rule: rgba(240,231,216,0.1); --rule-strong: rgba(240,231,216,0.25);
+      --neon: #ff4757; --neon-soft: rgba(255,71,87,0.5);
+      --neon-glow: 0 0 6px rgba(255,71,87,0.8), 0 0 18px rgba(255,71,87,0.45), 0 0 40px rgba(255,71,87,0.2);
+      --amber: #ffb454; --amber-soft: rgba(255,180,84,0.5);
+      --serif: 'Fraunces', Georgia, serif; --mono: 'IBM Plex Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--serif); background: var(--bg); color: var(--cream); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    ::selection { background: var(--neon); color: var(--bg); }
+
+    /* PROGRESS BAR */
+    .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--neon); box-shadow: var(--neon-glow); z-index: 200; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1rem 2.5rem; background: rgba(21,18,14,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule-strong); }
+    .nav-brand { font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none; color: var(--cream); display: flex; align-items: center; gap: 0.6rem; }
+    .nav-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--neon); box-shadow: var(--neon-glow); }
+    .nav-back { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); text-decoration: none; }
+    .nav-back:hover { color: var(--neon); }
+
+    /* ARTICLE HEAD */
+    .a-head { max-width: 760px; margin: 0 auto; padding: 4.5rem 2rem 2.5rem; }
+    .a-cat { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--neon); display: inline-block; border: 1px solid var(--neon-soft); border-radius: 4px; padding: 0.3rem 0.7rem; margin-bottom: 1.8rem; }
+    .a-title { font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 400; line-height: 1.06; letter-spacing: -0.015em; }
+    .a-dek { margin-top: 1.6rem; font-size: 1.35rem; font-weight: 300; line-height: 1.5; color: var(--cream-dim); font-style: italic; }
+    .a-byline { margin-top: 2rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream-faint); }
+    .a-byline b { color: var(--cream); font-weight: 500; }
+    .a-byline .sep { color: var(--neon); }
+
+    /* HERO PHOTO (moody photography) */
+    .a-hero-photo { position: relative; max-width: 1100px; margin: 1.5rem auto 0; height: 52vh; min-height: 360px; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); background: var(--bg); }
+    .a-hero-photo svg.hero-art { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; display: block; }
+    .a-hero-photo::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, transparent 50%, rgba(14,11,8,0.55));
+    }
+    .a-hero-photo .cap { position: absolute; left: 1rem; bottom: 0.9rem; z-index: 2; font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-faint); background: rgba(21,18,14,0.55); padding: 0.3rem 0.55rem; border-radius: 4px; backdrop-filter: blur(3px); }
+
+    /* BODY */
+    .a-body { max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem 2rem; }
+    .a-body p { font-size: 1.18rem; font-weight: 300; line-height: 1.78; color: var(--cream); margin-bottom: 1.5rem; }
+    .a-body p .drop { float: left; font-size: 4.2rem; line-height: 0.78; font-weight: 500; color: var(--neon); padding: 0.3rem 0.7rem 0 0; text-shadow: 0 0 16px var(--neon-soft); }
+    .a-body h2 { font-family: var(--mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin: 3rem 0 1.4rem; display: flex; align-items: center; gap: 0.9rem; }
+    .a-body h2::before { content: ''; width: 1.6rem; height: 1px; background: var(--amber); box-shadow: 0 0 8px var(--amber-soft); }
+    .a-body strong { color: var(--cream); font-weight: 500; }
+    .a-body a { color: var(--neon); text-decoration: none; border-bottom: 1px solid var(--neon-soft); }
+
+    /* CONFIDENCE LABELS */
+    .conf { font-family: var(--mono); font-size: 0.56rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.12rem 0.42rem; border-radius: 3px; vertical-align: middle; white-space: nowrap; }
+    .conf.confirmed { color: #7ee0a8; border: 1px solid rgba(126,224,168,0.45); }
+    .conf.credible { color: var(--amber); border: 1px solid var(--amber-soft); }
+    .conf.inference { color: var(--neon); border: 1px solid var(--neon-soft); }
+
+    .pullquote { font-size: 1.9rem; font-weight: 400; line-height: 1.3; color: var(--cream); border-left: 2px solid var(--neon); padding: 0.4rem 0 0.4rem 1.8rem; margin: 2.5rem 0; }
+    .pullquote em { font-style: italic; color: var(--neon); text-shadow: 0 0 12px var(--neon-soft); }
+
+    /* FIGURE: data viz as art */
+    figure { max-width: 920px; margin: 3rem auto; }
+    .fig-frame { background: linear-gradient(145deg, var(--bg-3), var(--bg-2)); border: 1px solid var(--rule); border-radius: 14px; padding: 1.8rem 1.8rem 1.4rem; }
+    .fig-title { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.4rem; }
+    .bars { display: flex; align-items: flex-end; gap: 1.1rem; height: 220px; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule); }
+    .bar { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 0.6rem; height: 100%; }
+    .bar .col { width: 100%; background: linear-gradient(180deg, var(--neon), rgba(255,71,87,0.25)); border-radius: 4px 4px 0 0; box-shadow: 0 0 16px rgba(255,71,87,0.25); transition: height 1.1s cubic-bezier(.2,.8,.2,1); }
+    .bar .col.amber { background: linear-gradient(180deg, var(--amber), rgba(255,180,84,0.22)); box-shadow: 0 0 16px rgba(255,180,84,0.2); }
+    .bar .blbl { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cream-faint); text-align: center; line-height: 1.4; }
+    .bar .blbl b { display: block; color: var(--cream-dim); font-weight: 500; }
+    .bar .bval { font-family: var(--mono); font-size: 0.7rem; color: var(--cream); }
+    .bar .bsrc { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.04em; color: var(--cream-faint); }
+    figcaption { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.06em; line-height: 1.7; color: var(--cream-faint); margin-top: 1.1rem; text-align: center; }
+
+    /* TRACE FLOW: Reactor-style documented path */
+    .trace-row { display: flex; align-items: stretch; justify-content: center; gap: 0.5rem; flex-wrap: wrap; }
+    .tnode { flex: 1 1 130px; min-width: 130px; background: var(--bg); border: 1px solid var(--rule); border-radius: 10px; padding: 0.9rem 0.8rem; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+    .tnode.red { border-color: var(--neon-soft); box-shadow: inset 0 0 22px rgba(255,71,87,0.09); }
+    .tnode.amber { border-color: var(--amber-soft); box-shadow: inset 0 0 22px rgba(255,180,84,0.09); }
+    .tnode .tstep { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-faint); }
+    .tnode .tname { font-size: 0.9rem; font-weight: 500; color: var(--cream); margin-top: 0.35rem; line-height: 1.2; }
+    .tnode .tnote { font-family: var(--mono); font-size: 0.5rem; color: var(--cream-faint); margin-top: 0.4rem; line-height: 1.45; }
+    .tarrow { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.15rem; color: var(--neon); font-size: 1rem; line-height: 1; }
+    .tarrow .tamt { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.03em; color: var(--amber); white-space: nowrap; }
+    @media (max-width: 620px) { .trace-row { flex-direction: column; } .tarrow { transform: rotate(90deg); padding: 0.2rem 0; } }
+
+    /* EXHIBIT: primary-source document aesthetic */
+    .exhibit { max-width: 720px; margin: 3rem auto; background: #ece3d2; color: #1a1712; border-radius: 6px; padding: 2.2rem 2.4rem; font-family: var(--mono); position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: rotate(-0.6deg); }
+    .exhibit::after { content: 'PUBLIC RECORD'; position: absolute; top: 1rem; right: 1.4rem; font-size: 0.55rem; letter-spacing: 0.18em; color: #6b1f18; border: 1px solid #9a2b22; padding: 0.2rem 0.5rem; border-radius: 3px; }
+    .exhibit .ex-h { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6b1f18; margin-bottom: 1rem; font-weight: 600; max-width: 80%; }
+    .exhibit .ex-line { font-size: 0.8rem; line-height: 1.95; color: #2a241c; }
+    .exhibit .ex-line b { color: #1a1712; }
+    .exhibit .ex-grid { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1.1rem; font-size: 0.8rem; line-height: 1.5; }
+    .exhibit .ex-grid .k { color: #6b1f18; font-weight: 600; }
+    .exhibit .ex-grid .v { color: #2a241c; }
+    @media (max-width: 620px) { .exhibit .ex-grid { grid-template-columns: 1fr; gap: 0.1rem 0; } .exhibit .ex-grid .k { margin-top: 0.55rem; } }
+    .exhibit .ex-cap { margin-top: 1.2rem; font-size: 0.56rem; letter-spacing: 0.06em; color: #6b6356; line-height: 1.6; }
+
+    /* SOURCING / METHOD NOTE */
+    .method { max-width: 680px; margin: 3rem auto 0; padding: 1.6rem 1.7rem; background: var(--bg-2); border: 1px solid var(--rule); border-left: 2px solid var(--amber); border-radius: 10px; }
+    .method h3 { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.9rem; }
+    .method p { font-size: 0.92rem; font-weight: 300; line-height: 1.7; color: var(--cream-dim); margin-bottom: 0.8rem; }
+    .method .key { font-family: var(--mono); font-size: 0.62rem; line-height: 1.9; color: var(--cream-faint); }
+    .method .key b { color: var(--cream-dim); }
+    .srclist { list-style: none; margin-top: 0.6rem; }
+    .srclist li { font-family: var(--mono); font-size: 0.62rem; line-height: 1.75; color: var(--cream-faint); padding-left: 1rem; text-indent: -1rem; }
+    .srclist a { color: var(--cream-dim); text-decoration: none; border-bottom: 1px solid var(--rule-strong); }
+    .srclist a:hover { color: var(--neon); }
+
+    /* TAGS + RELATED */
+    .a-foot { max-width: 680px; margin: 0 auto; padding: 1rem 2rem 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 2rem 0; border-top: 1px solid var(--rule); }
+    .tags span { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-faint); border: 1px solid var(--rule); border-radius: 4px; padding: 0.3rem 0.6rem; }
+    .related { max-width: 1100px; margin: 2rem auto 0; padding: 3rem 2rem 4rem; border-top: 1px solid var(--rule-strong); }
+    .rel-h { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-faint); margin-bottom: 1.8rem; }
+    .rel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .rel { text-decoration: none; color: inherit; background: var(--bg-2); border: 1px solid var(--rule); border-radius: 12px; padding: 1.4rem 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+    .rel:hover { border-color: var(--neon); transform: translateY(-3px); }
+    .rel .rc { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); }
+    .rel h4 { font-size: 1.15rem; font-weight: 500; margin-top: 0.6rem; line-height: 1.25; }
+    .rel:hover h4 { color: var(--neon); }
+
+    footer { border-top: 1px solid var(--rule-strong); }
+    .footer-inner { padding: 2.5rem 0 3.5rem; text-align: center; }
+    .footer-tagline { font-style: italic; font-weight: 300; font-size: 1.05rem; color: var(--cream-dim); }
+    .footer-tagline b { font-weight: 500; color: var(--amber); }
+    .footer-meta { margin-top: 1rem; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream-faint); }
+
+    @media (max-width: 760px) { .rel-grid { grid-template-columns: 1fr; } .nav-brand { letter-spacing: 0.18em; } .bar .bsrc { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="progress" id="prog"></div>
+
+  <nav>
+    <a class="nav-brand" href="index.html#top"><span class="dot"></span>End&nbsp;Krysha</a>
+    <a class="nav-back" href="index.html#dispatches">&larr; All Dispatches</a>
+  </nav>
+
+  <div class="a-head">
+    <span class="a-cat">Financial Layer</span>
+    <h1 class="a-title">The Long Cash-Out: how a ransom becomes rubles</h1>
+    <p class="a-dek">Operation Endgame attacks the front of the kill chain, where malware manufactures access. This is the back of the same chain: the seven moves that turn a victim's payment into spendable money, and the handful of places that money is thin enough to break.</p>
+    <div class="a-byline">
+      <span>By <b>Reno</b></span><span class="sep">&#10022;</span>
+      <span>July 9, 2026</span><span class="sep">&#10022;</span>
+      <span>19 min read</span><span class="sep">&#10022;</span>
+      <span>Open Research</span>
+    </div>
+  </div>
+
+  <div class="a-hero-photo">
+    <svg class="hero-art" viewBox="0 0 680 340" preserveAspectRatio="xMidYMid slice" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Neon-noir illustration of a laundering chain running from a locked wallet on the left to a stack of cash on the right">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#221b12"/><stop offset="0.55" stop-color="#16120c"/><stop offset="1" stop-color="#0e0b08"/>
+        </linearGradient>
+        <radialGradient id="redglow" cx="0.12" cy="0.4" r="0.55">
+          <stop offset="0" stop-color="#ff4757" stop-opacity="0.55"/><stop offset="0.5" stop-color="#ff4757" stop-opacity="0.16"/><stop offset="1" stop-color="#ff4757" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="amberglow" cx="0.9" cy="0.62" r="0.55">
+          <stop offset="0" stop-color="#ffb454" stop-opacity="0.4"/><stop offset="0.55" stop-color="#ffb454" stop-opacity="0.12"/><stop offset="1" stop-color="#ffb454" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000000" opacity="0.18"/></pattern>
+      </defs>
+      <rect x="0" y="0" width="680" height="340" fill="url(#sky)"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#redglow)"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#amberglow)"/>
+
+      <!-- laundering chain: many nodes drifting left (red) to right (amber) -->
+      <g stroke="#f0e7d8" stroke-width="0.6" opacity="0.14" fill="none">
+        <path d="M96,168 C170,120 210,214 288,170 C356,132 396,220 470,172 C540,128 566,208 604,176"/>
+        <path d="M96,168 C168,206 232,120 300,176 C372,232 404,120 470,172 C536,214 574,140 604,176"/>
+        <line x1="96" y1="168" x2="150" y2="96"/><line x1="150" y1="96" x2="248" y2="120"/><line x1="248" y1="120" x2="330" y2="86"/><line x1="330" y1="86" x2="430" y2="112"/><line x1="430" y1="112" x2="520" y2="90"/><line x1="520" y1="90" x2="604" y2="120"/>
+        <line x1="248" y1="120" x2="288" y2="170"/><line x1="430" y1="112" x2="470" y2="172"/>
+      </g>
+
+      <!-- node cloud, color shifting across the frame -->
+      <g>
+        <g fill="#ff4757">
+          <g opacity="0.22"><circle cx="96" cy="168" r="6"/><circle cx="150" cy="96" r="4"/></g>
+          <circle cx="96" cy="168" r="2.4"/><circle cx="150" cy="96" r="1.5"/><circle cx="180" cy="210" r="1.4"/><circle cx="140" cy="150" r="1.2"/>
+        </g>
+        <g fill="#ff7d6b">
+          <circle cx="248" cy="120" r="1.6"/><circle cx="288" cy="170" r="2"/><circle cx="230" cy="188" r="1.3"/><circle cx="300" cy="110" r="1.2"/>
+        </g>
+        <g fill="#e79a6a">
+          <circle cx="330" cy="86" r="1.6"/><circle cx="358" cy="176" r="1.6"/><circle cx="392" cy="128" r="1.3"/>
+        </g>
+        <g fill="#ffb454">
+          <circle cx="430" cy="112" r="1.7"/><circle cx="470" cy="172" r="2.2"/><circle cx="452" cy="140" r="1.3"/><circle cx="500" cy="150" r="1.4"/>
+          <g opacity="0.22"><circle cx="604" cy="176" r="7"/><circle cx="520" cy="90" r="4"/></g>
+          <circle cx="520" cy="90" r="1.6"/><circle cx="604" cy="176" r="2.6"/><circle cx="566" cy="120" r="1.4"/><circle cx="580" cy="206" r="1.3"/>
+        </g>
+      </g>
+
+      <!-- left: locked wallet (the ransom), red -->
+      <g transform="translate(60,140)">
+        <rect x="0" y="16" width="58" height="44" rx="5" fill="#0e0a08" stroke="#ff4757" stroke-opacity="0.7" stroke-width="1.4"/>
+        <path d="M14,16 v-6 a15,15 0 0 1 30,0 v6" fill="none" stroke="#ff4757" stroke-opacity="0.7" stroke-width="1.4"/>
+        <circle cx="29" cy="36" r="4.5" fill="#ff4757"/><rect x="27.5" y="36" width="3" height="12" fill="#ff4757"/>
+      </g>
+
+      <!-- right: cash stack (fiat), amber -->
+      <g transform="translate(556,150)">
+        <rect x="0" y="30" width="66" height="16" rx="2" fill="#120f0a" stroke="#ffb454" stroke-opacity="0.7" stroke-width="1.2"/>
+        <rect x="4" y="18" width="66" height="16" rx="2" fill="#141009" stroke="#ffb454" stroke-opacity="0.7" stroke-width="1.2"/>
+        <rect x="8" y="6" width="66" height="16" rx="2" fill="#161109" stroke="#ffb454" stroke-opacity="0.85" stroke-width="1.2"/>
+        <circle cx="41" cy="14" r="4" fill="none" stroke="#ffb454" stroke-opacity="0.8" stroke-width="1.1"/>
+      </g>
+
+      <rect x="0" y="298" width="680" height="2" fill="#ff4757" opacity="0.35"/>
+      <rect x="0" y="300" width="680" height="40" fill="#0a0805"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#scan)"/>
+    </svg>
+    <span class="cap">The cash-out chain, ransom to fiat &middot; illustration</span>
+  </div>
+
+  <article class="a-body">
+    <p><span class="drop">A</span> ransom does not end when the victim pays. That is where the harder problem begins. A hospital wires the equivalent of tens of thousands of dollars in Bitcoin to an address it was given by people it will never meet, and in that instant the money becomes a liability for the people who extorted it. It is loud, traceable, and frozen the moment anyone important is watching. The work that follows, turning that hot transfer into clean, spendable value on the other side of a border, is the part of the ransomware business that almost never makes the headline and almost always decides whether the business is worth running at all. <span class="conf inference">Analyst inference</span></p>
+
+    <p>We looked at <a href="operation-endgame.html">Operation Endgame</a> elsewhere; this follows the other end of the same chain. That campaign is the best sustained assault ever mounted on the machinery <em>beneath</em> ransomware, the loaders and infostealers and access brokers that manufacture the intrusion. By Europol's own account it targets "initial access malware, the tools cybercriminals use to infiltrate systems unnoticed before deploying ransomware." It strikes the very start of the attack chain. What it does not touch, by design, is the other end: the laundering path that carries the proceeds home. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p><strong>End Krysha</strong> exists to walk that other end. What follows is one payment's journey through seven moves, from a victim's wallet to rubles a Russian operator can actually spend, told through the named services, the on-chain figures, and the enforcement actions that have lit each step. The point is not the plumbing for its own sake. It is to find the places where the pipe is narrow enough to squeeze.</p>
+
+    <h2>Two ends of the same chain</h2>
+    <p>Operation Endgame is aimed at the malware supply chain and the infrastructure beneath it. This dispatch follows the other dependency, <strong>the Money</strong>, to where it comes to rest: under the roof, the <strong>Krysha</strong> this publication is named for. <span class="conf inference">Analyst inference</span></p>
+
+    <p>Start with the scale, because it sets the stakes. Illicit crypto addresses took in more than <strong>$150 billion</strong> in 2025 (Chainalysis and TRM Labs put it at $154 billion and $158 billion, counted differently), most of the growth tied to sanctions evasion concentrated around Russia. Ransomware is a small and shrinking slice of that: payments fell from over <strong>$1 billion</strong> in 2023 to about <strong>$813 million</strong> in 2024 and held flat or lower in 2025, even as victim counts climbed. Fewer targets pay now, but the ones who do pay more, with the median ransom jumping from roughly <strong>$12,700 to $59,600</strong> in a year. The money that moves is more concentrated and more valuable per payment, which only raises the stakes on the steps that follow. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The through-line is stablecoins. By Chainalysis's 2026 accounting, <strong>84 percent of all illicit transaction volume</strong> in 2025 moved in stablecoins, overwhelmingly USDT, and overwhelmingly on the Tron network. That single fact shapes every move that follows, because it tells you what the money wants to become as fast as it can: a dollar-pegged token that holds its value, settles in seconds, and crosses borders without a bank. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <div class="pullquote">The attack is the loud part. <em>The laundering is the business.</em></div>
+
+    <h2>Move one: the payment and the split</h2>
+    <p>Most ransomware today is a rental business. An operator builds and maintains the malware, the leak site, and the negotiation infrastructure; affiliates do the breaking-in and take the larger cut. The standard split runs about <strong>80 percent to the affiliate, 20 percent to the operator</strong>, a ratio confirmed across LockBit's leaked infrastructure and used by analysts to tell affiliate wallets apart from administrator wallets. When a payment lands, the first thing that happens on-chain is this division: within minutes the operator's share and the affiliate's share peel into separate wallets and begin two separate laundering journeys. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The affiliate rarely started from nothing. The intrusion was very often bought, and this is the seam that ties the Money back to Operation Endgame's targets. Infostealers such as StealC and Amadey, and loaders such as SmokeLoader and IcedID, harvest corporate credentials by the million; those logs sell on underground markets for as little as ten dollars each; initial access brokers package the good ones into working network access and sell that on to ransomware affiliates. An estimated <strong>1.8 billion credentials</strong> were stolen by infostealers in 2025. The malware Endgame keeps dismantling is the raw-material end of the same supply chain whose finished product is the ransom we are now following. <span class="conf credible">Credible reporting</span></p>
+
+    <p>How the ransom itself is paid is a quiet tug of war. Operators increasingly prefer Monero, whose privacy by default breaks tracing at the source, and in 2025 nearly half of newly launched darknet markets accepted Monero exclusively. Yet most real ransom payments still settle in Bitcoin, because victims can actually buy Bitcoin quickly and their insurers and incident responders can handle it. The friction is real enough that some crews price it in, charging a premium to pay in Bitcoin or offering a discount to pay in Monero. When the payment does arrive in Bitcoin, it arrives fully traceable, and the clock on the next six moves starts. <span class="conf credible">Credible reporting</span></p>
+
+    <p>Two cases show the range of what happens next. When Colonial Pipeline paid <strong>75 Bitcoin (about $4.4 million)</strong> to DarkSide in May 2021, the FBI followed the chain and clawed back <strong>63.7 Bitcoin</strong> weeks later, a rare win that turned on the private key sitting on a server inside U.S. reach. That is the exception that proves the rule: recovery happened because the laundering had not yet left a jurisdiction anyone could touch. Contrast Change Healthcare's roughly <strong>$22 million</strong> payment to ALPHV/BlackCat in 2024, where the operator took the whole ransom, stiffed its own affiliate, and vanished, and where forensic tracing later showed <strong>$9.1 million</strong> of ALPHV's proceeds flowing into a single laundering service we will meet in the next move. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <h2>Move two: breaking the trail</h2>
+    <p>Once the ransom is split, the goal is to sever the visible link between the extortion wallet and wherever the money finally lands. The oldest technique is the <strong>peel chain</strong>: the balance hops through a long sequence of fresh addresses, peeling off a small amount at each step while the remainder moves on, so that no single transaction looks like the whole ransom and the trail frays into hundreds of threads. Peel chains are cheap and easy to automate, but on their own they no longer defeat a competent analytics firm. For that, actors reach for mixers. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>A mixer pools many users' coins and redistributes them, so outputs cannot be matched to inputs. For years this was the workhorse of crypto laundering, and for the last three years it has been the single most heavily targeted node in the entire pipeline. The enforcement record reads like a graveyard: <strong>Bitcoin Fog</strong>'s operator convicted in 2024 after more than a decade and roughly $400 million cycled; <strong>Helix</strong> before it; <strong>ChipMixer</strong> dismantled by Europol and German authorities in March 2023 with something like 2.73 billion euros in throughput; <strong>Blender</strong> and <strong>Sinbad</strong> sanctioned by OFAC as North Korean laundering tools; <strong>Samourai Wallet</strong>'s founders arrested in April 2024. Even <strong>Tornado Cash</strong>, sanctioned in 2022, saw its designation ruled unlawful by an appeals court and formally withdrawn by OFAC in March 2025, while a jury deadlocked on most of the charges against one of its developers. The tool survives in law; the deterrent effect on ordinary criminals did not. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The version of this built specifically for ransomware is the clearest case study we have, and it fell apart in public only last month. <a href="operation-endgame.html">Endgame</a> did not take it down; a separate, money-focused action did.</p>
+
+    <div class="exhibit">
+      <div class="ex-h">U.S. DOJ / Europol &middot; Dismantling of the AudiA6 laundering service (excerpt), June 10&ndash;11, 2026</div>
+      <div class="ex-grid">
+        <span class="k">Service</span><span class="v"><b>AudiA6</b>, operated alongside the Dark2Web criminal forum: a mixer-and-swap "mixer-as-a-service"</span>
+        <span class="k">Laundered</span><span class="v">approx. <b>EUR 336 million</b> (about $389M) between 2022 and 2025</span>
+        <span class="k">Ransomware share</span><span class="v">roughly <b>80%</b> of traced illicit exposure; <b>20</b> distinct ransomware groups served</span>
+        <span class="k">Method</span><span class="v">layering through <b>6,000+ KYC-verified money-mule accounts</b> at mainstream exchanges; obfuscated funds returned in about an hour</span>
+        <span class="k">Named flows</span><span class="v">ALPHV/BlackCat <b>$9.1M</b>, Qilin $7.1M, LockBit $4.4M, others</span>
+        <span class="k">Operators</span><span class="v">two administrators arrested in <b>Batumi, Georgia</b>; extradition sought</span>
+        <span class="k">Coalition</span><span class="v">DOJ (E.D. Pa.), U.S. Secret Service, Europol, 11 countries</span>
+      </div>
+      <div class="ex-cap">Source: DOJ, Europol, Eurojust, and TRM Labs statements, June 2026. Public enforcement record, reproduced for analysis.</div>
+    </div>
+
+    <figure>
+      <div class="fig-frame">
+        <div class="fig-title">Fig. 3 &middot; One ransom's path to a launderer (documented flow)</div>
+        <div class="trace-row">
+          <div class="tnode red"><div class="tstep">Victim</div><div class="tname">Change Healthcare</div><div class="tnote">Feb 2024</div></div>
+          <div class="tarrow">&rarr;<span class="tamt">$22M</span></div>
+          <div class="tnode red"><div class="tstep">Operator</div><div class="tname">ALPHV / BlackCat</div><div class="tnote">keeps all; affiliate stiffed</div></div>
+          <div class="tarrow">&rarr;<span class="tamt">$9.1M</span></div>
+          <div class="tnode red"><div class="tstep">Launderer</div><div class="tname">AudiA6</div><div class="tnote">mixer-as-a-service</div></div>
+          <div class="tarrow">&rarr;</div>
+          <div class="tnode amber"><div class="tstep">Layer</div><div class="tname">6,000+ mule accounts</div><div class="tnote">mainstream exchanges</div></div>
+          <div class="tarrow">&rarr;</div>
+          <div class="tnode amber"><div class="tstep">Exit</div><div class="tname">Fiat cash-out</div><div class="tnote">bank &amp; payment rails</div></div>
+        </div>
+        <figcaption>The $9.1M is ALPHV/BlackCat's aggregate traced flow into AudiA6, of which Change Healthcare was the largest known feeder, not a provable one-to-one transfer of the $22M ransom. The affiliate exit-scam is why the usual 80/20 split does not appear on this path. Sources: DOJ and Change Healthcare disclosures (2024); TRM Labs (2026).</figcaption>
+      </div>
+    </figure>
+
+    <p>Two details from the AudiA6 file matter for the whole pipeline. First, its exposure was about <strong>80 percent ransomware</strong>, which is what a purpose-built ransomware off-ramp looks like from the inside. Second, six months before the arrests, TRM Labs had already traced roughly <strong>$7 million</strong> of stolen 2022 LastPass funds out of the Wasabi mixer and into AudiA6 deposit wallets, using cluster-level demixing. The lesson is not that mixing is safe. It is that mixing is increasingly demixable, which is exactly why the smart money is leaving mixers for something harder to follow. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <h2>Move three: changing shape</h2>
+    <p>The defining laundering shift of the last two years is the migration off mixers and onto <strong>cross-chain bridges</strong> and decentralized swap services. A bridge moves value from one blockchain to another; a no-identity swap service turns Bitcoin into Monero into Tron-based USDT without ever asking a name. Chained together, they let proceeds change both chain and asset several times in minutes, which frustrates single-chain tracing far more effectively than a mixer that lives on one ledger. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The numbers capture the handover cleanly. In ransomware-linked laundering specifically, TRM Labs measured mixer volume falling from about <strong>$152 million in 2021 to roughly $48 million in 2024</strong>, while bridge-related flows climbed to about <strong>$100 million in 2025</strong> and overtook mixers for the first time in 2024. Bridge activity from ransomware wallets grew about 66 percent year on year as mixer activity fell about 37 percent. Zoom out to all illicit crypto and Elliptic's cumulative estimate for cross-chain crime reached <strong>$21.8 billion</strong> by mid-2025, roughly triple its 2023 figure. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <figure>
+      <div class="fig-frame">
+        <div class="fig-title">Fig. 1 &middot; The trail changes shape: ransomware-linked laundering, mixers vs bridges (TRM Labs)</div>
+        <div class="bars">
+          <div class="bar"><div class="col" style="height:100%"></div><div class="bval">$152M</div><div class="blbl"><b>Mixers</b>2021</div><div class="bsrc">TRM Labs</div></div>
+          <div class="bar"><div class="col" style="height:32%"></div><div class="bval">$48M</div><div class="blbl"><b>Mixers</b>2024</div><div class="bsrc">TRM Labs</div></div>
+          <div class="bar"><div class="col amber" style="height:66%"></div><div class="bval">$100M</div><div class="blbl"><b>Bridges</b>2025</div><div class="bsrc">TRM Labs</div></div>
+        </div>
+        <figcaption>Enforcement pushed mixer use down; bridges absorbed the displaced flow and overtook mixers in 2024. Single-vendor series (TRM Labs, June 2026); figures are ransomware-attributed, not total market. Shown to convey direction, not precision.</figcaption>
+      </div>
+    </figure>
+
+    <p>The services doing the shape-changing are named and, for the most part, unlicensed. No-identity swap desks sit alongside decentralized cross-chain protocols such as THORChain, which lets a user move between blockchains without an intermediary that could ask for a passport. These are not ransomware-specific tools, which is exactly their value: legitimate volume gives illicit flows cover, and a bridge that serves a million honest users is a far harder thing to seize than a mixer that served only criminals. That dual-use quality is the single biggest reason this move is harder to attack than the mixer move before it. <span class="conf credible">Credible reporting</span></p>
+
+    <p>Two forces sit behind the shift. One is enforcement: every mixer takedown taught operators that a service living on one chain is a fixed target. The other is the same stablecoin gravity noted at the start. Somewhere in this move, volatile Bitcoin or Ether becomes Tron-based USDT, because value that has to sit in wallets and cross venues cannot be exposed to a 20 percent price swing mid-laundry. The tension is that USDT on Tron is freezable by Tether at the token level, as the North Korea and Iran freezes have shown, so actors race to convert and move before an attribution catches up. It usually does not catch up in time. The <strong>$1.5 billion</strong> Bybit theft in February 2025, the largest crypto heist on record, was laundered at speed through swap services and bridges including Tron-based routes, and most of it was gone before the freezes landed. The same rails that carried state-scale theft, North Korea alone stole more than <strong>$2 billion</strong> in crypto in 2025, are the rails a ransomware affiliate rents for a single mid-six-figure payout. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <h2>Move four: the settlement floor</h2>
+    <p>By now the money is stablecoins on Tron, several hops removed from the ransom, and it needs a venue that will hold it, trade it, and stand ready to turn it into local currency. For the Russian-speaking ecosystem that venue has, for years, been a high-risk exchange, and the archetype was <a href="https://research.therenoproject.org/exchanges/garantex.html">Garantex</a>. We have written the full <a href="after-garantex.html">reconstitution story</a> elsewhere; what matters here is the shape it left behind. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>Garantex moved more than <strong>$96 billion</strong> across its life and kept growing after its first sanctioning. When a coalition seized it in March 2025, the operation was back within days as <strong>Grinex</strong>, a successor incorporated three months in advance, and the customer balances rode across on a ruble-backed token called <a href="https://research.therenoproject.org/exchanges/post-garantex-network.html">A7A5</a>. When Grinex itself went dark in April 2026 after a convenient "hack," the displaced volume did not scatter. It re-concentrated onto a short, named set of venues, most operating from inside Russia: <a href="https://research.therenoproject.org/exchanges/abcex.html">ABCeX</a> (roughly $11 billion processed, run from Moscow's Federation Tower), <a href="https://research.therenoproject.org/exchanges/rapira.html">Rapira</a>, <a href="https://research.therenoproject.org/exchanges/bitpapa.html">Bitpapa</a>, <a href="https://research.therenoproject.org/exchanges/exmo.html">Exmo</a>, and Aifory Pro. <span class="conf credible">Credible reporting</span></p>
+
+    <p>Underneath the exchange brands is the part that does not rebuild in a week. <strong>A7A5</strong> is a ruble-pegged stablecoin issued by A7, a Moscow cross-border payments firm co-owned by the sanctioned financier Ilan Shor and the sanctioned, defense-linked Promsvyazbank. It cleared roughly $93 billion in its first year, has since passed <strong>$100 billion</strong> in reported turnover, and in October 2025 was approved for Russian foreign-trade settlement. This is the settlement floor: exchange front-ends are interchangeable, but the rail beneath them is banking access, correspondent relationships, and state alignment, none of which a rebrand replaces. When you follow a laundered ransom to its resting venue, you are really following it to this rail. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <h2>Move five: back into cash</h2>
+    <p>Stablecoins in a Russian exchange account are not yet spendable in the physical world. The last technical move is the off-ramp, the conversion of crypto into fiat someone can hold, and here the ecosystem runs three parallel exits. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The first is the <strong>cash desk</strong>. High-risk exchanges operate walk-in offices, most visibly in Moscow's Federation Tower and in Kazan, Rostov, and Yekaterinburg, where crypto becomes banknotes over a counter. When Russian security forces raided these offices in September 2025, targeting Rapira and the ABCeX-linked Mosca, they seized more than <strong>$10 million in cash, 100 million rubles, and 200,000 euros</strong> at a single location. The raids are their own tell, and we return to them in the next section, because the offices were open again within weeks. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The second is the <strong>courier network</strong>, and it is the one that best captures how frictionless cash-out has become. The International Consortium of Investigative Journalists (ICIJ) and its November 2025 "Coin Laundry" investigation documented <a href="https://research.therenoproject.org/exchanges/001k.html">001k</a>, a service offering crypto-to-cash hand-delivery in more than 300 cities worldwide, including Montreal, New York, Los Angeles, and Miami, with no money-transmitting license. It has received more than <strong>$14.8 billion</strong> in cryptocurrency since August 2022. Identity verification is a photograph of the serial number on a five-dollar bill, presented again at the handoff. In an undercover test, a reporter exchanged 2,000 USDT for cash with no ID at all. Downstream, 001k's flows resolve into hundreds of millions at major exchanges and more than a billion at WhiteBIT. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The third is the <strong>mule network</strong>, the exit AudiA6 industrialized with its 6,000 verified accounts at mainstream exchanges. Real people, or stolen identities, hold accounts that absorb the regulatory risk while the operator moves value through them. The UK's Operation Destabilise mapped this at the wholesale level: the linked TGR and Smart networks laundered for Evil Corp, Conti, and Ryuk, went as far as buying a bank in Kyrgyzstan, and have drawn more than <strong>128 arrests</strong> and over 25 million pounds seized. All three exits ultimately touch ruble banking rails through sanctioned institutions, Sberbank, VTB, Gazprombank, Promsvyazbank, and A7A5's cross-border settlement that steps around the international banking system entirely. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <div class="pullquote">The exchange is a front-end. The rail is banking access. <em>Only one of them rebuilds in a week.</em></div>
+
+    <h2>Move six: the roof</h2>
+    <p>Everything to this point is technical, and technical steps can be attacked technically. The seventh move is not technical. It is the reason the whole chain terminates in Russia rather than anywhere the money could be seized: the <strong>krysha</strong>, the protection that lets these operators run in the open. This is the dependency our <a href="operation-endgame.html">Endgame</a> reading identified as the one no infrastructure campaign can reach, and following the money is what makes its shape visible. <span class="conf inference">Analyst inference</span></p>
+
+    <p>The evidence is strongest, and closest to active protection rather than passive tolerance, at the settlement rail. A7A5 is co-owned by a sanctioned state-linked bank, Promsvyazbank, which finances Russian defense. The token was approved for national foreign-trade settlement by government decision, with its operators openly targeting a fifth of the country's international payments. The UK, designating the A7 network in May 2026, described it as moving more than <strong>$90 billion</strong> into Russia's economy and financing procurement for the war. A state does not co-own, authorize, and route trade through a laundering rail it merely tolerates. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The September 2025 Moscow raids look, at first, like the opposite of protection. Read against what followed, they read more like management. Officers seized cash and hardware, the press covered it, and the targeted exchanges resumed operating within weeks, one lawyer noting drily that year-end quotas needed "case outcomes." The pattern of raid-and-restore is more consistent with an ecosystem the state can squeeze at will than with one it intends to shut. For the broad exchange layer the honest label remains tolerated safe harbor with selective extraction; for the A7 rail specifically, the ownership and the trade mandate point past tolerance toward active alignment. <span class="conf inference">Analyst inference</span></p>
+
+    <h2>What comes next</h2>
+    <p>Two trajectories are already visible, and both are directional rather than certain. The first is method. The move from mixers to bridges is not a destination but a heading: as bridge tracing improves, the next step is toward privacy by default, Monero and no-identity swap desks, which is why nearly half of the darknet markets launched in 2025 accepted Monero alone. Expect the laundering path to keep trading throughput for opacity wherever enforcement makes throughput risky. <span class="conf credible">Credible reporting</span></p>
+
+    <p>The second is law, and it pushes the other way. Two instruments could reach the settlement floor that seizures cannot. New stablecoin legislation, led by the US <strong>GENIUS Act</strong>, moves freeze capability and anti-laundering duties onto the issuers themselves, which would turn Tether's discretionary freezes into standing obligations and shorten the window operators depend on. And the <strong>FATF Travel Rule</strong>, if it is finally implemented evenly rather than in patches, would force identity to travel with every transfer between regulated venues, closing the seams the nested and mule networks live in. FATF spent 2026 warning that uneven adoption is the gap. <span class="conf credible">Credible reporting</span></p>
+
+    <p>Neither instrument reaches Moscow. Both press on the parts of the chain that sit in reach: the issuers, the compliant venues, the correspondent banks. <span class="conf inference">Analyst inference</span></p>
+
+    <h2>Where the chain breaks</h2>
+    <p>Trace all seven moves and the leverage points fall out of the geometry. The pipeline is long, but it is not evenly strong, and three properties decide where pressure pays. <span class="conf inference">Analyst inference</span></p>
+
+    <p>The first is <strong>concentration</strong>. Ransomware proceeds do not exit through hundreds of doors evenly. TRM Labs finds that the <strong>top five</strong> cash-out services absorb between 42 and 57 percent of ransomware off-ramp volume in any year, about 51 percent in 2025, and the top ten handle as much as three quarters. That concentration dipped when enforcement disrupted key nodes, then rebounded, which cuts both ways: the network regenerates, but it regenerates back into a small, identifiable target set. A handful of venues convert most of the money. That is not a weakness the ecosystem can design away, because concentration is what makes an off-ramp liquid enough to be useful. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <figure>
+      <div class="fig-frame">
+        <div class="fig-title">Fig. 2 &middot; Concentration is the target: share of ransomware off-ramp volume (TRM Labs)</div>
+        <div class="bars">
+          <div class="bar"><div class="col" style="height:42%"></div><div class="bval">42%</div><div class="blbl"><b>Top 5</b>services, 2023</div><div class="bsrc">TRM Labs</div></div>
+          <div class="bar"><div class="col" style="height:51%"></div><div class="bval">51%</div><div class="blbl"><b>Top 5</b>services, 2025</div><div class="bsrc">TRM Labs</div></div>
+          <div class="bar"><div class="col amber" style="height:68%"></div><div class="bval">~68%</div><div class="blbl"><b>Top 10</b>services, 2025</div><div class="bsrc">TRM Labs</div></div>
+        </div>
+        <figcaption>A small set of services converts most ransomware proceeds; the share fell under enforcement pressure in 2023, then rebounded. Single-vendor series (TRM Labs, June 2026). Top-10 bar is the midpoint of a stated 62 to 75 percent range.</figcaption>
+      </div>
+    </figure>
+
+    <p>The second is <strong>traceability</strong>, which has moved the other way from what operators assume. The AudiA6 demix, the Bybit tracing, and the routine unmasking of bridge flows all point the same direction: the on-chain record is permanent, and analytics keep catching up to obfuscation after the fact. Tether's freezes prove the choke can close when attribution is good, <strong>$344 million</strong> of Iranian-linked USDT in April 2026, $28 million in the Garantex action, 131 Tron wallets in July 2026. The constraint on freezing is not willingness, it is attribution speed, and attribution is the thing that improves every year. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The third property is the one that caps all the others: the <strong>jurisdictional ceiling</strong>. Core operators sit in Russia, beyond extradition, behind the roof, and no amount of on-chain brilliance reaches them there. But the pipeline is not staffed only by untouchable principals. The mid-tier, the mule coordinators, the swap-service operators, the launderers-for-hire, increasingly sit in places that do cooperate. AudiA6's administrators were arrested in <strong>Georgia</strong>. That is the model the record actually supports: not the fantasy of reaching Moscow, but the discipline of taking the affiliate and service layer wherever it strays into reach, and of attacking the settlement rail with the financial tools that do bite, as the UK did in extending correspondent-banking prohibitions to crypto exchanges for the first time in May 2026. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>There is a structural reason to prefer this target over the ransomware brands themselves. TRM Labs argues that the cybercrime <strong>services</strong> layer, the access brokers, the hosting, the laundering desks, is inherently more disruptible than the ransomware groups it supports, because a single service quietly underwrites many groups at once and its operators run weaker security than the crews they serve. Take down one off-ramp whose flow is eighty percent ransomware, and you degrade twenty groups in a morning, which is precisely what the AudiA6 action did. The off-ramp is where the many separate crimes of many separate crews briefly become one shared, visible, seizable thing. <span class="conf inference">Analyst inference</span></p>
+
+    <p>Set against this is the honest counter-argument, and it is strong: every takedown so far has produced a rebrand rather than a collapse. Garantex became Grinex in days. Mixer enforcement pushed volume into bridges rather than out of existence. The A7A5 rail has absorbed sanctions from three jurisdictions and kept clearing. Displacement is real at every layer where the underlying function still has somewhere to live. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>Which returns the argument to where the <a href="operation-endgame.html">Endgame</a> piece left it. Attacking the malware degrades the machine that makes the money. Attacking the money degrades the machine that cleans it. Neither reaches the roof, and while the roof stands, both grow back. But the money layer has a property the malware layer does not: it is concentrated, it is traceable, and part of it is standing in extraditable jurisdictions right now. The ransom that started this journey is, by the end, sitting as rubles behind a state that will not give it up. Getting there took seven moves, and at least three of them happened somewhere a determined investigator could have been waiting. <span class="conf inference">Analyst inference</span></p>
+
+    <div class="method">
+      <h3>Sourcing &amp; confidence</h3>
+      <p>This dispatch draws on government actions (DOJ, OFAC, FinCEN, Europol, Eurojust, UK FCDO and NCA), on-chain analysis from Chainalysis, TRM Labs, and Elliptic, and the ICIJ "Coin Laundry" investigation, cross-checked against our own exchange profiles. Aggregate figures from different firms are kept separate and never averaged. Confidence labels follow standard analytic practice.</p>
+      <p class="key"><b>Confirmed</b> &middot; multiple independent sources, including official designation or indictment language.<br><b>Credible</b> &middot; single strong source or consistent industry reporting, not yet officially confirmed.<br><b>Analyst inference</b> &middot; End Krysha's own assessment, drawn from the evidence above.</p>
+      <ul class="srclist">
+        <li>Chainalysis, <a href="https://www.chainalysis.com/blog/2026-crypto-crime-report-introduction/">2026 Crypto Crime Report</a> (illicit volume; 84% stablecoin share) and <a href="https://www.chainalysis.com/blog/crypto-ransomware-2026/">Crypto Ransomware 2026</a> (payment trend, payment rate, median).</li>
+        <li>TRM Labs, <a href="https://www.trmlabs.com/resources/blog/new-disruption-opportunities-in-the-evolving-ransomware-ecosystem">disruption opportunities in the ransomware ecosystem</a> (off-ramp concentration; mixer vs bridge flows; 80/20 RaaS split).</li>
+        <li>Europol / Eurojust, <a href="https://www.eurojust.europa.eu/news/operation-endgame-continues-international-coalition-takes-malware-offline">Operation Endgame</a> (initial-access malware framing) and the <a href="https://www.icij.org/investigations/coin-laundry/crypto-cash-desk-currency-exchange-money-laundering/">ICIJ Coin Laundry</a> investigation (001k, $14.8B, courier cash-out).</li>
+        <li>DOJ (E.D. Pa.) and TRM Labs, AudiA6 / Dark2Web dismantling, June 2026 (EUR 336M; 20 ransomware groups; 6,000 mule accounts; Wasabi-to-AudiA6 LastPass demix).</li>
+        <li>Elliptic, <a href="https://www.elliptic.co/blog/state-of-cross-chain-crime-2025">State of Cross-Chain Crime 2025</a> ($21.8B cumulative) and <a href="https://www.elliptic.co/blog/russia-linked-cryptocurrency-services-and-sanctions-evasion">Russia-linked services filling the Garantex gap</a>.</li>
+        <li>OFAC and UK FCDO designations of Garantex, Grinex, A7 / A7A5 (Aug 2025; UK package May 2026); UK NCA, <a href="https://www.nationalcrimeagency.gov.uk/news/operation-destabilise">Operation Destabilise</a> (TGR / Smart mule networks).</li>
+        <li>Forward outlook: <a href="https://www.trmlabs.com/reports-and-whitepapers/global-crypto-policy-review-outlook-2025-26">TRM Global Crypto Policy Outlook 2025/26</a>; FATF 2026 statements on <a href="https://cryptoslate.com/fatf-sounds-alarm-over-rising-stablecoin-misuse-as-global-crypto-rules-lag/">stablecoin misuse and uneven Travel Rule adoption</a>; US GENIUS Act (stablecoin issuer obligations, 2025).</li>
+      </ul>
+    </div>
+  </article>
+
+  <div class="a-foot">
+    <div class="tags"><span>Ransomware</span><span>Money Laundering</span><span>Cash-Out</span><span>Mixers</span><span>Bridges</span><span>A7A5</span><span>Off-Ramps</span><span>Operation Endgame</span><span>Financial Layer</span></div>
+  </div>
+
+  <div class="related">
+    <div class="rel-h">More Dispatches</div>
+    <div class="rel-grid">
+      <a class="rel" href="operation-endgame.html"><div class="rc">Enforcement Strategy</div><h4>Operation Endgame: the layer it cannot reach</h4></a>
+      <a class="rel" href="after-garantex.html"><div class="rc">Financial Layer</div><h4>After Garantex: where the cash-out moved next</h4></a>
+      <a class="rel" href="evil-corp-part-2.html"><div class="rc">Protection Layer</div><h4>The Roof Over Evil Corp</h4></a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-tagline">The <b>biggest little</b> threat intel project in the world.</p>
+      <p class="footer-meta">End Krysha &middot; A campaign of the Ransomware Ecosystem Network Observatory &middot; Beta</p>
+    </div>
+  </footer>
+
+  <script>
+    const prog = document.getElementById('prog');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      prog.style.width = pct + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
