@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Protected &middot; End Krysha</title>
+  <meta name="description" content="The Protected: dossiers of the named. Who holds the roof, who stands under it, and what it would take to make the arrangement expensive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #110f0b; --bg-2: #1a1611; --bg-3: #221d16;
+      --cream: #f0e7d8; --cream-dim: #b3a892; --cream-faint: #79705f;
+      --rule: rgba(240,231,216,0.1); --rule-strong: rgba(240,231,216,0.25);
+      --neon: #b388ff; --neon-soft: rgba(179,136,255,0.5);
+      --neon-glow: 0 0 6px rgba(179,136,255,0.8), 0 0 18px rgba(179,136,255,0.45), 0 0 40px rgba(179,136,255,0.2);
+      --amber: #ffb454; --amber-soft: rgba(255,180,84,0.5);
+      --serif: 'Fraunces', Georgia, serif; --mono: 'IBM Plex Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--cream); font-family: var(--serif); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1.4rem clamp(1.2rem, 5vw, 4rem); border-bottom: 1px solid var(--rule); position: sticky; top: 0; background: rgba(17,15,11,0.86); backdrop-filter: blur(10px); z-index: 20; }
+    .nav-brand { font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); display: flex; align-items: center; gap: 0.6rem; }
+    .nav-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--neon); box-shadow: var(--neon-glow); }
+    .nav-back { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); transition: color .2s; }
+    .nav-back:hover { color: var(--neon); }
+
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(1.2rem, 5vw, 4rem); }
+
+    header.hero { padding: clamp(3.4rem, 8vw, 6rem) 0 clamp(2.2rem, 5vw, 3.4rem); border-bottom: 1px solid var(--rule); }
+    .kicker { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.3rem; }
+    h1 { font-size: clamp(2.6rem, 7vw, 4.6rem); font-weight: 300; line-height: 1.02; letter-spacing: -0.02em; }
+    h1 em { font-style: italic; color: var(--neon); text-shadow: var(--neon-glow); }
+    .standfirst { font-size: clamp(1.05rem, 2.4vw, 1.32rem); color: var(--cream-dim); max-width: 46ch; margin-top: 1.5rem; font-weight: 300; }
+    .stat-row { display: flex; flex-wrap: wrap; gap: 1.8rem; margin-top: 2rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cream-faint); }
+    .stat-row b { color: var(--cream); font-size: 0.95rem; font-family: var(--serif); }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; padding: clamp(2.4rem, 5vw, 3.6rem) 0 1.2rem; }
+    .card { position: relative; display: flex; flex-direction: column; background: linear-gradient(155deg, var(--bg-2), var(--bg)); border: 1px solid var(--rule); border-radius: 4px; padding: 1.7rem 1.6rem 1.5rem; min-height: 260px; transition: border-color .25s, transform .25s, box-shadow .25s; overflow: hidden; }
+    .card::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--neon); opacity: 0.55; }
+    a.card:hover { border-color: var(--neon-soft); transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.45), 0 0 0 1px var(--neon-soft); }
+    .c-tier { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--amber); margin-bottom: 1rem; }
+    .c-name { font-size: 1.72rem; font-weight: 400; line-height: 1.08; letter-spacing: -0.01em; }
+    .c-alias { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--neon); margin-top: 0.45rem; }
+    .c-sub { color: var(--cream-dim); font-size: 0.97rem; font-weight: 300; margin-top: 0.95rem; flex-grow: 1; }
+    .c-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .c-meta { color: var(--cream-faint); }
+    .c-cta { color: var(--cream); }
+    a.card:hover .c-cta { color: var(--neon); }
+
+    .card.locked { opacity: 0.72; }
+    .card.locked::before { background: var(--cream-faint); opacity: 0.4; }
+    .card.locked .c-tier { color: var(--cream-faint); }
+    .card.locked .c-alias { color: var(--cream-dim); }
+    .card.locked .c-cta { color: var(--amber); }
+    .lock-badge { position: absolute; top: 1.4rem; right: 1.4rem; font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); border: 1px solid var(--amber-soft); border-radius: 40px; padding: 0.28rem 0.62rem; }
+
+    .note { color: var(--cream-faint); font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em; padding: 0.6rem 0 clamp(3rem,7vw,5rem); max-width: 60ch; line-height: 1.8; }
+
+    footer { border-top: 1px solid var(--rule); padding: clamp(2.4rem,5vw,3.4rem) 0; margin-top: 1rem; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; padding: 0 clamp(1.2rem, 5vw, 4rem); }
+    .footer-tagline { font-size: 1.15rem; font-weight: 300; }
+    .footer-tagline b { color: var(--neon); font-weight: 400; }
+    .footer-meta { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream-faint); margin-top: 0.8rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-brand" href="../index.html#top"><span class="dot"></span>End&nbsp;Krysha</a>
+    <a class="nav-back" href="../index.html#top">&larr; Home</a>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="kicker">The Protected &middot; Companion to The Bloodline</div>
+      <h1>Dossiers of the <em>named</em>.</h1>
+      <p class="standfirst">Who holds the roof, who stands under it, and what it would take to make the arrangement expensive. Named, sourced, and graded. Unsealed serially.</p>
+      <div class="stat-row">
+        <span><b>96</b>&nbsp;named individuals</span>
+        <span><b>3</b>&nbsp;dossiers live</span>
+        <span><b>Tier&nbsp;1</b>&nbsp;first</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="grid">
+
+      <a class="card" href="business-club.html">
+        <div class="c-tier">The Syndicate &middot; 2007&#8211;2014</div>
+        <div class="c-name">The Business Club</div>
+        <div class="c-alias">Zeus &middot; GameOver Zeus</div>
+        <p class="c-sub">The crew that turned bank fraud into an institution. The common ancestor of every Russian ransomware brand that followed.</p>
+        <div class="c-foot"><span class="c-meta">The Common Ancestor</span><span class="c-cta">Read the dossier &rarr;</span></div>
+      </a>
+
+      <a class="card" href="bogachev.html">
+        <div class="c-tier">Tier 1 &middot; The Architect</div>
+        <div class="c-name">Evgeniy Bogachev</div>
+        <div class="c-alias">Slavik</div>
+        <p class="c-sub">Author of Zeus and GameOver Zeus. The most-wanted cybercriminal on the FBI list, a standing bounty, and life untouched inside Russia.</p>
+        <div class="c-foot"><span class="c-meta">Tier 1 &middot; No. 3</span><span class="c-cta">Read the dossier &rarr;</span></div>
+      </a>
+
+      <a class="card" href="kovalev.html">
+        <div class="c-tier">Tier 1 &middot; The CEO</div>
+        <div class="c-name">Vitaly Kovalev</div>
+        <div class="c-alias">Stern</div>
+        <p class="c-sub">The businessman behind TrickBot and Conti. A fortune visible on-chain, assets held one name removed, and nothing seized.</p>
+        <div class="c-foot"><span class="c-meta">Tier 1 &middot; No. 1</span><span class="c-cta">Read the dossier &rarr;</span></div>
+      </a>
+
+      <div class="card locked" aria-disabled="true">
+        <span class="lock-badge">Coming soon</span>
+        <div class="c-tier">Tier 1 &middot; The Frontman</div>
+        <div class="c-name">Maksim Yakubets</div>
+        <div class="c-alias">Aqua</div>
+        <p class="c-sub">Evil Corp's public face. The custom Lamborghini, the wedding, the largest cyber bounty ever posted. Dossier in preparation.</p>
+        <div class="c-foot"><span class="c-meta">Tier 1 &middot; No. 2</span><span class="c-cta">In preparation</span></div>
+      </div>
+
+    </div>
+    <p class="note">The Protected is a living record. Dossiers are updated as new material lands rather than treated as one-and-done. Confidence is graded inside each file: Confirmed, Credible, and Analyst inference.</p>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-tagline">The <b>biggest little</b> threat intel project in the world.</p>
+      <p class="footer-meta">End Krysha &middot; A campaign of the Ransomware Ecosystem Network Observatory</p>
+    </div>
+  </footer>
+</body>
+</html>
