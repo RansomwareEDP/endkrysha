@@ -1,63 +1,65 @@
-<svg viewBox="0 0 680 340" preserveAspectRatio="xMidYMid slice" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Neon-noir illustration of a laundering chain running from a locked wallet on the left to a stack of cash on the right">
+<svg viewBox="0 0 680 340" preserveAspectRatio="xMidYMid slice" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Neon-noir diagram of a seven-step cash-out chain: a cold coin on the left handed node to node across a dark skyline until it lands as amber rubles on the right, with the thinnest links glowing red">
       <defs>
         <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#221b12"/><stop offset="0.55" stop-color="#16120c"/><stop offset="1" stop-color="#0e0b08"/>
+          <stop offset="0" stop-color="#201a12"/><stop offset="0.55" stop-color="#16120c"/><stop offset="1" stop-color="#0e0b08"/>
         </linearGradient>
-        <radialGradient id="redglow" cx="0.12" cy="0.4" r="0.55">
-          <stop offset="0" stop-color="#ff4757" stop-opacity="0.55"/><stop offset="0.5" stop-color="#ff4757" stop-opacity="0.16"/><stop offset="1" stop-color="#ff4757" stop-opacity="0"/>
+        <radialGradient id="coldglow" cx="0.1" cy="0.35" r="0.55">
+          <stop offset="0" stop-color="#7fd1c4" stop-opacity="0.30"/><stop offset="0.5" stop-color="#7fd1c4" stop-opacity="0.10"/><stop offset="1" stop-color="#7fd1c4" stop-opacity="0"/>
         </radialGradient>
-        <radialGradient id="amberglow" cx="0.9" cy="0.62" r="0.55">
-          <stop offset="0" stop-color="#ffb454" stop-opacity="0.4"/><stop offset="0.55" stop-color="#ffb454" stop-opacity="0.12"/><stop offset="1" stop-color="#ffb454" stop-opacity="0"/>
+        <radialGradient id="amberglow" cx="0.9" cy="0.5" r="0.6">
+          <stop offset="0" stop-color="#ffb454" stop-opacity="0.42"/><stop offset="0.5" stop-color="#ffb454" stop-opacity="0.14"/><stop offset="1" stop-color="#ffb454" stop-opacity="0"/>
         </radialGradient>
+        <radialGradient id="redglow" cx="0.5" cy="0.42" r="0.45">
+          <stop offset="0" stop-color="#ff4757" stop-opacity="0.30"/><stop offset="0.6" stop-color="#ff4757" stop-opacity="0.10"/><stop offset="1" stop-color="#ff4757" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="win" width="9" height="11" patternUnits="userSpaceOnUse"><rect x="2" y="2" width="3" height="4" fill="#ffb454" opacity="0.5"/></pattern>
         <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000000" opacity="0.18"/></pattern>
       </defs>
       <rect x="0" y="0" width="680" height="340" fill="url(#sky)"/>
-      <rect x="0" y="0" width="680" height="340" fill="url(#redglow)"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#coldglow)"/>
       <rect x="0" y="0" width="680" height="340" fill="url(#amberglow)"/>
-
-      <!-- laundering chain: many nodes drifting left (red) to right (amber) -->
-      <g stroke="#f0e7d8" stroke-width="0.6" opacity="0.14" fill="none">
-        <path d="M96,168 C170,120 210,214 288,170 C356,132 396,220 470,172 C540,128 566,208 604,176"/>
-        <path d="M96,168 C168,206 232,120 300,176 C372,232 404,120 470,172 C536,214 574,140 604,176"/>
-        <line x1="96" y1="168" x2="150" y2="96"/><line x1="150" y1="96" x2="248" y2="120"/><line x1="248" y1="120" x2="330" y2="86"/><line x1="330" y1="86" x2="430" y2="112"/><line x1="430" y1="112" x2="520" y2="90"/><line x1="520" y1="90" x2="604" y2="120"/>
-        <line x1="248" y1="120" x2="288" y2="170"/><line x1="430" y1="112" x2="470" y2="172"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#redglow)"/>
+      <g opacity="0.55">
+        <rect x="24" y="228" width="34" height="72" fill="#120f0a"/><rect x="66" y="212" width="28" height="88" fill="#120f0a"/><rect x="118" y="236" width="40" height="64" fill="#120f0a"/><rect x="238" y="220" width="30" height="80" fill="#120f0a"/><rect x="418" y="226" width="36" height="74" fill="#120f0a"/><rect x="612" y="216" width="40" height="84" fill="#120f0a"/>
       </g>
-
-      <!-- node cloud, color shifting across the frame -->
       <g>
+        <rect x="168" y="192" width="28" height="108" fill="#0d0b08"/><rect x="168" y="192" width="28" height="108" fill="url(#win)" opacity="0.45"/>
+        <rect x="292" y="176" width="32" height="124" fill="#0d0b08"/><rect x="292" y="176" width="32" height="124" fill="url(#win)" opacity="0.5"/>
+        <rect x="352" y="200" width="26" height="100" fill="#0d0b08"/><rect x="352" y="200" width="26" height="100" fill="url(#win)" opacity="0.45"/>
+        <rect x="472" y="184" width="34" height="116" fill="#0d0b08"/><rect x="472" y="184" width="34" height="116" fill="url(#win)" opacity="0.5"/>
+        <rect x="540" y="204" width="28" height="96" fill="#0d0b08"/><rect x="540" y="204" width="28" height="96" fill="url(#win)" opacity="0.45"/>
+      </g>
+      <g fill="none" stroke-linecap="round">
+        <path d="M64 118 L152 96" stroke="#f0e7d8" stroke-width="1.4" opacity="0.35"/>
+        <path d="M152 96 L242 128" stroke="#f0e7d8" stroke-width="1.4" opacity="0.35"/>
+        <path d="M242 128 L330 100" stroke="#ff4757" stroke-width="0.8" opacity="0.75" stroke-dasharray="3 5"/>
+        <path d="M330 100 L418 132" stroke="#f0e7d8" stroke-width="1.4" opacity="0.35"/>
+        <path d="M418 132 L506 104" stroke="#ff4757" stroke-width="0.8" opacity="0.75" stroke-dasharray="3 5"/>
+        <path d="M506 104 L596 126" stroke="#ffb454" stroke-width="1.6" opacity="0.5"/>
+      </g>
+      <g>
+        <circle cx="64" cy="118" r="16" fill="#0d0b08" stroke="#7fd1c4" stroke-width="1.2" opacity="0.95"/>
+        <circle cx="64" cy="118" r="24" fill="none" stroke="#7fd1c4" stroke-width="0.6" opacity="0.30"/>
+        <path d="M60 110 L60 126 M68 110 L68 126 M56 113 L70 113 M56 123 L70 123" stroke="#7fd1c4" stroke-width="1.4" opacity="0.85" fill="none"/>
+        <g fill="#f0e7d8">
+          <circle cx="152" cy="96" r="4.5" opacity="0.9"/><circle cx="152" cy="96" r="9" opacity="0.15"/>
+          <circle cx="242" cy="128" r="4.5" opacity="0.9"/><circle cx="242" cy="128" r="9" opacity="0.15"/>
+          <circle cx="418" cy="132" r="4.5" opacity="0.9"/><circle cx="418" cy="132" r="9" opacity="0.15"/>
+        </g>
         <g fill="#ff4757">
-          <g opacity="0.22"><circle cx="96" cy="168" r="6"/><circle cx="150" cy="96" r="4"/></g>
-          <circle cx="96" cy="168" r="2.4"/><circle cx="150" cy="96" r="1.5"/><circle cx="180" cy="210" r="1.4"/><circle cx="140" cy="150" r="1.2"/>
+          <circle cx="330" cy="100" r="4.5" opacity="0.95"/><circle cx="330" cy="100" r="11" opacity="0.2"/>
+          <circle cx="506" cy="104" r="4.5" opacity="0.95"/><circle cx="506" cy="104" r="11" opacity="0.2"/>
         </g>
-        <g fill="#ff7d6b">
-          <circle cx="248" cy="120" r="1.6"/><circle cx="288" cy="170" r="2"/><circle cx="230" cy="188" r="1.3"/><circle cx="300" cy="110" r="1.2"/>
-        </g>
-        <g fill="#e79a6a">
-          <circle cx="330" cy="86" r="1.6"/><circle cx="358" cy="176" r="1.6"/><circle cx="392" cy="128" r="1.3"/>
-        </g>
-        <g fill="#ffb454">
-          <circle cx="430" cy="112" r="1.7"/><circle cx="470" cy="172" r="2.2"/><circle cx="452" cy="140" r="1.3"/><circle cx="500" cy="150" r="1.4"/>
-          <g opacity="0.22"><circle cx="604" cy="176" r="7"/><circle cx="520" cy="90" r="4"/></g>
-          <circle cx="520" cy="90" r="1.6"/><circle cx="604" cy="176" r="2.6"/><circle cx="566" cy="120" r="1.4"/><circle cx="580" cy="206" r="1.3"/>
-        </g>
+        <circle cx="596" cy="126" r="18" fill="#0d0b08" stroke="#ffb454" stroke-width="1.4" opacity="0.95"/>
+        <circle cx="596" cy="126" r="27" fill="none" stroke="#ffb454" stroke-width="0.6" opacity="0.35"/>
+        <path d="M590 116 L590 137 M590 116 L599 116 A5.5 5.5 0 0 1 599 127 L590 127 M586 131 L597 131" stroke="#ffb454" stroke-width="1.6" opacity="0.9" fill="none"/>
       </g>
-
-      <!-- left: locked wallet (the ransom), red -->
-      <g transform="translate(60,140)">
-        <rect x="0" y="16" width="58" height="44" rx="5" fill="#0e0a08" stroke="#ff4757" stroke-opacity="0.7" stroke-width="1.4"/>
-        <path d="M14,16 v-6 a15,15 0 0 1 30,0 v6" fill="none" stroke="#ff4757" stroke-opacity="0.7" stroke-width="1.4"/>
-        <circle cx="29" cy="36" r="4.5" fill="#ff4757"/><rect x="27.5" y="36" width="3" height="12" fill="#ff4757"/>
+      <g stroke="#ff4757" stroke-width="0.6" opacity="0.5" fill="none">
+        <path d="M330 111 L330 122 M325 117 L335 117"/>
+        <path d="M506 115 L506 126 M501 121 L511 121"/>
       </g>
-
-      <!-- right: cash stack (fiat), amber -->
-      <g transform="translate(556,150)">
-        <rect x="0" y="30" width="66" height="16" rx="2" fill="#120f0a" stroke="#ffb454" stroke-opacity="0.7" stroke-width="1.2"/>
-        <rect x="4" y="18" width="66" height="16" rx="2" fill="#141009" stroke="#ffb454" stroke-opacity="0.7" stroke-width="1.2"/>
-        <rect x="8" y="6" width="66" height="16" rx="2" fill="#161109" stroke="#ffb454" stroke-opacity="0.85" stroke-width="1.2"/>
-        <circle cx="41" cy="14" r="4" fill="none" stroke="#ffb454" stroke-opacity="0.8" stroke-width="1.1"/>
-      </g>
-
-      <rect x="0" y="298" width="680" height="2" fill="#ff4757" opacity="0.35"/>
+      <rect x="0" y="298" width="680" height="2" fill="#ffb454" opacity="0.35"/>
       <rect x="0" y="300" width="680" height="40" fill="#0a0805"/>
+      <g opacity="0.12" fill="#ffb454"><rect x="292" y="300" width="32" height="34"/><rect x="472" y="300" width="34" height="34"/><rect x="612" y="300" width="40" height="34"/></g>
       <rect x="0" y="0" width="680" height="340" fill="url(#scan)"/>
     </svg>
