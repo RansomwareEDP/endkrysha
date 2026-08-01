@@ -1,0 +1,35 @@
+<svg viewBox="0 0 680 340" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A massive dark roof with a red ridge line and a row of glowing windows set into the slope">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c1712"/><stop offset="0.7" stop-color="#14100c"/><stop offset="1" stop-color="#0e0b08"/>
+    </linearGradient>
+    <radialGradient id="ridgeglow" cx="0.5" cy="0.38" r="0.75">
+      <stop offset="0" stop-color="#ff4757" stop-opacity="0.2"/><stop offset="0.45" stop-color="#ff4757" stop-opacity="0.06"/><stop offset="1" stop-color="#ff4757" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="roofface" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c0a07"/><stop offset="1" stop-color="#080604"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="680" height="340" fill="url(#sky)"/>
+  <rect x="0" y="0" width="680" height="340" fill="url(#ridgeglow)"/>
+  <g fill="#f0e7d8" opacity="0.25">
+    <circle cx="72" cy="52" r="1"/><circle cx="234" cy="44" r="1"/><circle cx="424" cy="38" r="1"/><circle cx="604" cy="50" r="1"/><circle cx="330" cy="70" r="0.8"/><circle cx="516" cy="76" r="0.8"/>
+  </g>
+  <polygon points="0,340 0,236 680,128 680,340" fill="url(#roofface)"/>
+  <polygon points="0,236 680,128 680,132 0,240" fill="#ff4757" opacity="0.85"/>
+  <polygon points="0,240 680,132 680,140 0,248" fill="#ff4757" opacity="0.18"/>
+  <g fill="#ffb454">
+    <polygon points="60,272 104,265 104,291 60,298"/>
+    <polygon points="140,259 184,252 184,278 140,285"/>
+    <polygon points="220,246 264,239 264,265 220,272"/>
+    <polygon points="380,221 424,214 424,240 380,247"/>
+    <polygon points="460,208 504,201 504,227 460,234"/>
+    <polygon points="540,195 584,188 584,214 540,221"/>
+  </g>
+  <polygon points="300,234 344,227 344,253 300,260" fill="#ff4757"/>
+  <g opacity="0.16" fill="#ffb454">
+    <polygon points="52,266 112,256 112,300 52,310"/>
+    <polygon points="212,240 272,230 272,274 212,284"/>
+    <polygon points="452,202 512,192 512,236 452,246"/>
+  </g>
+</svg>

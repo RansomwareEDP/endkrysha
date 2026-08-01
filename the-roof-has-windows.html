@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Roof Has Windows &middot; End Krysha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #15120e; --bg-2: #1c1813; --bg-3: #241f18;
+      --cream: #f0e7d8; --cream-dim: #b3a892; --cream-faint: #79705f;
+      --rule: rgba(240,231,216,0.1); --rule-strong: rgba(240,231,216,0.25);
+      --neon: #ff4757; --neon-soft: rgba(255,71,87,0.5);
+      --neon-glow: 0 0 6px rgba(255,71,87,0.8), 0 0 18px rgba(255,71,87,0.45), 0 0 40px rgba(255,71,87,0.2);
+      --amber: #ffb454; --amber-soft: rgba(255,180,84,0.5);
+      --serif: 'Fraunces', Georgia, serif; --mono: 'IBM Plex Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--serif); background: var(--bg); color: var(--cream); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    ::selection { background: var(--neon); color: var(--bg); }
+
+    /* PROGRESS BAR */
+    .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--neon); box-shadow: var(--neon-glow); z-index: 200; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1rem 2.5rem; background: rgba(21,18,14,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule-strong); }
+    .nav-brand { font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none; color: var(--cream); display: flex; align-items: center; gap: 0.6rem; }
+    .nav-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--neon); box-shadow: var(--neon-glow); }
+    .nav-back { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); text-decoration: none; }
+    .nav-back:hover { color: var(--neon); }
+
+    /* ARTICLE HEAD */
+    .a-head { max-width: 760px; margin: 0 auto; padding: 4.5rem 2rem 2.5rem; }
+    .a-cat { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--neon); display: inline-block; border: 1px solid var(--neon-soft); border-radius: 4px; padding: 0.3rem 0.7rem; margin-bottom: 1.8rem; }
+    .a-title { font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 400; line-height: 1.06; letter-spacing: -0.015em; }
+    .a-dek { margin-top: 1.6rem; font-size: 1.35rem; font-weight: 300; line-height: 1.5; color: var(--cream-dim); font-style: italic; }
+    .a-byline { margin-top: 2rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream-faint); }
+    .a-byline b { color: var(--cream); font-weight: 500; }
+    .a-byline .sep { color: var(--neon); }
+
+    /* HERO */
+    .a-hero-photo { position: relative; max-width: 1100px; margin: 1.5rem auto 0; height: 52vh; min-height: 360px; border-radius: 14px; overflow: hidden; border: 1px solid var(--rule); background: var(--bg); }
+    .a-hero-photo svg.hero-art { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; display: block; }
+    .a-hero-photo::before {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(180deg, transparent 50%, rgba(14,11,8,0.55));
+    }
+    .a-hero-photo .cap { position: absolute; left: 1rem; bottom: 0.9rem; z-index: 2; font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-faint); background: rgba(21,18,14,0.55); padding: 0.3rem 0.55rem; border-radius: 4px; backdrop-filter: blur(3px); }
+
+    /* BODY */
+    .a-body { max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem 2rem; }
+    .a-body p { font-size: 1.18rem; font-weight: 300; line-height: 1.78; color: var(--cream); margin-bottom: 1.5rem; }
+    .a-body p .drop { float: left; font-size: 4.2rem; line-height: 0.78; font-weight: 500; color: var(--neon); padding: 0.3rem 0.7rem 0 0; text-shadow: 0 0 16px var(--neon-soft); }
+    .a-body h2 { font-family: var(--mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin: 3rem 0 1.4rem; display: flex; align-items: center; gap: 0.9rem; }
+    .a-body h2::before { content: ''; width: 1.6rem; height: 1px; background: var(--amber); box-shadow: 0 0 8px var(--amber-soft); }
+    .a-body strong { color: var(--cream); font-weight: 500; }
+    .a-body a { color: var(--neon); text-decoration: none; border-bottom: 1px solid var(--neon-soft); }
+
+    /* CONFIDENCE LABELS */
+    .conf { font-family: var(--mono); font-size: 0.56rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.12rem 0.42rem; border-radius: 3px; vertical-align: middle; white-space: nowrap; }
+    .conf.confirmed { color: #7ee0a8; border: 1px solid rgba(126,224,168,0.45); }
+    .conf.credible { color: var(--amber); border: 1px solid var(--amber-soft); }
+    .conf.inference { color: var(--neon); border: 1px solid var(--neon-soft); }
+
+    .pullquote { font-size: 1.9rem; font-weight: 400; line-height: 1.3; color: var(--cream); border-left: 2px solid var(--neon); padding: 0.4rem 0 0.4rem 1.8rem; margin: 2.5rem 0; }
+    .pullquote em { font-style: italic; color: var(--neon); text-shadow: 0 0 12px var(--neon-soft); }
+
+    /* FIGURE */
+    figure { max-width: 920px; margin: 3rem auto; }
+    .fig-frame { background: linear-gradient(145deg, var(--bg-3), var(--bg-2)); border: 1px solid var(--rule); border-radius: 14px; padding: 1.8rem 1.8rem 1.4rem; }
+    .fig-title { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.4rem; }
+    .bars { display: flex; align-items: flex-end; gap: 1.1rem; height: 220px; padding-bottom: 0.4rem; border-bottom: 1px solid var(--rule); }
+    .bar { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 0.6rem; height: 100%; }
+    .bar .col { width: 100%; background: linear-gradient(180deg, var(--neon), rgba(255,71,87,0.25)); border-radius: 4px 4px 0 0; box-shadow: 0 0 16px rgba(255,71,87,0.25); transition: height 1.1s cubic-bezier(.2,.8,.2,1); }
+    .bar .col.amber { background: linear-gradient(180deg, var(--amber), rgba(255,180,84,0.22)); box-shadow: 0 0 16px rgba(255,180,84,0.2); }
+    .bar .blbl { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cream-faint); text-align: center; line-height: 1.4; }
+    .bar .blbl b { display: block; color: var(--cream-dim); font-weight: 500; }
+    .bar .bval { font-family: var(--mono); font-size: 0.7rem; color: var(--cream); }
+    .bar .bsrc { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.04em; color: var(--cream-faint); }
+    figcaption { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.06em; line-height: 1.7; color: var(--cream-faint); margin-top: 1.1rem; text-align: center; }
+
+    /* EXHIBIT */
+    .exhibit { max-width: 720px; margin: 3rem auto; background: #ece3d2; color: #1a1712; border-radius: 6px; padding: 2.2rem 2.4rem; font-family: var(--mono); position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: rotate(-0.6deg); }
+    .exhibit::after { content: 'PUBLIC RECORD'; position: absolute; top: 1rem; right: 1.4rem; font-size: 0.55rem; letter-spacing: 0.18em; color: #6b1f18; border: 1px solid #9a2b22; padding: 0.2rem 0.5rem; border-radius: 3px; }
+    .exhibit .ex-h { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6b1f18; margin-bottom: 1rem; font-weight: 600; max-width: 80%; }
+    .exhibit .ex-line { font-size: 0.8rem; line-height: 1.95; color: #2a241c; }
+    .exhibit .ex-line b { color: #1a1712; }
+    .exhibit .ex-grid { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1.1rem; font-size: 0.8rem; line-height: 1.5; }
+    .exhibit .ex-grid .k { color: #6b1f18; font-weight: 600; }
+    .exhibit .ex-grid .v { color: #2a241c; }
+    @media (max-width: 620px) { .exhibit .ex-grid { grid-template-columns: 1fr; gap: 0.1rem 0; } .exhibit .ex-grid .k { margin-top: 0.55rem; } }
+    .exhibit .ex-cap { margin-top: 1.2rem; font-size: 0.56rem; letter-spacing: 0.06em; color: #6b6356; line-height: 1.6; }
+
+    /* SOURCING / METHOD NOTE */
+    .method { max-width: 680px; margin: 3rem auto 0; padding: 1.6rem 1.7rem; background: var(--bg-2); border: 1px solid var(--rule); border-left: 2px solid var(--amber); border-radius: 10px; }
+    .method h3 { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.9rem; }
+    .method p { font-size: 0.92rem; font-weight: 300; line-height: 1.7; color: var(--cream-dim); margin-bottom: 0.8rem; }
+    .method .key { font-family: var(--mono); font-size: 0.62rem; line-height: 1.9; color: var(--cream-faint); }
+    .method .key b { color: var(--cream-dim); }
+    .srclist { list-style: none; margin-top: 0.6rem; }
+    .srclist li { font-family: var(--mono); font-size: 0.62rem; line-height: 1.75; color: var(--cream-faint); padding-left: 1rem; text-indent: -1rem; }
+    .srclist a { color: var(--cream-dim); text-decoration: none; border-bottom: 1px solid var(--rule-strong); }
+    .srclist a:hover { color: var(--neon); }
+
+    /* TAGS + RELATED */
+    .a-foot { max-width: 680px; margin: 0 auto; padding: 1rem 2rem 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 2rem 0; border-top: 1px solid var(--rule); }
+    .tags span { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-faint); border: 1px solid var(--rule); border-radius: 4px; padding: 0.3rem 0.6rem; }
+    .related { max-width: 1100px; margin: 2rem auto 0; padding: 3rem 2rem 4rem; border-top: 1px solid var(--rule-strong); }
+    .rel-h { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-faint); margin-bottom: 1.8rem; }
+    .rel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .rel { text-decoration: none; color: inherit; background: var(--bg-2); border: 1px solid var(--rule); border-radius: 12px; padding: 1.4rem 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+    .rel:hover { border-color: var(--neon); transform: translateY(-3px); }
+    .rel .rc { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); }
+    .rel h4 { font-size: 1.15rem; font-weight: 500; margin-top: 0.6rem; line-height: 1.25; }
+    .rel:hover h4 { color: var(--neon); }
+
+    footer { border-top: 1px solid var(--rule-strong); }
+    .footer-inner { padding: 2.5rem 0 3.5rem; text-align: center; }
+    .footer-tagline { font-style: italic; font-weight: 300; font-size: 1.05rem; color: var(--cream-dim); }
+    .footer-tagline b { font-weight: 500; color: var(--amber); }
+    .footer-meta { margin-top: 1rem; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream-faint); }
+
+    @media (max-width: 760px) { .rel-grid { grid-template-columns: 1fr; } .nav-brand { letter-spacing: 0.18em; } .bar .bsrc { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="progress" id="prog"></div>
+
+  <nav>
+    <a class="nav-brand" href="index.html#top"><span class="dot"></span>End&nbsp;Krysha</a>
+    <a class="nav-back" href="index.html#dispatches">&larr; All Dispatches</a>
+  </nav>
+
+  <div class="a-head">
+    <span class="a-cat">Protection Layer</span>
+    <h1 class="a-title">The Roof Has Windows</h1>
+    <p class="a-dek">Everyone knows the Russian state shelters its ransomware crews. What gets less attention is that it also watches them: formally, comprehensively, and without a court order. Once you see the surveillance, tolerance stops being a plausible story.</p>
+    <div class="a-byline">
+      <span>By <b>Reno</b></span><span class="sep">&#10022;</span>
+      <span>31 Jul 2026</span><span class="sep">&#10022;</span>
+      <span>15 min read</span><span class="sep">&#10022;</span>
+      <span>Open Research</span>
+    </div>
+  </div>
+
+  <div class="a-hero-photo">
+    <svg class="hero-art" viewBox="0 0 680 340" preserveAspectRatio="xMidYMid slice" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="Minimal poster illustration: a massive dark roof silhouette with a red ridge line, a single row of glowing windows set into the roof plane">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#1c1712"/><stop offset="0.7" stop-color="#14100c"/><stop offset="1" stop-color="#0e0b08"/>
+        </linearGradient>
+        <radialGradient id="ridgeglow" cx="0.5" cy="0.38" r="0.75">
+          <stop offset="0" stop-color="#ff4757" stop-opacity="0.2"/><stop offset="0.45" stop-color="#ff4757" stop-opacity="0.06"/><stop offset="1" stop-color="#ff4757" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="roofface" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0c0a07"/><stop offset="1" stop-color="#080604"/>
+        </linearGradient>
+        <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000000" opacity="0.18"/></pattern>
+      </defs>
+      <rect x="0" y="0" width="680" height="340" fill="url(#sky)"/>
+      <rect x="0" y="0" width="680" height="340" fill="url(#ridgeglow)"/>
+
+      <!-- faint stars -->
+      <g fill="#f0e7d8" opacity="0.25">
+        <circle cx="72" cy="52" r="1"/><circle cx="150" cy="84" r="0.8"/><circle cx="234" cy="44" r="1"/><circle cx="330" cy="70" r="0.8"/><circle cx="424" cy="38" r="1"/><circle cx="516" cy="76" r="0.8"/><circle cx="604" cy="50" r="1"/><circle cx="656" cy="96" r="0.8"/><circle cx="36" cy="108" r="0.8"/>
+      </g>
+
+      <!-- the roof: one massive plane, low angle, fills the lower frame -->
+      <polygon points="0,340 0,236 680,128 680,340" fill="url(#roofface)"/>
+
+      <!-- ridge line -->
+      <polygon points="0,236 680,128 680,132 0,240" fill="#ff4757" opacity="0.85"/>
+      <polygon points="0,240 680,132 680,140 0,248" fill="#ff4757" opacity="0.18"/>
+
+      <!-- one row of windows set into the roof plane, following its slope -->
+      <g>
+        <g fill="#ffb454">
+          <polygon points="60,272 104,265 104,291 60,298"/>
+          <polygon points="140,259 184,252 184,278 140,285"/>
+          <polygon points="220,246 264,239 264,265 220,272"/>
+          <polygon points="380,221 424,214 424,240 380,247"/>
+          <polygon points="460,208 504,201 504,227 460,234"/>
+          <polygon points="540,195 584,188 584,214 540,221"/>
+        </g>
+        <polygon points="300,234 344,227 344,253 300,260" fill="#ff4757"/>
+        <!-- soft glows under the row -->
+        <g opacity="0.16">
+          <polygon points="52,266 112,256 112,300 52,310" fill="#ffb454"/>
+          <polygon points="132,253 192,243 192,287 132,297" fill="#ffb454"/>
+          <polygon points="212,240 272,230 272,274 212,284" fill="#ffb454"/>
+          <polygon points="292,228 352,218 352,262 292,272" fill="#ff4757"/>
+          <polygon points="372,215 432,205 432,249 372,259" fill="#ffb454"/>
+          <polygon points="452,202 512,192 512,236 452,246" fill="#ffb454"/>
+          <polygon points="532,189 592,179 592,223 532,233" fill="#ffb454"/>
+        </g>
+        <!-- glazing bars -->
+        <g stroke="#0e0b08" stroke-width="2">
+          <line x1="82" y1="268" x2="82" y2="295"/><line x1="162" y1="255" x2="162" y2="282"/><line x1="242" y1="242" x2="242" y2="269"/><line x1="322" y1="230" x2="322" y2="257"/><line x1="402" y1="217" x2="402" y2="244"/><line x1="482" y1="204" x2="482" y2="231"/><line x1="562" y1="191" x2="562" y2="218"/>
+        </g>
+      </g>
+
+      <rect x="0" y="0" width="680" height="340" fill="url(#scan)"/>
+    </svg>
+    <span class="cap">The roof has windows &middot; illustration</span>
+  </div>
+
+  <article class="a-body">
+    <p><span class="drop">O</span>n the morning of 14 January 2022, the Russian state showed the world how much it knows about its own ransomware operators. FSB officers hit twenty-five addresses across five regions in a single coordinated sweep and detained fourteen members of REvil, the crew behind some of the worst ransomware attacks ever mounted against the West. There was no manhunt and no attribution puzzle. Washington asked, and Moscow drove straight to the doors. Finding them was never the hard part. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>That morning is usually told as a story about diplomacy, a gesture to Washington that was later quietly unwound (we return to how it ended below). We read it as a story about visibility. The state saw REvil the whole time, the way it sees the rest of the ecosystem it shelters, because it has spent three decades building the machinery to see. This June, that machinery got its newest user manual.</p>
+
+    <p><a href="http://publication.pravo.gov.ru/document/0001202605230002">Order No. 1174</a> of the Ministry of Digital Development runs to sixty-nine pages. Stripped of the legal language, it tells every owner of a network with its own address block, a class that includes the commercial hosting providers ransomware infrastructure runs on, how to make its data searchable by the security services on demand: passport data, full names, tax numbers, banking details, IP addresses, domains, logins, location coordinates, roughly two dozen categories in all. There is no warrant procedure in those sixty-nine pages. There is a technical specification. The security service does not request access to Russian networks. It queries them. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <div class="exhibit">
+      <div class="ex-h">Official Internet Portal of Legal Information &middot; Register Entry (translated)</div>
+      <div class="ex-grid">
+        <span class="k">Instrument</span><span class="v">Order of the Ministry of Digital Development, Communications and Mass Media No. <b>1174</b></span>
+        <span class="k">Signed</span><span class="v">16 December 2025</span>
+        <span class="k">Registered</span><span class="v">Ministry of Justice, 22 May 2026, registration No. <b>86587</b></span>
+        <span class="k">Published</span><span class="v">23 May 2026, publication No. 0001202605230002</span>
+        <span class="k">In force</span><span class="v">3 June 2026</span>
+        <span class="k">Scope</span><span class="v">Owners of technological communication networks holding an <b>ASN</b>, for use by state bodies conducting operative-investigative activity</span>
+      </div>
+      <div class="ex-cap">Source: publication.pravo.gov.ru, official register entry. Public record, reproduced for analysis.</div>
+    </div>
+
+    <p>Read quickly, that looks like a 2026 expansion of state surveillance. Read carefully, it is something more damning. When <a href="https://meduza.io/en/cards/russia-s-surveillance-expansion-isn-t-really-about-telecoms-anymore-it-s-about-building-a-parallel-sorm-inside-every-major-company-in-the-country">Meduza</a> put the order next to its legal predicates in an analysis published 8 June 2026, it found that the FSB gains no new categories of data at all: the same types were already mandated under a ministry order from 29 October 2018 (No. 573) and a government decree from September 2023. What Order 1174 actually does is solve an engineering problem. Organizations covered by the older mandates did not know how, technically, to deliver what the law already required. The 2026 order gives them the technical instructions. Meduza's English edition put the significance plainly: this is not about telecoms anymore, it is about building "a parallel SORM inside every major company in the country." <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <div class="pullquote">The windows into Russian networks were not installed in 2026. They were installed years ago. This year <em>the state standardized the glass</em>.</div>
+
+    <p>This matters for the argument this site exists to make. Our framework holds that the ransomware ecosystem rests on three dependencies: the money, the metal, and the krysha, the roof of active state protection. A common softer framing, one we have used ourselves in earlier work, describes that protection as "tacit tolerance": Moscow simply declines to look. The record assembled below says otherwise. The Russian state operates one of the most complete domestic visibility regimes on earth, technical and financial, and it is pointed at exactly the infrastructure and cash-out channels its ransomware crews depend on. A state that sees everything and moves against nothing has not failed to notice. It has decided.</p>
+
+    <figure>
+      <div class="fig-frame">
+        <div class="fig-title">Fig. 1 &middot; The visibility edges this article walks &middot; excerpt from the Observatory ecosystem map</div>
+        <svg viewBox="0 0 920 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: Russian state organs on the left hold surveillance and reporting edges into hosting, banks, and exchanges; a protection edge runs from the state to the ransomware crews; the crypto exchange layer is marked as the unregulated seam" style="width:100%;height:auto;font-family:'IBM Plex Mono',monospace;">
+          <defs>
+            <marker id="arrR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ff4757"/></marker>
+            <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#ffb454"/></marker>
+            <marker id="arrC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b3a892"/></marker>
+          </defs>
+
+          <!-- state cluster -->
+          <rect x="28" y="46" width="196" height="318" rx="12" fill="none" stroke="rgba(255,71,87,0.35)" stroke-dasharray="3 4"/>
+          <text x="126" y="34" text-anchor="middle" fill="#ff4757" font-size="11" letter-spacing="2">THE STATE</text>
+
+          <g font-size="12">
+            <rect x="48" y="66" width="156" height="40" rx="8" fill="#241f18" stroke="#ff4757"/>
+            <text x="126" y="90" text-anchor="middle" fill="#f0e7d8">FSB</text>
+            <rect x="48" y="136" width="156" height="40" rx="8" fill="#241f18" stroke="rgba(255,71,87,0.6)"/>
+            <text x="126" y="160" text-anchor="middle" fill="#f0e7d8" font-size="10.5">Rosfinmonitoring</text>
+            <rect x="48" y="206" width="156" height="40" rx="8" fill="#241f18" stroke="rgba(255,71,87,0.6)"/>
+            <text x="126" y="230" text-anchor="middle" fill="#f0e7d8" font-size="10.5">Central Bank (CBR)</text>
+            <rect x="48" y="276" width="156" height="40" rx="8" fill="#241f18" stroke="rgba(255,71,87,0.6)"/>
+            <text x="126" y="300" text-anchor="middle" fill="#f0e7d8" font-size="10.5">Tax Service (FNS)</text>
+          </g>
+
+          <!-- middle: watched layers -->
+          <g font-size="12">
+            <rect x="392" y="60" width="180" height="46" rx="8" fill="#1c1813" stroke="#ffb454"/>
+            <text x="482" y="80" text-anchor="middle" fill="#f0e7d8" font-size="10.5">Bulletproof Hosting</text>
+            <text x="482" y="96" text-anchor="middle" fill="#79705f" font-size="9">the metal</text>
+
+            <rect x="392" y="180" width="180" height="46" rx="8" fill="#1c1813" stroke="#ffb454"/>
+            <text x="482" y="200" text-anchor="middle" fill="#f0e7d8" font-size="10.5">Ruble Banking System</text>
+            <text x="482" y="216" text-anchor="middle" fill="#79705f" font-size="9">the money, onshore</text>
+
+            <rect x="392" y="300" width="180" height="46" rx="8" fill="#1c1813" stroke="rgba(255,71,87,0.7)" stroke-dasharray="5 4"/>
+            <text x="482" y="320" text-anchor="middle" fill="#f0e7d8" font-size="10.5">Crypto Exchanges</text>
+            <text x="482" y="336" text-anchor="middle" fill="#ff4757" font-size="9">the unregulated seam</text>
+          </g>
+
+          <!-- right: crews -->
+          <rect x="716" y="176" width="168" height="54" rx="10" fill="#241f18" stroke="#f0e7d8"/>
+          <text x="800" y="199" text-anchor="middle" fill="#f0e7d8" font-size="11.5">Ransomware Crews</text>
+          <text x="800" y="216" text-anchor="middle" fill="#79705f" font-size="9">the protected</text>
+
+          <!-- edges: state -> layers -->
+          <g fill="none" stroke-width="1.6">
+            <path d="M204,86 C300,86 320,83 390,83" stroke="#ff4757" marker-end="url(#arrR)"/>
+            <path d="M204,156 C290,156 320,200 390,201" stroke="#ff4757" opacity="0.75" marker-end="url(#arrR)"/>
+            <path d="M204,226 C290,226 320,206 390,206" stroke="#ff4757" opacity="0.75" marker-end="url(#arrR)"/>
+            <path d="M204,296 C290,296 320,212 390,211" stroke="#ff4757" opacity="0.75" marker-end="url(#arrR)"/>
+            <path d="M204,166 C300,180 330,300 390,315" stroke="#ffb454" stroke-dasharray="5 4" opacity="0.8" marker-end="url(#arrA)"/>
+          </g>
+          <g font-size="9.5" fill="#b3a892">
+            <text x="268" y="74">SORM &middot; Order 1174</text>
+            <text x="252" y="192">115-FZ &middot; ZSK &middot; Art. 86 feeds</text>
+            <text x="236" y="268" fill="#ffb454">Transparent Blockchain</text>
+            <text x="236" y="281" fill="#ffb454">tracing, not regulation</text>
+          </g>
+
+          <!-- edges: crews -> layers -->
+          <g fill="none" stroke="#b3a892" stroke-width="1.3" opacity="0.8">
+            <path d="M760,176 C700,120 640,92 574,84" marker-end="url(#arrC)"/>
+            <path d="M760,230 C700,290 640,316 574,322" marker-end="url(#arrC)"/>
+          </g>
+          <g font-size="9.5" fill="#79705f">
+            <text x="640" y="112">hosts on</text>
+            <text x="640" y="304">cashes out through</text>
+          </g>
+
+          <!-- protection edge -->
+          <path d="M126,46 C170,-14 660,-18 796,174" fill="none" stroke="#ff4757" stroke-width="2.6" marker-end="url(#arrR)"/>
+          <text x="460" y="22" text-anchor="middle" fill="#ff4757" font-size="11" letter-spacing="1.5">KRYSHA &middot; ACTIVE PROTECTION</text>
+        </svg>
+        <figcaption>Structural excerpt, relationships as of Jul 2026: every layer the crews depend on carries a state visibility edge, except the crypto-exchange seam, which carries tracing but no regulation. <a href="https://research.therenoproject.org/map" style="color:#b3a892;">Explore the full map &rarr;</a></figcaption>
+      </div>
+    </figure>
+
+    <h2>The wire</h2>
+
+    <p>Start with the technical layer, because it is the oldest and least ambiguous.</p>
+
+    <p>SORM, the System for Operative Investigative Activities, has obligated Russian telecommunications providers to build interception capability for the security services since 1995. It has grown in three overlapping generations: SORM-1 (1995) for telephone networks, SORM-2 (1998) for internet traffic, with ISPs required to install the monitoring equipment at their own expense while being denied access to the boxes themselves, and SORM-3 (a 2014 ministry order taking effect in 2015) extending collection and retention across all media, with selectors including IP addresses, IMSI and IMEI identifiers, and deep packet inspection. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The legal check on this system is largely ornamental. Russian law does require judicial authorization to intercept the content of communications. But the European Court of Human Rights, ruling unanimously in the Grand Chamber case <a href="https://www.bailii.org/eu/cases/ECHR/2015/1065.html">Roman Zakharov v. Russia</a> on 4 December 2015, found the framework lacking "adequate and effective guarantees against arbitrariness": the security services enjoy direct technical access to communications, and the law imposes no obligation to show the authorization to the network operator, who has no right to demand it. The 2016 Yarovaya amendments went further, requiring operators to retain content and metadata and to disclose "all other information necessary" to the authorities on request, without a court order. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>Then, in the same December week that Order 1174 was signed, the State Duma passed a further amendment to the law on the FSB: from 1 April 2026, the service may obtain, free of charge and on the order of its own director, copies of databases or parts of databases held by any organization in Russia, no court involved. Any customer list, any billing system, any know-your-customer identity file a company keeps on its clients is now formally available to the FSB on internal signature. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>Apply this to the ecosystem we track. Russian-hosted bulletproof hosting has always been described, correctly, as a jurisdiction problem: Western legal process does not reach it. The point that completes the picture is that the FSB's process does reach it, formally and comprehensively. A provider like the ones our Observatory tracks on the <a href="https://research.therenoproject.org/map">Bulletproof Hosting node</a> holds an ASN. It is therefore inside the class Order 1174 addresses. The command-and-control servers, the leak-site backends, the staging infrastructure that Western agencies spend months attributing from the outside, all of it sits on networks the FSB is legally wired into from the inside. When ransomware infrastructure on Russian commercial hosting goes untouched for years, the explanation cannot be that nobody could see it.</p>
+
+    <h2>The ledger</h2>
+
+    <p>The technical wire would matter less if the money could still hide. It cannot, or at least not from Moscow.</p>
+
+    <p>Russia's financial surveillance stack has three interlocking layers. The first is Rosfinmonitoring, the financial intelligence unit, fed by mandatory reporting under Federal Law 115-FZ since 2001: transactions over statutory thresholds reported automatically, suspicious transactions reported within one business day, tens of millions of reports a year across both streams per the FATF's 2019 evaluation. Since 2020 the agency has also been building a dedicated cryptocurrency tracing system, Prozrachny Blokchein, "Transparent Blockchain," developed with the Lebedev Physical Institute, covering more than twenty crypto assets, with its bank pilot completed at the end of 2025 by the agency's own announcement. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>This is not a paper capability. A deputy director of the agency, Evgeny Gileta, told the parliamentary paper <a href="https://www.pnp.ru/economics/rosfinmonitoring-zadeystvuet-prozrachnyy-blokcheyn-v-vyyavlenii-prestupnykh-dokhodov.html">Parlamentskaya Gazeta</a> on 23 April 2026 that the system was used in 120 financial investigations in 2025 and contributed to opening more than 40 criminal money-laundering cases. <span class="conf confirmed">Confirmed reporting</span> His colleague Olga Tisen, the agency's head of legal, said publicly in May 2025 that crypto anonymity is a "myth," and that every exchange with so much as one representative office in Russia, Binance included, shares wallet-owner data with Russian law enforcement. <span class="conf credible">Credible reporting</span></p>
+
+    <p>The second layer is the Central Bank. Since 1 July 2022 it has operated the Know Your Client platform, a state-run risk score that sorts every legal entity and individual entrepreneur in the country into green, yellow, or red tiers, with roughly 0.7 percent flagged red. And when the state decides a category of financial behavior should stop, the system demonstrates its reach immediately. A Central Bank order signed 5 November 2025 doubled the suspicious-transaction criteria used against "dropper" cash-out accounts, effective 1 January 2026. Monthly account and card blocks jumped from roughly 330,000 in 2025 to a reported two to three million in the first weeks of January. Amendments to 115-FZ signed 15 December 2025 add the power to freeze a listed suspect's assets without warning them first, with blocks running up to a year in extremism-linked cases as provisions phase in through 2026 and 2027. <span class="conf confirmed">Confirmed reporting</span> Whatever else this is, it is not a state that lacks the means to shut down mule networks. It shut down millions of them in a month, when the victims were Russian.</p>
+
+    <figure>
+      <div class="fig-frame">
+        <div class="fig-title">Fig. 2 &middot; Monthly account and card blocks, Russian banks (anti-dropper criteria expansion, effective 1 Jan 2026)</div>
+        <div class="bars">
+          <div class="bar"><div class="col amber" style="height:14%"></div><div class="bval">~330K</div><div class="blbl"><b>2025</b>monthly average</div><div class="bsrc">Vedomosti</div></div>
+          <div class="bar"><div class="col" style="height:90%"></div><div class="bval">2&ndash;3M</div><div class="blbl"><b>Jan 2026</b>first weeks</div><div class="bsrc">Vedomosti</div></div>
+        </div>
+        <figcaption>Reported monthly blocks before and after CBR Order OD-2506 expanded suspicious-transaction criteria from six to twelve. Source: Vedomosti, 19 Jan 2026. Shown to convey demonstrated enforcement capacity at scale.</figcaption>
+      </div>
+    </figure>
+
+    <p>The third layer is the tax service. Since 1 July 2014, banks automatically notify the FNS of every account an individual opens or closes; the service's Nalog-3 system exists, by its own description, to assemble comprehensive taxpayer dossiers. Crypto has been folded in steadily: the 2020 digital-assets law classified it as property and made legal protection of crypto claims conditional on declaration, the November 2024 mining law taxed extraction and barred miners from simplified regimes, and pending legislation would require residents to notify the FNS of foreign-hosted wallets from 1 July 2026, a bill still moving through the Duma. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>And the tax service has already demonstrated what these powers mean for cybercriminals specifically. After a Perm-based carding group was convicted in April 2024 of trafficking stolen American bank-card data, an interregional FNS inspectorate separately assessed personal income tax arrears on their undeclared crypto income from 2019 to 2021: roughly 62 million rubles against one member, 89 million against another, and over 258 million claimed against the group's biggest earner in his bankruptcy. <span class="conf credible">Credible reporting</span> Sit with what that case means. The Russian state measured, to the ruble, income earned by defrauding American cardholders, and then billed for its share. The proceeds of foreign-facing cybercrime are not invisible to Moscow. They are, on the record, taxable.</p>
+
+    <p>One seam in the ledger deserves its own sentence. When the Eurasian Group's follow-up evaluation of Russia (adopted 2023, published 2024) re-rated the country on the FATF's virtual-asset standard, it moved Russia from compliant to partially compliant: the one conspicuous regulatory hole sits precisely at the crypto-exchange layer, the layer where ransom payments become rubles. <span class="conf confirmed">Confirmed reporting</span> The banking system is wired for total visibility. The off-ramp the ransomware economy uses is the one part left unregulated. We return to that choice below.</p>
+
+    <h2>The demonstration</h2>
+
+    <p>Capability arguments can always be waved off as theoretical. These five cases are why this one cannot.</p>
+
+    <p><strong>REvil, January 2022.</strong> The raid this piece opened with deserves its numbers: fourteen detentions across twenty-five addresses in one morning, over 426 million rubles seized alongside 600,000 dollars, half a million euros, and twenty luxury cars, with the FSB stating openly that it was acting on a US request. <span class="conf confirmed">Confirmed reporting</span> Then the geopolitical moment passed, and the case record shows what enforcement looks like when Moscow is merely keeping up appearances. On 25 October 2024, nearly three years later, a military court in St. Petersburg sentenced four defendants to between four and a half and six years, not for ransomware operations against Western critical infrastructure, but for "illegal circulation of means of payment" and, for two of them, malware distribution. On 23 June 2025 the remaining four were convicted and released in the courtroom, their pretrial detention, credited under Russian law at one and a half days per day held, having already covered their five-year terms. No defendant was ever charged with the extortion campaign that prompted the US request. No one was extradited. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p><strong>Mikhail Matveev.</strong> The LockBit and Babuk affiliate known as Wazawaka was indicted in two US districts (returned December 2022, unsealed 16 May 2023 alongside OFAC sanctions and a ten-million-dollar reward). His response was to give interviews, print merchandise of his own wanted poster, and observe that Western sanctions were <a href="https://techcrunch.com/2023/10/03/fbi-most-wanted-russian-hacker-reveals-why-he-burned-his-passport/">"a plus for my security."</a> <span class="conf confirmed">Confirmed reporting</span> He was right about the logic. Russian authorities reportedly arrested him in Kaliningrad in late November 2024 on a domestic malware charge, and researchers tracking the case report he was released on bail; the case reportedly concerns activity that touched Russian or CIS interests, not the American indictments, and as of this writing we can find no public verdict. <span class="conf credible">Credible reporting</span> Half a decade of loud, foreign-facing ransomware activity under a name the FBI put a bounty on drew no Russian action at all. A domestic irritant drew an arrest within weeks of surfacing.</p>
+
+    <p><strong>The Yahoo case.</strong> The oldest proof, and the most literal. Alexsey Belan was publicly indicted in the United States in 2012 and again in 2013, placed on the FBI's Cyber Most Wanted list, arrested in Europe on a US request in June 2013, and escaped to Russia. What happened next is the krysha compressed into a single Justice Department sentence: instead of acting on the Interpol Red Notice and detaining Belan, FSB officers Dmitry Dokuchaev and Igor Sushchin used him, directing his 2014 breach of Yahoo that compromised half a billion accounts, per the <a href="https://www.justice.gov/archives/opa/pr/us-charges-russian-fsb-officers-and-their-criminal-conspirators-hacking-yahoo-and-millions">March 2017 US indictment</a> of the officers themselves. <span class="conf confirmed">Confirmed reporting</span> The state did not merely see a wanted criminal on its soil. It hired him. The coda shows what the system actually punishes: Dokuchaev and his superior in the FSB's Information Security Center, Sergei Mikhailov, were arrested in December 2016 and convicted of treason in 2019, for passing information to the Americans. <span class="conf confirmed">Confirmed reporting</span> Employing criminals was the job. Talking to the adversary was the crime.</p>
+
+    <p><strong>Evil Corp.</strong> Covered at length in <a href="evil-corp-part-1.html">our Evil Corp series</a> and <a href="the-protected/yakubets.html">The Protected</a>, so briefly here: Maksim Yakubets and Igor Turashev were indicted by the United States on 5 December 2019 over the Dridex operation, with Treasury stating in the same action that Yakubets was working for the FSB as of 2017. Neither man has ever been arrested, anywhere. And in October 2024 the US, UK, and Australia sanctioned the man who performed the protection: Eduard Benderskiy, former FSB Spetsnaz officer and Yakubets's father-in-law, designated for "ensuring they were not pursued by Russian internal authorities." <span class="conf confirmed">Confirmed reporting</span> Protection here is not an inference. It is a documented function with a name attached.</p>
+
+    <p><strong>Garantex.</strong> The exchange that laundered ransom payments for Conti, LockBit, Ryuk, and others operated from Federation Tower in Moscow City, one of the most heavily surveilled commercial addresses in Russia, under every reporting obligation described in the previous section. OFAC sanctioned it on 5 April 2022. It then processed more than sixty billion dollars over the following three years, per Elliptic, until a US-European operation seized its domains on 6 March 2025. Within months its operators stood up a successor, Grinex, moving value through the ruble-backed token A7A5, and Treasury re-designated the whole structure on 14 August 2025. <span class="conf confirmed">Confirmed reporting</span> Across those three post-sanctions years, with Rosfinmonitoring publicly boasting that crypto anonymity is a myth for anyone with a Russian office, Russian financial supervision, which blocked millions of domestic mule accounts in a single month, took no public action against the most notorious cash-out platform in the country. The full reconstruction is in <a href="after-garantex.html">After Garantex</a>.</p>
+
+    <p>The pattern across all five is not complicated. Enforcement happens when it serves a diplomatic purpose, and is then quietly minimized; or when an actor crosses the domestic line; or never, when the actor is useful and properly connected, and in the Yahoo case the connection was an employment relationship. In no case was the constraint an inability to find anyone. The state's problem has never been sight.</p>
+
+    <h2>The objections</h2>
+
+    <p>The strongest honest counterarguments to this thesis deserve stating, because the thesis survives them.</p>
+
+    <p>First: SORM is decaying. Carnegie's Gavin Wilde has documented that Western sanctions cut Russian telecoms off from servicing the Nokia and Ericsson equipment much of the intercept stack rides on; in his phrase, the sector is <a href="https://therecord.media/russia-telecommunications-sorm-surveillance-western-technology">"on a shot clock,"</a> though what that decay has cost the FSB in actual casework is not measurable from open sources. <span class="conf confirmed">Confirmed reporting</span> Second: encryption. SORM's provider-side architecture yields metadata, not content, against end-to-end encrypted platforms, and the state's own campaigns against Telegram and for data localization are indirect evidence that officials feel the gap. <span class="conf inference">Analyst inference</span> Third: the system is sloppier than it looks. Soldatov and Borogan, the most credible chroniclers of the Russian security services, have documented uneven filtering, mistaken blocks, and thin prosecution rates; the Zakharov judgment itself found that Russian law prohibits logging intercepts, which is as consistent with disorder as with secrecy. <span class="conf confirmed">Confirmed reporting</span> Fourth: the picture is fragmented across rival agencies, the FSB and the MVD's Department K, with documented turf conflict and mutual distrust. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>All four points are real. None of them rescues the tolerance theory, for one shared reason: the proof cases already control for them. A decayed, encrypted-blind, sloppy, fragmented apparatus still produced fourteen coordinated REvil arrests in one morning when instructed to, still located Matveev the moment his work turned domestic, and still, through the financial stack, taxed the crypto income of individual carders to the ruble. The gaps are marginal. The outcomes are categorical. Marginal gaps do not produce categorical outcomes.</p>
+
+    <p>The fifth objection is the interesting one: corruption. On this account, visibility is monetized rather than actioned; officers sell protection instead of enforcement, so the state as such never "decides" anything. The best evidence is Grigory Tsaregorodtsev, the FSB counterintelligence officer in Perm who took roughly 160 million rubles, about 1.7 million dollars, from the same carding group the tax service later billed, in exchange for shielding them, and who was sentenced to nine years in April 2024, having been found with, among other assets, one hundred gold bars. <span class="conf confirmed">Confirmed reporting</span> But look at what that case actually establishes. Protection was for sale because the officer could see the criminals and they knew it; the product being sold was the state's own gaze, averted. And when he was punished, he was punished for freelancing, for selling at retail what the system distributes by policy. Corruption does not contradict the krysha model. It is the krysha model, running at the individual scale, priced. The alternative reading, that protection rackets somehow indicate state blindness, requires the rackets to have had nothing to sell. <span class="conf inference">Analyst inference</span></p>
+
+    <h2>What the windows change</h2>
+
+    <p>If the roof were blind, the policy prescription would be modest: help Moscow see, share indicators, request cooperation. Twenty years of that approach produced the case record above. The roof has windows, and that reframes the leverage.</p>
+
+    <p>It shifts the attribution burden. Every Western designation and indictment of a Russia-based actor should be written on the record now available: the target operated on networks the FSB is wired into by law, cashed out through a banking system under total supervisory visibility, and filed, or conspicuously did not file, with a tax service that receives his bank data automatically. "We were not aware" is not available to a state whose surveillance statutes are published on its own legal portal.</p>
+
+    <p>It validates targeting the protectors, not just the protected. The Benderskiy designation is the template: name the specific individuals who perform the protection function, and treat protection itself as the sanctionable conduct. Our tracking of the state-organ nodes on the <a href="https://research.therenoproject.org/map">Observatory map</a> is oriented to exactly this: the krysha is not an atmosphere, it is people, and people can be listed.</p>
+
+    <p>And it identifies the one deliberately unbuilt window as the pressure point. Russia wired every layer of its financial system for visibility except the crypto-exchange off-ramp, the single layer the ransomware economy cannot function without, and the FATF process has now formally recorded that gap. A state does not construct the most comprehensive financial surveillance apparatus in its history and forget one room. The unregulated seam between Garantex and its successors and the ruble is not an oversight to be remedied with technical assistance. It is policy, and it should be attacked as policy: every exchange that fills the Garantex role should be treated, from designation day one, as an extension of the protection system rather than a compliance failure inside it. <span class="conf inference">Analyst inference</span></p>
+
+    <p>The money, the metal, the krysha. This piece has been about the third, but the finding runs through all three: the state that shelters this ecosystem watches every part of it. The roof was never over the operation. The roof is part of the operation, and it has windows on every floor.</p>
+
+    <div class="method">
+      <h3>Sourcing &amp; confidence</h3>
+      <p>This dispatch draws on Russia's official legal register, ECtHR jurisprudence, US Treasury and DOJ actions, FATF/EAG evaluations, and Russian official statements as reported by state, independent, and trade press, independently verified against primary sources where available. Confidence labels follow standard analytic practice. One note on Order 1174: the official copy of its 69-page technical annex is published as a scanned image, so the interface and data-type details are sourced from Russian legal and trade press that reviewed the document, checked against the order's register entry.</p>
+      <p class="key"><b>Confirmed</b> &middot; multiple independent sources, including official register, designation, or indictment language.<br><b>Credible</b> &middot; single strong source or consistent reporting, not yet officially confirmed.<br><b>Analyst inference</b> &middot; End Krysha's own assessment, drawn from the evidence above.</p>
+      <ul class="srclist">
+        <li>Order No. 1174, <a href="http://publication.pravo.gov.ru/document/0001202605230002">official register entry</a> (pravo.gov.ru); <a href="https://rg.ru/documents/2026/05/26/mincifry-prikaz1174-site-dok.html">text via Rossiyskaya Gazeta</a>; industry read via <a href="https://www.cableman.ru/content/mintsifry-obnovilo-trebovaniya-po-sorm-dlya-vladeltsev-tekhnologicheskikh-setei">Cableman</a>.</li>
+        <li>Meduza, <a href="https://meduza.io/en/cards/russia-s-surveillance-expansion-isn-t-really-about-telecoms-anymore-it-s-about-building-a-parallel-sorm-inside-every-major-company-in-the-country">"a parallel SORM inside every major company"</a> (8 Jun 2026).</li>
+        <li>ECtHR, <a href="https://www.bailii.org/eu/cases/ECHR/2015/1065.html">Roman Zakharov v. Russia</a>, Grand Chamber (4 Dec 2015); CSIS, <a href="https://www.csis.org/analysis/reference-note-russian-communications-surveillance">reference note on SORM</a>.</li>
+        <li>FSB database-access law in force (<a href="https://ria.ru/20260401/fsb-2084148656.html">RIA Novosti, 1 Apr 2026</a>; <a href="https://www.interfax.ru/russia/1063539">Interfax</a>).</li>
+        <li>Rosfinmonitoring: Gileta on Transparent Blockchain (<a href="https://www.pnp.ru/economics/rosfinmonitoring-zadeystvuet-prozrachnyy-blokcheyn-v-vyyavlenii-prestupnykh-dokhodov.html">Parlamentskaya Gazeta, 23 Apr 2026</a>); <a href="https://www.fedsfm.ru/news/9441">pilot completion, official</a>; Tisen remarks via <a href="https://cryptonews.com/news/aml-agency-tells-russians-crypto-exchanges-send-us-your-transaction-data/">trade press</a> (multiple independent outlets from her St. Petersburg legal forum remarks; no primary transcript located, hence Credible).</li>
+        <li>CBR: <a href="https://cbr.ru/counteraction_m_ter/platform_zsk">ZSK platform</a>; Order OD-2506 (<a href="https://www.garant.ru/products/ipo/prime/doc/412946097/">Garant</a>); block spike (<a href="https://www.vedomosti.ru/finance/news/2026/01/19/1170089-banki-zablokirovali-do-3-mln">Vedomosti, 19 Jan 2026</a>); 462-FZ (<a href="https://www.garant.ru/products/ipo/prime/doc/413168555/">Garant</a>).</li>
+        <li>FNS: Tax Code <a href="https://www.consultant.ru/document/cons_doc_LAW_19671/533942681580b9036225568f0c6f328a9827b834/">Art. 86</a>; foreign-wallet bill (<a href="https://www.interfax.ru/business/1081570">Interfax</a>); Perm assessments (<a href="https://properm.ru/news/2025-02-14/permskie-hakery-popali-na-mnogomillionnye-nalogi-za-kriptovalyutnye-operatsii-5322664">Properm</a>, sole source for the ruble figures, hence Credible; convictions and FNS enforcement confirmed via <a href="https://www.kommersant.ru/doc/7606009">Kommersant</a>).</li>
+        <li>FATF/EAG follow-up, <a href="https://www.fatf-gafi.org/en/publications/Mutualevaluations/Russia-FUR-2024.html">R.15 re-rated partially compliant</a>.</li>
+        <li>REvil: raids (<a href="https://krebsonsecurity.com/2022/01/at-request-of-u-s-russia-rounds-up-14-revil-ransomware-affiliates/">Krebs</a>); sentences (<a href="https://www.vedomosti.ru/society/news/2024/10/25/1071051-sud-realnie-sroki">Vedomosti</a>; <a href="https://therecord.media/revil-cybercrime-gang-members-released-russia">The Record</a>; <a href="https://cyberscoop.com/revil-ransomware-sentence-russia-time-served/">CyberScoop</a>).</li>
+        <li>Matveev: <a href="https://www.justice.gov/archives/opa/pr/russian-national-charged-ransomware-attacks-against-critical-infrastructure">DOJ</a>; <a href="https://ofac.treasury.gov/recent-actions/20230516">OFAC</a>; reported arrest (<a href="https://therecord.media/wazawaka-mikhail-matveev-reportedly-arrested-russia">The Record</a>).</li>
+        <li>Yahoo case: <a href="https://www.justice.gov/archives/opa/pr/us-charges-russian-fsb-officers-and-their-criminal-conspirators-hacking-yahoo-and-millions">DOJ indictment</a> (15 Mar 2017); treason convictions (<a href="https://www.cnn.com/2019/02/27/europe/treason-convictions-russia-us-election-intl">CNN</a>; <a href="https://www.rferl.org/a/russia-hacker-mikhailov-stoyanov-fsb-scandal-for-russian-security-agency/29794092.html">RFE/RL</a>).</li>
+        <li>Evil Corp: <a href="https://home.treasury.gov/news/press-releases/sm845">Treasury 2019</a>; Benderskiy (<a href="https://home.treasury.gov/news/press-releases/jy2623">Treasury, 1 Oct 2024</a>; <a href="https://www.theguardian.com/technology/2024/oct/01/russian-gang-evil-corp-nato-cyber-attacks-protection-fsb-sanctions">Guardian on NCA</a>).</li>
+        <li>Garantex: <a href="https://home.treasury.gov/news/press-releases/jy0701">OFAC 2022</a>; <a href="https://www.justice.gov/opa/pr/garantex-cryptocurrency-exchange-disrupted-international-operation">DOJ 2025</a>; <a href="https://home.treasury.gov/news/press-releases/sb0225">re-designation, 14 Aug 2025</a>; <a href="https://www.icij.org/news/2025/09/cryptocurrency-exchange-garantex-lives-on-despite-sanctions-new-report-unveils/">ICIJ</a>.</li>
+        <li>Counterarguments: Wilde (<a href="https://therecord.media/russia-telecommunications-sorm-surveillance-western-technology">The Record</a>); Soldatov and Borogan, <a href="https://fas.org/publication/red-web/">The Red Web</a>; Zenz, <a href="https://i.blackhat.com/USA-19/Thursday/us-19-Zenz-Infighting-Among-Russian-Security-Services-in-the-Cyber-Sphere.pdf">Black Hat 2019</a>; Tsaregorodtsev (<a href="https://krebsonsecurity.com/2024/04/russian-fsb-counterintelligence-chief-gets-9-years-in-cybercrime-bribery-scheme/">Krebs</a>; <a href="https://www.atlanticcouncil.org/content-series/offensive-cyber-actors-behavior-and-risk/take-the-bribe-but-watch-your-back-why-russia-imprisoned-a-security-officer-for-taking-cybercriminal-payoffs/">Atlantic Council</a>).</li>
+      </ul>
+    </div>
+  </article>
+
+  <div class="a-foot">
+    <div class="tags"><span>SORM</span><span>Order 1174</span><span>Rosfinmonitoring</span><span>115-FZ</span><span>FNS</span><span>Krysha</span><span>Protection Layer</span></div>
+  </div>
+
+  <div class="related">
+    <div class="rel-h">More Dispatches</div>
+    <div class="rel-grid">
+      <a class="rel" href="evil-corp-part-2.html"><div class="rc">Protection Layer</div><h4>The Roof Over Evil Corp</h4></a>
+      <a class="rel" href="after-garantex.html"><div class="rc">Financial Layer</div><h4>After Garantex: where the cash-out moved next</h4></a>
+      <a class="rel" href="the-long-cash-out.html"><div class="rc">Financial Layer</div><h4>The Long Cash-Out: how a ransom becomes rubles</h4></a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-tagline">The <b>biggest little</b> threat intel project in the world.</p>
+      <p class="footer-meta">End Krysha &middot; A campaign of the Ransomware Ecosystem Network Observatory &middot; Beta</p>
+    </div>
+  </footer>
+
+  <script>
+    const prog = document.getElementById('prog');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      prog.style.width = pct + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
