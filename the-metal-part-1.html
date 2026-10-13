@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="What a bulletproof host actually sells, why the ransomware ecosystem cannot run without it, and why the roof needs the metal. Part 1 of The Metal, from End Krysha.">
+  <title>Indifference as a Service &middot; End Krysha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #15120e; --bg-2: #1c1813; --bg-3: #241f18;
+      --cream: #f0e7d8; --cream-dim: #b3a892; --cream-faint: #79705f;
+      --rule: rgba(240,231,216,0.1); --rule-strong: rgba(240,231,216,0.25);
+      --neon: #ff4757; --neon-soft: rgba(255,71,87,0.5);
+      --neon-glow: 0 0 6px rgba(255,71,87,0.8), 0 0 18px rgba(255,71,87,0.45), 0 0 40px rgba(255,71,87,0.2);
+      --amber: #ffb454; --amber-soft: rgba(255,180,84,0.5);
+      --teal: #5fd3c7; --teal-soft: rgba(95,211,199,0.5);
+      --serif: 'Fraunces', Georgia, serif; --mono: 'IBM Plex Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--serif); background: var(--bg); color: var(--cream); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    ::selection { background: var(--neon); color: var(--bg); }
+
+    .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--neon); box-shadow: var(--neon-glow); z-index: 200; }
+
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1rem 2.5rem; background: rgba(21,18,14,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule-strong); }
+    .nav-brand { font-family: var(--mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; text-decoration: none; color: var(--cream); display: flex; align-items: center; gap: 0.6rem; }
+    .nav-brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--neon); box-shadow: var(--neon-glow); }
+    .nav-back { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); text-decoration: none; }
+    .nav-back:hover { color: var(--neon); }
+
+    .a-head { max-width: 760px; margin: 0 auto; padding: 4.5rem 2rem 2.5rem; }
+    .a-cat { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--neon); display: inline-block; border: 1px solid var(--neon-soft); border-radius: 4px; padding: 0.3rem 0.7rem; margin-bottom: 1.8rem; }
+    .a-series { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); display: inline-block; border: 1px solid var(--teal-soft); border-radius: 4px; padding: 0.3rem 0.7rem; margin: 0 0 1.8rem 0.5rem; }
+    .a-title { font-size: clamp(2.4rem, 5.5vw, 3.8rem); font-weight: 400; line-height: 1.06; letter-spacing: -0.015em; }
+    .a-dek { margin-top: 1.6rem; font-size: 1.35rem; font-weight: 300; line-height: 1.5; color: var(--cream-dim); font-style: italic; }
+    .a-byline { margin-top: 2rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream-faint); }
+    .a-byline b { color: var(--cream); font-weight: 500; }
+    .a-byline .sep { color: var(--neon); }
+
+    /* HOUSE PHOTO TREATMENT (.tone) */
+    .tone { position: relative; overflow: hidden; background: var(--bg); border: 1px solid var(--rule); isolation: isolate; }
+    .tone img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.12) brightness(0.98); mix-blend-mode: luminosity; }
+    .tone::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(135deg, #b388ff, #4a3d68 45%, #1c1610 90%); mix-blend-mode: color; }
+    .tone.warm::before { background: linear-gradient(135deg, #ffb454, #6b4d2e 45%, #1c1610 90%); }
+    .tone::after { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0,0,0,0.14) 0, rgba(0,0,0,0.14) 1px, transparent 1px, transparent 3px), radial-gradient(ellipse at 50% 30%, transparent 55%, rgba(17,15,11,0.55) 100%); }
+    .tone .photo-tag { position: absolute; left: 0.8rem; bottom: 0.7rem; z-index: 3; font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); background: rgba(17,15,11,0.75); border: 1px solid var(--rule); padding: 0.28rem 0.5rem; }
+
+    .a-hero-photo { max-width: 1100px; margin: 1.5rem auto 0; height: 52vh; min-height: 360px; border-radius: 14px; }
+    .a-hero-photo img { object-position: 50% 45%; }
+
+    .photo-fig { max-width: 920px; margin: 3rem auto; }
+    .photo-fig .tone { aspect-ratio: 21 / 9; border-radius: 12px; }
+    .photo-fig figcaption { text-align: left; padding: 0 0.2rem; }
+
+    .a-body { max-width: 680px; margin: 0 auto; padding: 3.5rem 2rem 2rem; }
+    .a-body p { font-size: 1.18rem; font-weight: 300; line-height: 1.78; color: var(--cream); margin-bottom: 1.5rem; }
+    .a-body p .drop { float: left; font-size: 4.2rem; line-height: 0.78; font-weight: 500; color: var(--neon); padding: 0.3rem 0.7rem 0 0; text-shadow: 0 0 16px var(--neon-soft); }
+    .a-body h2 { font-family: var(--mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); margin: 3rem 0 1.4rem; display: flex; align-items: center; gap: 0.9rem; }
+    .a-body h2::before { content: ''; width: 1.6rem; height: 1px; background: var(--amber); box-shadow: 0 0 8px var(--amber-soft); }
+    .a-body strong { color: var(--cream); font-weight: 500; }
+    .a-body a { color: var(--neon); text-decoration: none; border-bottom: 1px solid var(--neon-soft); }
+
+    .conf { font-family: var(--mono); font-size: 0.56rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.12rem 0.42rem; border-radius: 3px; vertical-align: middle; white-space: nowrap; }
+    .conf.confirmed { color: #7ee0a8; border: 1px solid rgba(126,224,168,0.45); }
+    .conf.credible { color: var(--amber); border: 1px solid var(--amber-soft); }
+    .conf.inference { color: var(--neon); border: 1px solid var(--neon-soft); }
+
+    .pullquote { font-size: 1.9rem; font-weight: 400; line-height: 1.3; color: var(--cream); border-left: 2px solid var(--neon); padding: 0.4rem 0 0.4rem 1.8rem; margin: 2.5rem 0; }
+    .pullquote em { font-style: italic; color: var(--neon); text-shadow: 0 0 12px var(--neon-soft); }
+
+    figure { max-width: 920px; margin: 3rem auto; }
+    .fig-frame { background: linear-gradient(145deg, var(--bg-3), var(--bg-2)); border: 1px solid var(--rule); border-radius: 14px; padding: 1.8rem 1.8rem 1.4rem; }
+    .fig-title { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); margin-bottom: 1.4rem; }
+    figcaption { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.06em; line-height: 1.7; color: var(--cream-faint); margin-top: 1.1rem; text-align: center; }
+
+    /* EXHIBIT (paper) */
+    .exhibit { max-width: 720px; margin: 3rem auto; background: #ece3d2; color: #1a1712; border-radius: 6px; padding: 2.2rem 2.4rem; font-family: var(--mono); position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: rotate(-0.6deg); }
+    .exhibit::after { content: 'PUBLIC RECORD'; position: absolute; top: 1rem; right: 1.4rem; font-size: 0.55rem; letter-spacing: 0.18em; color: #6b1f18; border: 1px solid #9a2b22; padding: 0.2rem 0.5rem; border-radius: 3px; }
+    .exhibit.forum::after { content: 'FORUM POST, TRANSLATED'; }
+    .exhibit.ratecard::after { content: 'DOCUMENTED PRICES'; }
+    .exhibit .ex-h { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #6b1f18; margin-bottom: 1rem; font-weight: 600; max-width: 80%; }
+    .exhibit .ex-line { font-size: 0.8rem; line-height: 1.95; color: #2a241c; }
+    .exhibit .ex-line b { color: #1a1712; }
+    .exhibit .ex-grid { display: grid; grid-template-columns: max-content 1fr; gap: 0.4rem 1.1rem; font-size: 0.8rem; line-height: 1.5; }
+    .exhibit .ex-grid .k { color: #6b1f18; font-weight: 600; }
+    .exhibit .ex-grid .v { color: #2a241c; }
+    @media (max-width: 620px) { .exhibit .ex-grid { grid-template-columns: 1fr; gap: 0.1rem 0; } .exhibit .ex-grid .k { margin-top: 0.55rem; } }
+    .exhibit .ex-cap { margin-top: 1.2rem; font-size: 0.56rem; letter-spacing: 0.06em; color: #6b6356; line-height: 1.6; }
+    .exhibit .redact { background: #1a1712; color: #1a1712; padding: 0 0.3rem; }
+
+    /* SCOREBOARD */
+    .score { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; }
+    .score .s { border: 1px solid var(--rule); border-radius: 10px; padding: 1rem 1rem 0.9rem; background: rgba(21,18,14,0.5); }
+    .score .sn { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); }
+    .score .sd { font-family: var(--mono); font-size: 0.56rem; letter-spacing: 0.06em; line-height: 1.7; color: var(--cream-faint); margin-top: 0.5rem; }
+    .score .sv { font-family: var(--mono); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.7rem; color: var(--neon); }
+    @media (max-width: 760px) { .score { grid-template-columns: 1fr 1fr; } }
+
+    .method { max-width: 680px; margin: 3rem auto 0; padding: 1.6rem 1.7rem; background: var(--bg-2); border: 1px solid var(--rule); border-left: 2px solid var(--amber); border-radius: 10px; }
+    .method h3 { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.9rem; }
+    .method p { font-size: 0.92rem; font-weight: 300; line-height: 1.7; color: var(--cream-dim); margin-bottom: 0.8rem; }
+    .method .key { font-family: var(--mono); font-size: 0.62rem; line-height: 1.9; color: var(--cream-faint); }
+    .method .key b { color: var(--cream-dim); }
+    .srclist { list-style: none; margin-top: 0.6rem; }
+    .srclist li { font-family: var(--mono); font-size: 0.62rem; line-height: 1.75; color: var(--cream-faint); padding-left: 1rem; text-indent: -1rem; }
+    .srclist a { color: var(--cream-dim); text-decoration: none; border-bottom: 1px solid var(--rule-strong); }
+    .srclist a:hover { color: var(--neon); }
+
+    .a-foot { max-width: 680px; margin: 0 auto; padding: 1rem 2rem 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 2rem 0; border-top: 1px solid var(--rule); }
+    .tags span { font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-faint); border: 1px solid var(--rule); border-radius: 4px; padding: 0.3rem 0.6rem; }
+    .related { max-width: 1100px; margin: 2rem auto 0; padding: 3rem 2rem 4rem; border-top: 1px solid var(--rule-strong); }
+    .rel-h { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-faint); margin-bottom: 1.8rem; }
+    .rel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .rel { text-decoration: none; color: inherit; background: var(--bg-2); border: 1px solid var(--rule); border-radius: 12px; padding: 1.4rem 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+    .rel:hover { border-color: var(--neon); transform: translateY(-3px); }
+    .rel .rc { font-family: var(--mono); font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); }
+    .rel h4 { font-size: 1.15rem; font-weight: 500; margin-top: 0.6rem; line-height: 1.25; }
+    .rel:hover h4 { color: var(--neon); }
+
+    .next { max-width: 680px; margin: 3rem auto 0; padding: 1.4rem 1.7rem; border: 1px solid var(--teal-soft); border-radius: 10px; background: rgba(95,211,199,0.05); }
+    .next .nh { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem; }
+    .next p { font-size: 1rem; font-weight: 300; color: var(--cream-dim); margin: 0; line-height: 1.6; }
+
+    footer { border-top: 1px solid var(--rule-strong); }
+    .footer-inner { padding: 2.5rem 0 3.5rem; text-align: center; }
+    .footer-tagline { font-style: italic; font-weight: 300; font-size: 1.05rem; color: var(--cream-dim); }
+    .footer-tagline b { font-weight: 500; color: var(--amber); }
+    .footer-meta { margin-top: 1rem; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cream-faint); }
+
+    @media (max-width: 760px) { .rel-grid { grid-template-columns: 1fr; } .nav-brand { letter-spacing: 0.18em; } .photo-fig .tone { aspect-ratio: 16 / 9; } }
+  </style>
+</head>
+<body>
+  <div class="progress" id="prog"></div>
+
+  <nav>
+    <a class="nav-brand" href="index.html#top"><span class="dot"></span>End&nbsp;Krysha</a>
+    <a class="nav-back" href="index.html#dispatches">&larr; All Dispatches</a>
+  </nav>
+
+  <div class="a-head">
+    <span class="a-cat">Infrastructure Layer</span><span class="a-series">The Metal &middot; Part 1</span>
+    <h1 class="a-title">Indifference as a Service</h1>
+    <p class="a-dek">Every ransomware crew, every stealer panel, every leak site needs a server that will not be switched off when someone complains. There is an industry for that. It has many names, one product, and, for the crews that matter most, a roof.</p>
+    <div class="a-byline">
+      <span>By <b>Reno</b></span><span class="sep">&#10022;</span>
+      <span>13 Oct 2026</span><span class="sep">&#10022;</span>
+      <span>14 min read</span><span class="sep">&#10022;</span>
+      <span>Open Research</span>
+    </div>
+  </div>
+
+  <div class="a-hero-photo tone">
+    <img src="images/the-metal-1-hero.jpg" alt="A corridor of server racks in a former nuclear bunker, one aisle lit">
+    <span class="photo-tag">The metal &middot; racks in a decommissioned bunker, Germany</span>
+  </div>
+
+  <article class="a-body">
+    <p><span class="drop">O</span>n 11 November 2008, the most effective action ever taken against the global spam economy was carried out by two telecom carriers cancelling a customer. McColo, a hosting company in San Jose, California, had spent years renting servers to the operators of the world's largest spam botnets. Nobody arrested anyone. Its two upstream carriers, Global Crossing and Hurricane Electric, simply stopped carrying its traffic after a reporter showed them what it was carrying. Within a day, by several independent measurements, global spam volume fell by roughly two-thirds. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The criminals were not touched. Their botnets were not touched. What was touched was a line in a routing table, and the entire industry that depended on that line went quiet. It recovered, eventually, elsewhere. But for a few weeks in late 2008 the world got a clean look at a fact that the ransomware economy would prefer you not think about: the whole enterprise sits on rented metal, and someone else owns the connection.</p>
+
+    <p>This series is about that connection. Our framework holds that the ransomware ecosystem rests on three dependencies: the money, the metal, and the krysha, the roof of active state protection. <a href="the-long-cash-out.html">We have written about the money</a>. <a href="the-roof-has-windows.html">We have written about the roof</a>. The metal, the bulletproof hosting layer, is the one that gets described in a sentence and then skipped. This is the first of several dispatches that will not skip it. Part 1 does three things: says what the product actually is, shows why nothing above it works without it, and explains why the roof, of all things, cares about hosting.</p>
+
+    <h2>The product</h2>
+
+    <p>Start with the name, because the name is the first lie. The English term is "bulletproof hosting," which sounds like a technical property, as though the servers were somehow hardened. They are not. The Russian term is more honest: <em>абузоустойчивый хостинг</em>, literally "abuse-resistant hosting," where <em>абуз</em> means an abuse complaint. What the product resists is not bullets. It is email. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>Every legitimate hosting provider on earth runs an inbox, usually called abuse@, where victims, researchers, and police send notice that a server is doing something it should not. A normal provider reads that inbox and acts on it. A bulletproof provider sells the guarantee that it will not. That is the entire product. Everything else, the crypto payments, the fake identities, the servers in convenient jurisdictions, is packaging around one promise: the abuse@ inbox at this company is decorative.</p>
+
+    <p>The industry knows this looks bad in print, so it has spent fifteen years finding softer words. On the clearnet the same service is sold as "DMCA-ignored hosting," "offshore hosting," "privacy hosting," "anonymous hosting," and, our favorite, "DDoS-resilient hosting," which is true in the way that a getaway car is fuel-efficient. There are ranked consumer review sites for it. One Russian listing, updated in April 2026, ranks seventeen abuse-resistant hosts "for clients from Russia," the way a consumer guide ranks kettles. <span class="conf confirmed">Confirmed reporting</span> On the forums where the real customers shop, XSS and Exploit, the sellers drop the euphemism and say "bulletproof" or "offshore," deal through Telegram and Jabber, and sort themselves into tiers: cheap boxes good for scanning and brute force at the bottom, providers who own their own racks and openly ignore Spamhaus in the middle, and at the top the operators holding their own address allocations and running fast-flux networks. <span class="conf credible">Credible reporting</span></p>
+
+    <p>The oldest advertisements are the clearest. In August 2010, a user called triplex560, later identified by Intel 471 and by three governments as <a href="https://research.therenoproject.org/most-wanted.html">Alexander Mishin</a> of Barnaul, posted the earliest known advertisement for what became <a href="https://research.therenoproject.org/bphs/zservers.html">ZServers</a>. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <div class="exhibit forum">
+      <div class="ex-h">xeksec.com &middot; user triplex560 &middot; 9 August 2010</div>
+      <div class="ex-line">"We offer a hosting that is <b>loyal to abuse</b>. + Acceptance of payments via WebMoney. + Adequate pricing policy. + Individual approach to each client. + High UpTime.<br>+ <b>Allowed:</b> Drop projects, Exploits, Trojans, Botnets, Phishing, Satellites, adware, tds, etc.<br>+ <b>Prohibited:</b> Spam, fraud, pornography."</div>
+      <div class="ex-cap">Earliest confirmed ZServers advertisement, as recovered and translated by Intel 471 (Feb 2025). Note the house rules: botnets and phishing permitted, spam and fraud forbidden. Every bulletproof host has a moral line. It is just drawn somewhere surprising.</div>
+    </div>
+
+    <p>A year later, in 2011, the operator known as Yalishanda, whom the United States would indict in 2026 as <a href="https://research.therenoproject.org/most-wanted.html">Aleksandr Volosovik</a> of <a href="https://research.therenoproject.org/bphs/medialand.html">Media Land LLC</a>, was running his own version of the same list on Exploit: ordinary sites, doorway pages, adware, warez, pharma, spyware, exploits, Zeus banking trojans, all allowed. "Passive SPAM is allowed." Outgoing email spam, forbidden. By 2025 the newer entrants had dropped even the pretense of house rules. A forum advertisement for the <a href="https://research.therenoproject.org/bphs/bearhost.html">Bearhost</a> brand, recovered by KrebsOnSecurity that February, read: "If you need a server for a botnet, for malware, brute, scan, phishing, fakes and any other tasks, please contact us. We completely ignore all abuses without exception, including SPAMHAUS and other organizations." <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>Then there is the corporate register, where the product is described very differently. <a href="https://research.therenoproject.org/bphs/aeza.html">Aeza Group</a>, a Saint Petersburg company that OFAC would designate in July 2025 for hosting the Meduza, Lumma, and RedLine infostealers, the BianLian ransomware operation, and the BlackSprut darknet drug market, never used the word bulletproof in public. Its own promotional thread on a mainstream hosting forum advertised Ryzen processors, sixty-second activation, anti-DDoS on every plan, and payment by bank card, e-wallet, or crypto, from about five euros a month. The bulletproof property was advertised one level down, by resellers, to the end customers who wanted it. <span class="conf confirmed">Confirmed reporting</span> When a European investigative outlet asked Aeza's chief executive, <a href="https://research.therenoproject.org/most-wanted.html">Arsenii Penzev</a>, how the company handled complaints, his answer was a small masterpiece of the form: "If we receive a complaint from Roskomnadzor, we forward it to the client. That is where our mission ends." (Roskomnadzor is Russia's internet regulator.) <span class="conf credible">Credible reporting</span></p>
+
+    <div class="pullquote">The abuse@ inbox is the most important address in cybercrime, and the product is the promise that <em>nobody is reading it</em>.</div>
+
+    <h2>The rate card</h2>
+
+    <p>The second surprise, after the name, is the price. There is a persistent assumption that criminal infrastructure must be expensive, that indifference is a premium good. It is not. It is a commodity, and it is priced like one.</p>
+
+    <div class="exhibit ratecard">
+      <div class="ex-h">Documented prices, selected providers, as advertised</div>
+      <div class="ex-grid">
+        <span class="k">Aeza Group, 2022 promo</span><span class="v">1 core, 8 GB RAM, 100 Mbps: <b>99 rubles per month</b>, roughly EUR 1.60 at the time.</span>
+        <span class="k">Aeza Group, 2024</span><span class="v">Entry VPS, 2 GB RAM, 1 core, 30 GB NVMe: <b>EUR 4.94 per month</b>. Hourly option from EUR 0.02.</span>
+        <span class="k">Media Land, 2016 to 2019</span><span class="v">Fast-flux panel (a domain pointed at a constantly rotating pool of relay addresses, so the real server never sits at one place long enough to be blocked or seized), one domain: 70 WMZ or <b>$150</b>. Unlimited domains: 500 WMZ or <b>$500</b>, free VPS included. Period not stated in the advertisements.</span>
+        <span class="k">Media Land, 2023</span><span class="v">SOCKS5 proxy pool, 5,000 US and EU addresses, unlimited threads: <b>$200</b>. Several billion IPv6 addresses with port 25 open: <b>$500</b>.</span>
+        <span class="k">Media Land, 2024</span><span class="v">Bandwidth for a large ransomware client: 20 Gbps per 100 servers standard; <b>$4,000 per additional 10 Gbps</b> (from leaked BlackBasta chats).</span>
+      </div>
+      <div class="ex-cap">Sources: Aeza promotional thread on LowEndTalk (2024) and archived 2022 offer, via VSquare and investigace.cz; Media Land figures from the July 2026 US indictment, forum advertisements on Dark Money, Exploit and Fog.ug, and the 2024 BlackBasta chat leak. Currency and period as stated in the originals; where a period was not stated, none is implied here.</div>
+    </div>
+
+    <p>Five euros a month buys a server that will not be turned off. The fast-flux service that made a ransomware gang's leak site untraceable to a fixed origin, cycling its addresses every few minutes, ran a few hundred dollars. At the top end, a large crew was quoted four thousand dollars by Media Land for each extra ten gigabits of pipe. That is real money for a hosting bill, and pocket change against the ransoms that pipe was moving. <span class="conf confirmed">Confirmed reporting</span> The economics of the metal layer are the economics of a utility: low unit prices, high volumes, and a customer base that cannot switch off the service and stay in business. Which is the next point.</p>
+
+    <figure class="photo-fig">
+      <div class="tone warm">
+        <img src="images/the-metal-1-cables.jpg" alt="A dense tangle of network cabling inside a wiring closet">
+        <span class="photo-tag">The plant &middot; nobody is reading the abuse inbox</span>
+      </div>
+    </figure>
+
+    <h2>The substrate</h2>
+
+    <p>Pull the hosting out from under a ransomware operation and see what is left. The command-and-control servers that receive check-ins from infected networks are gone. The affiliate panel where the crew's contractors build their payloads and track their victims is gone. The negotiation portal where the victim is invited to chat is gone. The leak site, the countdown timer, the staged data release that makes the extortion work: gone. The stealer-log market the initial access came from, the forum the affiliate was recruited on, the loader botnet that delivered the payload, the mixer the ransom will go through, all of it runs on rented servers, and the servers have to be somewhere a takedown request will not reach. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>Our Observatory tracks the ecosystem as a dependency map. Of everything on it, bulletproof hosting is the one node that every other node with a persistent online presence touches. A crypter or a negotiator is a service a crew buys when it needs one. Hosting is not a purchase of that kind. It is the floor everything else stands on. The <a href="https://research.therenoproject.org/map">Bulletproof Hosting node</a> is rated critical and hard to replace for that reason, and the rating is if anything conservative. <span class="conf inference">Analyst inference</span></p>
+
+    <figure>
+      <div class="fig-frame">
+        <div class="fig-title">Fig. 1 &middot; What sits on the metal &middot; structural excerpt from the Observatory dependency map</div>
+        <svg viewBox="0 0 920 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: a wide bar labelled bulletproof hosting at the bottom; nine boxes stacked above it, each connected downward: ransomware C2, affiliate panels, leak sites and negotiation portals, loader and botnet C2, initial access broker markets, underground forums, stealer-log markets, exfiltration staging, mixers. Upstream transit and IP registries sit below the bar." style="width:100%;height:auto;font-family:'IBM Plex Mono',monospace;">
+          <defs>
+            <marker id="arrDown" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,0 L5,10 z" fill="#b3a892"/></marker>
+          </defs>
+          <!-- the nodes -->
+          <g font-size="10.5" fill="#f0e7d8">
+            <rect x="20" y="30" width="180" height="42" rx="8" fill="#241f18" stroke="rgba(255,71,87,0.7)"/><text x="110" y="49" text-anchor="middle">Ransomware C2</text><text x="110" y="63" text-anchor="middle" fill="#79705f" font-size="8.5">key management, payloads</text>
+            <rect x="220" y="30" width="180" height="42" rx="8" fill="#241f18" stroke="rgba(255,71,87,0.7)"/><text x="310" y="49" text-anchor="middle">Affiliate panels</text><text x="310" y="63" text-anchor="middle" fill="#79705f" font-size="8.5">builds, victim tracking</text>
+            <rect x="420" y="30" width="180" height="42" rx="8" fill="#241f18" stroke="rgba(255,71,87,0.7)"/><text x="510" y="49" text-anchor="middle">Leak sites, portals</text><text x="510" y="63" text-anchor="middle" fill="#79705f" font-size="8.5">the extortion itself</text>
+            <rect x="620" y="30" width="180" height="42" rx="8" fill="#241f18" stroke="rgba(255,71,87,0.7)"/><text x="710" y="49" text-anchor="middle">Loader, botnet C2</text><text x="710" y="63" text-anchor="middle" fill="#79705f" font-size="8.5">delivery pipeline</text>
+
+            <rect x="20" y="110" width="180" height="42" rx="8" fill="#1c1813" stroke="rgba(255,180,84,0.6)"/><text x="110" y="129" text-anchor="middle">IAB markets</text><text x="110" y="143" text-anchor="middle" fill="#79705f" font-size="8.5">access listings, escrow</text>
+            <rect x="220" y="110" width="180" height="42" rx="8" fill="#1c1813" stroke="rgba(255,180,84,0.6)"/><text x="310" y="129" text-anchor="middle">Underground forums</text><text x="310" y="143" text-anchor="middle" fill="#79705f" font-size="8.5">recruitment, reputation</text>
+            <rect x="420" y="110" width="180" height="42" rx="8" fill="#1c1813" stroke="rgba(255,180,84,0.6)"/><text x="510" y="129" text-anchor="middle">Stealer-log markets</text><text x="510" y="143" text-anchor="middle" fill="#79705f" font-size="8.5">the credential supply</text>
+            <rect x="620" y="110" width="180" height="42" rx="8" fill="#1c1813" stroke="rgba(255,180,84,0.6)"/><text x="710" y="129" text-anchor="middle">Staging and mixers</text><text x="710" y="143" text-anchor="middle" fill="#79705f" font-size="8.5">exfil storage, laundering</text>
+          </g>
+          <!-- drops -->
+          <g stroke="#b3a892" stroke-width="1.2" opacity="0.7" marker-end="url(#arrDown)">
+            <line x1="110" y1="72" x2="110" y2="104"/><line x1="310" y1="72" x2="310" y2="104"/><line x1="510" y1="72" x2="510" y2="104"/><line x1="710" y1="72" x2="710" y2="104"/>
+            <line x1="110" y1="152" x2="110" y2="196"/><line x1="310" y1="152" x2="310" y2="196"/><line x1="510" y1="152" x2="510" y2="196"/><line x1="710" y1="152" x2="710" y2="196"/>
+          </g>
+          <!-- the metal -->
+          <rect x="20" y="204" width="780" height="54" rx="10" fill="#1c1813" stroke="#5fd3c7" stroke-width="1.6"/>
+          <text x="410" y="227" text-anchor="middle" fill="#f0e7d8" font-size="13" letter-spacing="2">BULLETPROOF HOSTING</text>
+          <text x="410" y="245" text-anchor="middle" fill="#5fd3c7" font-size="9" letter-spacing="1.5">THE METAL &middot; NODE 03 &middot; CRITICAL &middot; HARD TO REPLACE</text>
+          <!-- beneath -->
+          <g stroke="#5fd3c7" stroke-width="1.2" opacity="0.7" marker-end="url(#arrDown)">
+            <line x1="230" y1="258" x2="230" y2="292"/><line x1="590" y1="258" x2="590" y2="292"/>
+          </g>
+          <g font-size="10" fill="#f0e7d8">
+            <rect x="120" y="300" width="220" height="40" rx="8" fill="#15120e" stroke="rgba(95,211,199,0.5)" stroke-dasharray="4 3"/><text x="230" y="318" text-anchor="middle">Upstream transit carriers</text><text x="230" y="332" text-anchor="middle" fill="#5fd3c7" font-size="8.5">the McColo lever</text>
+            <rect x="480" y="300" width="220" height="40" rx="8" fill="#15120e" stroke="rgba(95,211,199,0.5)" stroke-dasharray="4 3"/><text x="590" y="318" text-anchor="middle">IP registries (RIPE, ARIN)</text><text x="590" y="332" text-anchor="middle" fill="#5fd3c7" font-size="8.5">address space, shell chains</text>
+          </g>
+          <!-- right label -->
+          <text x="860" y="140" text-anchor="middle" fill="#79705f" font-size="9" transform="rotate(90 860 140)">RENTS FROM</text>
+          <text x="860" y="300" text-anchor="middle" fill="#5fd3c7" font-size="9" transform="rotate(90 860 300)">RENTS FROM</text>
+        </svg>
+        <figcaption>Structural excerpt, relationships as of Oct 2026. Every layer above the bar depends on the bar; the bar depends on two things beneath it that are not criminal at all. <a href="https://research.therenoproject.org/map" style="color:#b3a892;">Explore the full map &rarr;</a></figcaption>
+      </div>
+    </figure>
+
+    <p>The diagram carries the argument the rest of this series will make. Everything criminal is above the bar. Below the bar are two things that are perfectly legal and mostly Western: the transit carriers that connect a hosting network to the rest of the internet, and the regional registries that hand out the address space it announces. A bulletproof host is bulletproof toward its customers' victims. Toward its own suppliers it is a customer, and a customer can be cut off. That was the McColo lesson, and it is why, at the end of this dispatch, the question turns to where the metal is physically kept and who it answers to.</p>
+
+    <h2>Where the metal actually is</h2>
+
+    <p>The reflex is to picture a Russian bulletproof host as a basement in Saint Petersburg. Some of it is. Media Land LLC's owned data center, Data Center Kirishi LLC, sits in a town of that name in Leningrad Oblast and was sanctioned under its own name in November 2025. <span class="conf confirmed">Confirmed reporting</span> But the surprising finding of the past two years of enforcement is how much of the metal was never in Russia at all.</p>
+
+    <figure class="photo-fig">
+      <div class="tone">
+        <img src="images/the-metal-1-landing.jpg" alt="A submarine cable landing station on the German Baltic coast, a plain building behind a fence">
+        <span class="photo-tag">Cable landing station, Baltic coast &middot; the pipe the host rents</span>
+      </div>
+    </figure>
+
+    <p>When Dutch police moved against ZServers in February 2025, two days after the American, British, and Australian sanctions, they seized 127 servers in a single Amsterdam facility. The company had marketed itself from Barnaul, in Siberia, for fifteen years; its Western customers were being served from the Netherlands through a British shell partnership that existed, in the words of the UK designation, "to support and obfuscate" the Russian parent. Aeza's European footprint ran through a German upstream, aurologic, with resale of Hetzner capacity on top, and its corporate chain reached through a UK company, then a second UK company, then Serbian and Uzbek shells once the first ones were designated. Media Land, per the July 2026 US indictment, operated infrastructure in Finland, the Netherlands, and the United States alongside the Russian core; one of its principals had told a ransomware customer in 2024 that the Russian servers were "all our own: our own data center, our own hardware," which turned out to describe the part of the estate that Western process could not reach, not the whole of it. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>The mechanism is the same in each case and it is the thing to understand about the modern metal layer. The bulletproof host does not connect its criminal customers directly to the internet. It rents capacity, or address space, or transit, from a legitimate provider in a legitimate jurisdiction, and it sells that capacity onward to people the legitimate provider would never knowingly serve. The criminal rents from the bulletproof host, and the bulletproof host rents from a legitimate carrier that never sees the criminal's name. Reseller chains, prefix swaps, and freshly registered shell companies each add one more layer of paper between the abuse complaint and the person who could act on it. Recent tracking research describes the sector moving away from big monolithic bulletproof networks and toward exactly this: infrastructure distributed across resellers and mainstream providers, harder to see because it no longer looks like a bulletproof host at all. <span class="conf credible">Credible reporting</span></p>
+
+    <p>So the abuse@ inbox is decorative, but there is a second inbox, at the upstream carrier, that is not. That inbox is where the McColo lever lives, and the record of the past twenty months is largely a record of governments trying to reach it with sanctions instead of a phone call.</p>
+
+    <h2>The scoreboard so far</h2>
+
+    <p>Four providers have now been designated by Western governments in a period of about eighteen months. Part 2 of this series is about what happened next in each case, so here it is only a scoreboard.</p>
+
+    <figure>
+      <div class="fig-frame">
+        <div class="fig-title">Fig. 2 &middot; Designated bulletproof hosts, action taken, status of the network afterward</div>
+        <div class="score">
+          <div class="s"><div class="sn"><a href="https://research.therenoproject.org/bphs/zservers.html">ZServers</a></div><div class="sd">US, UK, AU sanctions 11 Feb 2025. Dutch police seize 127 servers in Amsterdam within 48 hours.</div><div class="sv">ASN still registered, Mar 2025</div></div>
+          <div class="s"><div class="sn"><a href="https://research.therenoproject.org/bphs/stark.html">Stark Industries</a></div><div class="sd">EU sanctions 20 May 2025. Main ASN transferred to a new company four days earlier. Rebranded THE.Hosting. Dutch raid seizes 800+ servers, two arrests, 18 May 2026.</div><div class="sv">New ASN still routing, Jun 2026</div></div>
+          <div class="s"><div class="sn"><a href="https://research.therenoproject.org/bphs/aeza.html">Aeza Group</a></div><div class="sd">OFAC 1 Jul 2025. Address space starts moving to a new UK company, Hypercore, on 20 Jul. Hypercore and Serbian and Uzbek shells designated 19 Nov 2025.</div><div class="sv">Successor infrastructure active</div></div>
+          <div class="s"><div class="sn"><a href="https://research.therenoproject.org/bphs/medialand.html">Media Land</a></div><div class="sd">US, UK, AU sanctions 19 Nov 2025. EU sanctions 13 Jul 2026. US indictment unsealed 14 Jul 2026, $10M reward.</div><div class="sv">All prefixes still announced, Jul 2026</div></div>
+        </div>
+        <figcaption>Sources: OFAC press releases of 11 Feb, 1 Jul and 19 Nov 2025; Council of the EU, 20 May 2025 and 13 Jul 2026; US DOJ, 14 Jul 2026; Dutch FIOD via KrebsOnSecurity, May 2026; Silent Push, 24 Jul 2025; RIPE routing data as compiled in the Observatory's provider profiles. Status dates are the last point at which we could confirm the network state, not a claim about today.</figcaption>
+      </div>
+    </figure>
+
+    <p>The status lines tell the story. Four designations, one indictment, two physical raids, more than nine hundred servers carried out of Dutch buildings, and not one of the four networks is confirmed offline. <a href="https://research.therenoproject.org/bphs/stark.html">Stark Industries</a> is the purest specimen: its operators moved the main autonomous system to a freshly created company four days before the EU announcement, which requires either clairvoyance or a copy of the list, and reappeared within weeks under a new Dutch entity as THE.Hosting, a name that manages to be both a rebrand and a shrug. <span class="conf credible">Credible reporting</span> Aeza's founders were arrested, but in Russia, and not for any of this: the charges concerned the BlackSprut drug market, a narcotics case, and the company's hosting business carried on under new directors whom Treasury then had to designate separately in November. Media Land now holds what may be the most complete enforcement stack ever assembled against a hosting company, four sanctions regimes, a federal indictment, and a ten-million-dollar bounty, and continues to announce every one of its address blocks. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p>None of that is surprising once you have the diagram. Sanctions reach the money; they do not reach the routing table. The metal stays up until the upstream carrier acts, and the carriers, so far, have mostly been asked politely. Part 2 is about the exceptions, and about why the Dutch keep being the ones who show up with a van.</p>
+
+    <h2>Why the roof needs the metal</h2>
+
+    <p>Here is the part that belongs to this publication and not to the vendor reports. Look again at where the four providers were registered rather than where their servers sat.</p>
+
+    <figure class="photo-fig">
+      <div class="tone warm">
+        <img src="images/the-metal-1-petersburg.jpg" alt="A brick industrial building in Saint Petersburg with tall arched windows">
+        <span class="photo-tag">Saint Petersburg, industrial zone &middot; two of the four are registered here</span>
+      </div>
+    </figure>
+
+    <p>Aeza Group LLC is a Saint Petersburg company with a Russian tax number, three founding shareholders of record, and a registered office. Media Land LLC was registered in Saint Petersburg in October 2015, and its owner, per the US indictment, used his real name in a company filing while running the Yalishanda brand on the forums for a decade. ZServers operated from Barnaul for fifteen years under an administrator whose identity researchers reconstructed from Russian courier and social-media databases. These were not shadows. They were registered legal entities with named directors, filing with the Federal Tax Service, holding autonomous system numbers, employing staff, and in Media Land's case owning an immovable data center in a town whose name appears on the sanctions list. <span class="conf confirmed">Confirmed reporting</span></p>
+
+    <p><a href="the-roof-has-windows.html">The Roof Has Windows</a> established the legal position. Any Russian network holding an autonomous system number falls inside the class that the state's surveillance order of 2026 addresses directly, and inside a regime that has obligated Russian networks to give the security services technical access since 1995. A bulletproof host operating from Russia is not hiding from the Russian state. It is wired into it by law, on networks the FSB queries rather than requests. When such a company runs for four years, or ten, or fifteen, hosting infrastructure aimed at Western victims, and the only domestic legal trouble it ever encounters is a narcotics charge, the explanation available to the tolerance theory is exhausted. The state did not fail to notice a registered company with a tax number. <span class="conf inference">Analyst inference</span></p>
+
+    <p>Two details from the record put a finer point on it. When a participant on a mainstream hosting forum complained in 2024 that an Aeza reseller was running abusive servers on Aeza hardware, he reported that Saint Petersburg police told him, in effect, that "in Russia it is not forbidden to keep such hosting." <span class="conf credible">Credible reporting</span> And when the United Kingdom sanctioned Aeza, its foreign office stated that the company had provided bulletproof hosting to the Social Design Agency, the Kremlin-directed operator of the Doppelganger disinformation campaign, an entity "tasked and funded directly by the Russian State." <span class="conf confirmed">Confirmed reporting</span> Taken together: the hosting company that Treasury designated for serving ransomware and infostealers was also, per an allied government, a supplier to a state information operation. The roof was not merely over this provider. The roof was a customer.</p>
+
+    <div class="pullquote">A bulletproof host inside Russia is where the roof stops being a metaphor and <em>acquires a street address</em>.</div>
+
+    <p>The counter-case is Stark Industries, and it is instructive precisely because it is different. Stark's operators were Moldovan, its companies were British and Dutch and Moldovan, and its metal sat in Dronten and Almere and Enschede. The EU listed it for enabling Russian state-aligned operations, and it behaved exactly like the Russian providers under sanctions: preempt, rebrand, carry on. But when Dutch investigators finally walked into the buildings in May 2026, they walked out with eight hundred servers and two men in custody. That has never happened to Aeza, Media Land, or ZServers inside Russia, and on the present evidence it never will. The difference is not the customers or the conduct. It is which roof the metal sat under. <span class="conf inference">Analyst inference</span></p>
+
+    <figure class="photo-fig">
+      <div class="tone">
+        <img src="images/the-metal-1-kirishi.jpg" alt="A quiet street in the town of Kirishi, Leningrad Oblast, with apartment blocks and overhead lines">
+        <span class="photo-tag">Kirishi, Leningrad Oblast &middot; a sanctioned data center company is named after this town</span>
+      </div>
+    </figure>
+
+    <p>That is why the metal belongs in a publication about the krysha. The money can be laundered anywhere and the crews can be anywhere with a laptop. The metal is the one dependency that has to be somewhere, on a rack, with a power bill and a landlord and a legal jurisdiction, and the crews that matter most have chosen to keep the core of it inside the one jurisdiction that will not act. Every other layer of the ecosystem is protected by the roof indirectly. The metal is protected by it directly, physically, at a fixed address. Which also means the metal is where the roof's protection can be measured: count the servers seized in Russia against the servers seized in the Netherlands, and the number on the Russian side is the policy.</p>
+
+    <p>The money, the metal, the krysha. Part 1 has argued that the middle term is a commodity, that it underpins everything, and that its Russian core survives on protection rather than on cleverness. The rest of this series takes that argument to the individual providers, one at a time, and looks at what happened when each of them was finally named.</p>
+
+    <div class="next">
+      <div class="nh">Next in The Metal</div>
+      <p>Part 2: why sanctions keep missing. Four designated hosts, four rebrands, and the one lever, at the upstream carrier, that has been pulled only once.</p>
+    </div>
+
+    <div class="method">
+      <h3>Sourcing &amp; confidence</h3>
+      <p>This dispatch draws on US Treasury, Council of the European Union, and US Department of Justice designation and charging documents; the UK Foreign Office designation statements; Dutch FIOD statements as reported; and threat-intelligence reporting from Intel 471, Silent Push, Recorded Future, GreyNoise, Censys, Chainalysis and OWN Security, cross-checked against the Observatory's own provider profiles and the EDP bulletproof-hosting module. Forum advertisements are quoted as translated and reproduced by the cited researchers. Network status claims are dated to the last point we could confirm them and are not claims about the present day. Prices are as advertised, in the currency and period the original stated.</p>
+      <p class="key"><b>Confirmed</b> &middot; multiple independent sources, including official designation, register, or indictment language.<br><b>Credible</b> &middot; single strong source or consistent reporting, not yet officially confirmed.<br><b>Analyst inference</b> &middot; End Krysha's own assessment, drawn from the evidence above.</p>
+      <ul class="srclist">
+        <li>McColo: <a href="https://www.theregister.com/2008/11/12/mccolo_goes_silent/">The Register, 12 Nov 2008</a>; <a href="https://en.wikipedia.org/wiki/McColo">summary of the spam-volume reports</a>.</li>
+        <li>Terminology: <a href="https://www.own.security/en/ressources/blog/50-shades-of-bulletproof-hosting-bph-landscape-on-russian-language-cybercrime-forums">OWN Security, 50 Shades of Bulletproof Hosting</a> (forum tiers); <a href="https://vc.ru/rejting_04_2026/2650629-17-abuzoustoichivyh-hostingov-dlya-klientov-iz-rossii-obnovlennyi-reiting-2025-goda-top-na-aprel-2026">vc.ru ranking of 17 abuse-resistant hosts, Apr 2026</a>; <a href="https://censys.com/blog/hiding-in-plain-sight-tracking-bulletproof-hosting-and-abused-rdp-infrastructure/">Censys, Hiding in Plain Sight, 3 Feb 2026</a> (reseller and distributed model, THE.Hosting).</li>
+        <li>ZServers: <a href="https://home.treasury.gov/news/press-releases/sb0018">OFAC, 11 Feb 2025</a>; 2010 advertisement and operator identification via Intel 471 (Feb 2025); Dutch seizure of 127 servers as reported by Dutch National Police, Feb 2025.</li>
+        <li>Aeza: <a href="https://home.treasury.gov/news/press-releases/sb0185">OFAC, 1 Jul 2025</a>; <a href="https://home.treasury.gov/news/press-releases/sb0319">OFAC, UK, Australia joint action, 19 Nov 2025</a> (Hypercore, Serbian and Uzbek entities); <a href="https://www.silentpush.com/news/iofa-detects-aeza-group-infrastructure/">Silent Push, 24 Jul 2025</a> (AS210644 to AS211522 migration from 20 Jul); Penzev interview and reseller reporting via VSquare and investigace.cz (2024); UK FCDO designation statement on the Social Design Agency relationship; LowEndTalk promotional thread (2024) for prices and the police remark.</li>
+        <li>Media Land: <a href="https://home.treasury.gov/news/press-releases/sb0319">OFAC, 19 Nov 2025</a>; <a href="https://www.consilium.europa.eu/en/press/press-releases/2026/07/13/russian-cyber-attacks-and-destabilising-activities-council-sanctions-nine-individuals-and-four-entities/">Council of the EU, 13 Jul 2026</a>; <a href="https://www.justice.gov/opa/pr/three-russian-nationals-and-two-companies-indicted-international-cybercrimes-resulting-more">US DOJ, 14 Jul 2026</a> (42 victims, 21 states, $62M, fast-flux and proxy services, $10M reward); 2011 advertisement via <a href="https://krebsonsecurity.com/2019/07/meet-the-worlds-biggest-bulletproof-hoster/">KrebsOnSecurity, Jul 2019</a>; BlackBasta chat leak (2024) for bandwidth pricing.</li>
+        <li>Stark Industries: <a href="https://www.consilium.europa.eu/en/press/press-releases/2025/05/20/russian-hybrid-threats-eu-lists-further-21-individuals-and-6-entities-and-introduces-sectoral-measures-in-response-to-destabilising-activities-against-the-eu-its-member-states-and-international-partners/">Council of the EU, 20 May 2025</a>; <a href="https://www.recordedfuture.com/research/one-step-ahead-stark-industries-solutions-preempts-eu-sanctions">Recorded Future, One Step Ahead</a> (ASN transfer of 16 May); <a href="https://krebsonsecurity.com/2026/05/netherlands-seizes-800-servers-arrests-2-for-aiding-cyberattacks/">KrebsOnSecurity, May 2026</a> (FIOD raids of 18 May, 800+ servers, two arrests); RIPE NCC RIPEstat routing state as compiled in the Observatory profile, 6 Jun 2026.</li>
+        <li>Bearhost advertisement: <a href="https://krebsonsecurity.com/2025/02/notorious-malware-spam-host-prospero-moves-to-kaspersky-lab/">KrebsOnSecurity, 28 Feb 2025</a>; ASN attribution via <a href="https://www.intrinsec.com/en/prospero-proton66-tracing-uncovering-the-links-between-bulletproof-networks/">Intrinsec, Nov 2024</a>.</li>
+        <li>Photography: racks in a decommissioned bunker, Oberreichenbach, by COMback (CC BY-SA 4.0); wiring closet, public domain; C-Lion cable landing station, Rostock, by Dirk1981 (CC BY-SA 4.0); Arsenal plant, Saint Petersburg, by GAlexandrova (CC BY-SA 4.0); Kirishi street, by Ekaterina Borisova (CC BY-SA 4.0). All via Wikimedia Commons, converted to monochrome and tinted; the treated versions are released under the same licenses. None of the buildings shown is alleged to house any provider named in this article.</li>
+      </ul>
+    </div>
+  </article>
+
+  <div class="a-foot">
+    <div class="tags"><span>Bulletproof Hosting</span><span>The Metal</span><span><a href="https://research.therenoproject.org/bphs/aeza.html">Aeza</a></span><span><a href="https://research.therenoproject.org/bphs/medialand.html">Media Land</a></span><span><a href="https://research.therenoproject.org/bphs/zservers.html">ZServers</a></span><span><a href="https://research.therenoproject.org/bphs/stark.html">Stark Industries</a></span><span>Upstream Transit</span><span>Infrastructure Layer</span></div>
+  </div>
+
+  <div class="related">
+    <div class="rel-h">More Dispatches</div>
+    <div class="rel-grid">
+      <a class="rel" href="the-roof-has-windows.html"><div class="rc">Protection Layer</div><h4>The Roof Has Windows</h4></a>
+      <a class="rel" href="operation-endgame.html"><div class="rc">Enforcement Strategy</div><h4>Operation Endgame: the layer it cannot reach</h4></a>
+      <a class="rel" href="the-long-cash-out.html"><div class="rc">Financial Layer</div><h4>The Long Cash-Out: how a ransom becomes rubles</h4></a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-tagline">The <b>biggest little</b> threat intel project in the world.</p>
+      <p class="footer-meta">End Krysha &middot; A publication of the Ransomware Ecosystem Network Observatory &middot; Beta</p>
+    </div>
+  </footer>
+
+  <script>
+    const prog = document.getElementById('prog');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+      prog.style.width = pct + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
