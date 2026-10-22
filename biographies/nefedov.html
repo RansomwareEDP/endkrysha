@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Walk-Out | Oleg Nefedov, "Tramp" | Biographies | End Krysha</title>
+<meta name="description" content="Armenia arrested the head of Black Basta on a US warrant, held him for seventy-two hours, and watched him walk out of the courtroom. Twenty days later his companies started changing hands.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600;9..144,900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#07050d; --ink-2:#0e0a18;
+  --cream:#f2ece1; --cream-dim:#b7ae9f;
+  --uv:#8b5cf6; --uv-bright:#b18cff; --amber:#f0a326;
+  --rule:rgba(177,140,255,.20); --rule-soft:rgba(242,236,225,.10);
+  --measure:41rem;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--cream);font-family:"Fraunces",Georgia,serif;
+  font-optical-sizing:auto;font-size:19px;line-height:1.66;-webkit-font-smoothing:antialiased}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+.topbar{position:sticky;top:0;z-index:50;display:flex;gap:1.5rem;align-items:baseline;
+  padding:.85rem 1.6rem;background:rgba(7,5,13,.9);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:.68rem;
+  letter-spacing:.18em;text-transform:uppercase}
+.topbar a{color:var(--cream-dim);text-decoration:none}
+.topbar a:hover{color:var(--uv-bright)}
+.brand{color:var(--cream);font-weight:600}
+.brand b{color:var(--uv-bright)}
+.topbar .spacer{flex:1}
+
+/* ---- lead: the clock ---- */
+.lead{position:relative;border-bottom:1px solid var(--rule);overflow:hidden;
+  background:radial-gradient(90% 70% at 80% 20%,rgba(240,163,38,.16),transparent 60%),
+             radial-gradient(120% 90% at 10% 90%,rgba(76,29,149,.5),transparent 60%),
+             linear-gradient(178deg,var(--ink-2),var(--ink) 80%)}
+.lead-wrap{max-width:1240px;margin:0 auto;padding:3.4rem 1.6rem 0}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--amber);margin:0 0 1.1rem}
+.kicker span{color:var(--cream-dim)}
+h1.title{font-size:clamp(3.4rem,9vw,7.4rem);line-height:.84;margin:0 0 1.4rem;font-weight:900;
+  letter-spacing:-.04em;background:linear-gradient(168deg,var(--cream) 8%,var(--uv-bright) 96%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;max-width:14ch}
+.dek{font-size:1.24rem;line-height:1.55;max-width:38rem;margin:0 0 1.6rem;font-weight:300}
+.dek b{font-weight:600;color:var(--uv-bright)}
+.byline{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--cream-dim);border-top:1px solid var(--rule);
+  padding-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;max-width:38rem}
+
+/* the clock strip: four moments, typographic, no drawing */
+.clock{margin:3rem 0 0;border-top:1px solid var(--rule);
+  display:grid;grid-template-columns:repeat(4,1fr)}
+.clock > div{padding:1.3rem 1.2rem 1.6rem;border-right:1px solid var(--rule-soft);position:relative}
+.clock > div:last-child{border-right:0}
+.clock .t{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--cream-dim);margin:0 0 .5rem}
+.clock .h{font-family:"IBM Plex Mono",monospace;font-size:clamp(1.6rem,3.2vw,2.6rem);font-weight:600;
+  letter-spacing:-.03em;line-height:1;margin:0 0 .55rem;color:var(--cream)}
+.clock .h.am{color:var(--amber)}
+.clock .h.uv{color:var(--uv-bright)}
+.clock p{font-size:.9rem;line-height:1.5;margin:0;color:var(--cream-dim);font-weight:300}
+.clock p b{color:var(--cream);font-weight:600}
+.lead-photo{position:absolute;right:1.6rem;top:3.2rem;width:min(230px,22vw);
+  box-shadow:0 30px 70px rgba(0,0,0,.75);border-radius:3px;transform:rotate(2.5deg)}
+.lead-photo img{width:100%;display:block;border-radius:3px}
+.lead-photo figcaption{font-family:"IBM Plex Mono",monospace;font-size:.56rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream-dim);background:rgba(7,5,13,.85);padding:.45rem .6rem;
+  border-left:2px solid var(--amber);margin-top:-.2rem}
+
+main{max-width:var(--measure);margin:0 auto;padding:0 1.6rem 5rem}
+section{padding-top:3.6rem}
+h2{font-size:2.05rem;line-height:1.08;font-weight:900;letter-spacing:-.02em;margin:0 0 .35rem}
+h2 .num{display:block;font-family:"IBM Plex Mono",monospace;font-size:.66rem;font-weight:500;
+  letter-spacing:.3em;color:var(--uv-bright);margin-bottom:.7rem;text-transform:uppercase}
+h3{font-size:1.16rem;font-weight:600;margin:2.3rem 0 .5rem;color:var(--amber)}
+p{margin:0 0 1.15rem}
+a{color:var(--uv-bright);text-decoration:none;border-bottom:1px solid rgba(177,140,255,.32)}
+a:hover{border-bottom-color:var(--uv-bright)}
+.sub{font-family:"IBM Plex Mono",monospace;font-size:.74rem;color:var(--cream-dim);
+  margin:0 0 1.9rem;line-height:1.6}
+
+.pill{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.58rem;
+  letter-spacing:.15em;text-transform:uppercase;padding:.2em .62em;border-radius:2px;
+  vertical-align:.14em;white-space:nowrap;font-weight:500}
+.pill.c{background:rgba(139,92,246,.2);color:#cbb4ff;border:1px solid rgba(139,92,246,.5)}
+.pill.r{background:rgba(240,163,38,.14);color:var(--amber);border:1px solid rgba(240,163,38,.42)}
+.pill.i{background:transparent;color:var(--cream-dim);border:1px solid var(--rule-soft)}
+.mk{display:inline}
+.mk .pill{margin-left:.4rem}
+.legend{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1.1rem}
+
+.slab{margin:2.1rem 0;padding:1.5rem 1.6rem 1.35rem;
+  background:linear-gradient(158deg,rgba(76,29,149,.3),rgba(14,10,24,.55));
+  border-left:2px solid var(--uv);border-radius:0 4px 4px 0}
+.slab.amber{background:linear-gradient(158deg,rgba(138,95,24,.26),rgba(14,10,24,.55));
+  border-left-color:var(--amber)}
+.slab q{display:block;font-size:1.3rem;line-height:1.42;font-weight:300;quotes:none;letter-spacing:-.012em}
+.slab q:before{content:'\201C';color:var(--uv-bright)}
+.slab q:after{content:'\201D';color:var(--uv-bright)}
+.slab q + q{margin-top:.8rem}
+.slab .attr{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--cream-dim);margin:.9rem 0 0;line-height:1.6}
+.slab .attr b{color:var(--amber);font-weight:500}
+
+figure{margin:2.4rem 0;padding:0}
+figure img{width:100%;height:auto;display:block;border-radius:4px}
+figcaption{font-family:"IBM Plex Mono",monospace;font-size:.68rem;line-height:1.65;
+  color:var(--cream-dim);margin-top:.75rem;padding-left:.9rem;border-left:1px solid var(--rule)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start}
+.pair img{border-radius:3px}
+
+/* ledger: the registry timeline */
+.ledger{margin:2rem 0 1rem;border-top:1px solid var(--uv);font-family:"IBM Plex Mono",monospace}
+.ledger .row{display:grid;grid-template-columns:8.4rem 1fr;gap:1rem;padding:.8rem 0;
+  border-bottom:1px solid var(--rule-soft);font-size:.78rem;line-height:1.55}
+.ledger .row.hot{background:linear-gradient(90deg,rgba(240,163,38,.09),transparent 70%)}
+.ledger .d{color:var(--amber);font-weight:600;white-space:nowrap}
+.ledger .row.cold .d{color:var(--uv-bright)}
+.ledger .row em{font-style:normal;color:var(--cream);font-weight:600}
+.ledger .row span.k{color:var(--cream-dim)}
+.ledger .gapline{padding:.5rem 0 .5rem 9.4rem;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--cream-dim);border-bottom:1px solid var(--rule-soft)}
+
+.tbl{width:100%;border-collapse:collapse;font-family:"IBM Plex Mono",monospace;
+  font-size:.72rem;margin:1.7rem 0}
+.tbl th{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--uv);
+  color:var(--uv-bright);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:.6rem}
+.tbl td{padding:.62rem .7rem;border-bottom:1px solid var(--rule-soft);vertical-align:top;line-height:1.5}
+.tbl .n{color:var(--amber);font-weight:600;white-space:nowrap}
+.tbl.addr{width:min(58rem,92vw);margin-left:50%;transform:translateX(-50%)}
+.tbl.addr .n{white-space:normal;word-break:break-all;font-size:.66rem;max-width:22rem}
+@media(max-width:900px){.tbl.addr{width:100%;margin-left:0;transform:none}}
+
+.gap{margin:2.3rem 0;padding:1.25rem 1.4rem;border:1px dashed rgba(240,163,38,.42);
+  border-radius:4px;background:rgba(240,163,38,.05)}
+.gap h4{margin:0 0 .5rem;font-family:"IBM Plex Mono",monospace;font-size:.64rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600}
+.gap p{margin:0 0 .6rem;font-size:.94rem;line-height:1.6;color:var(--cream-dim)}
+.gap p:last-child{margin-bottom:0}
+
+.orig{margin:2.3rem 0;padding:1.35rem 1.5rem;border-radius:4px;
+  background:linear-gradient(150deg,rgba(76,29,149,.34),rgba(14,10,24,.5));
+  border:1px solid rgba(139,92,246,.42)}
+.orig h4{margin:0 0 .6rem;font-family:"IBM Plex Mono",monospace;font-size:.64rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--uv-bright);font-weight:600}
+.orig p{margin:0 0 .7rem;font-size:.97rem;line-height:1.62}
+.orig p:last-child{margin-bottom:0}
+
+.sourcing{margin:4.2rem auto 0;max-width:var(--measure);padding:1.6rem 1.7rem;
+  border:1px solid var(--rule);border-radius:4px;background:var(--ink-2)}
+.sourcing h4{margin:0 0 .9rem;font-family:"IBM Plex Mono",monospace;font-size:.64rem;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--uv-bright)}
+.sourcing ol{margin:0;padding-left:1.3rem;font-family:"IBM Plex Mono",monospace;
+  font-size:.68rem;line-height:1.85;color:var(--cream-dim)}
+.sourcing li{margin-bottom:.32rem}
+footer{max-width:var(--measure);margin:3rem auto 0;padding:2rem 1.6rem 3rem;
+  border-top:1px solid var(--rule);font-family:"IBM Plex Mono",monospace;font-size:.66rem;
+  letter-spacing:.09em;color:var(--cream-dim);line-height:1.9}
+footer b{color:var(--cream)}
+
+@media(max-width:900px){
+  .clock{grid-template-columns:1fr 1fr}
+  .clock > div:nth-child(2){border-right:0}
+  .lead-photo{position:static;width:200px;margin:0 0 2rem;transform:none}
+  .pair{grid-template-columns:1fr}
+  .ledger .row{grid-template-columns:5.6rem 1fr}
+  .ledger .gapline{padding-left:6.6rem}
+  body{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="brand" href="../index.html#top">END<b>KRYSHA</b></a>
+  <a href="index.html">&larr; Biographies</a>
+  <span class="spacer"></span>
+  <span class="mono" style="color:var(--cream-dim)">FILE 06</span>
+</nav>
+
+<header class="lead">
+  <div class="lead-wrap">
+    <figure class="lead-photo">
+      <img src="data:image/jpeg;base64,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" alt="Oleg Nefedov in a patterned cap, smiling, from the German federal police wanted notice.">
+      <figcaption>Bundeskriminalamt notice, January 2026</figcaption>
+    </figure>
+    <p class="kicker">The Protected <span>/</span> File 06 <span>/</span> Oleg Evgenievich Nefedov</p>
+    <h1 class="title">The Walk-Out</h1>
+    <p class="dek">
+      Armenia arrested the head of <b>Black Basta</b> on an American warrant, held him for the
+      seventy-two hours its law allows, and then watched him walk out of the courtroom during a
+      fifteen-minute recess. <b>Twenty days later</b> his companies began changing hands. Eighteen
+      months later Germany put his face on a wanted poster. His sole-trader registration in Moscow
+      is still active.
+    </p>
+    <p class="byline">
+      <span>By Reno</span><span>22 October 2026</span>
+      <span>Tramp &middot; GG &middot; AA &middot; Washingt0n &middot; S.Jimmi</span>
+    </p>
+
+    <div class="clock">
+      <div>
+        <p class="t">Friday 21 June 2024</p>
+        <p class="h">11:00</p>
+        <p>Detained on Amiryan Street, Yerevan, on an Interpol notice raised at the request of the United States.</p>
+      </div>
+      <div>
+        <p class="t">Saturday 22 June</p>
+        <p class="h">13:30</p>
+        <p>Prosecutor files for pre-extradition detention. The judge sets the hearing for <b>Monday at 10:00</b>.</p>
+      </div>
+      <div>
+        <p class="t">Monday 24 June</p>
+        <p class="h am">72 h</p>
+        <p>The clock runs out an hour into the hearing. Defence asks for a one-day postponement; the judge grants fifteen minutes.</p>
+      </div>
+      <div>
+        <p class="t">Monday 24 June</p>
+        <p class="h uv">Recess</p>
+        <p>He leaves the hall with his lawyers, takes a phone call, gets into a car and drives away. He has not been seen by any Western authority since.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ 01 ============ -->
+<section id="receipt">
+  <h2><span class="num">01 / The receipt</span>The one case where the protection left paperwork</h2>
+  <p class="sub">Every claim on this page carries one of these.</p>
+  <div class="legend">
+    <span class="pill c">Confirmed</span><span class="pill r">Credible</span><span class="pill i">Analyst inference</span>
+  </div>
+
+  <p>
+    The other men in this series are protected in the way weather is protected: nothing happens to
+    them, and the absence is the evidence. Oleg Nefedov is different. His protection produced
+    documents. An Armenian prosecutor's statement, a judicial disciplinary ruling, a dissent arguing
+    the judge should have been removed, and then, in the Russian corporate registry, a sequence of
+    ownership changes that begins twenty days after he drove away from a courthouse.
+    <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <p>
+    He is the founder and head of <a href="https://research.therenoproject.org/groups/blackbasta">Black Basta</a>, the ransomware crew that grew out of <a href="https://research.therenoproject.org/groups/conti">Conti</a>'s third
+    team in April 2022 and took at least $107 million in ransoms in its first twenty months.
+    <span class="mk"><span class="pill r">Credible</span></span>
+    Germany's federal police named him on 15 January 2026, with a photograph, a date of birth, and a
+    charge sheet: founding and leading a criminal organisation, extortion in an especially serious
+    case, more than 100 German companies and about 600 worldwide. 
+    The United States has never published his name. The Treasury has never sanctioned him. Russia has
+    never opened a case. <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <p>
+    The thesis of this profile is in the dates. Everything that matters happens in a window of
+    about fifteen months, from the morning he was arrested in Yerevan to the autumn his last
+    operating company was moved into a foundation whose founders Russian law does not disclose.
+    <span class="mk"><span class="pill i">Analyst inference</span></span>
+  </p>
+</section>
+
+<!-- ============ 02 ============ -->
+<section id="man">
+  <h2><span class="num">02 / The man</span>From a cloud-mining startup in Yoshkar-Ola to the top of Conti</h2>
+
+  <p>
+    Oleg Evgenievich Nefedov was born on 3 June 1990 in Yoshkar-Ola, the capital of Mari El, a
+    republic on the Volga about 850 kilometres east of Moscow. <span class="mk"><span class="pill c">Confirmed</span></span>
+    The leaked databases that Russian journalists use for this kind of work say he probably studied
+    at the local radio-mechanical technical college, because he was drawing income from it at
+    seventeen. <span class="mk"><span class="pill r">Credible</span></span>
+    His tax number carries the Yoshkar-Ola prefix, and so do the tax numbers of nearly everyone who
+    later holds his companies for him. <span class="mk"><span class="pill c">Confirmed</span></span>
+    That detail matters more than it looks. The network he built in Moscow and Kazan is staffed from
+    home. <span class="mk"><span class="pill i">Analyst inference</span></span>
+  </p>
+  <p>
+    In January 2017 he registered BitSoft, a Yoshkar-Ola company that presented itself as a
+    cloud-mining operation for Ethereum, Litecoin and Zcash and declared a few hundred thousand
+    rubles of revenue a year. 
+    It was a real, small business: 5.3 million rubles of revenue and a profit in its first year, five
+    staff, a straight co-founder from the local real-estate advertising trade who has never appeared
+    in any cybercrime reporting. <span class="mk"><span class="pill c">Confirmed</span></span>
+    His own declared income from it was about 60,000 rubles a year in 2017 and 2018, roughly
+    $1,000. 
+    Within four years he owned a Porsche, a BMW X6 and a Mercedes-AMG S63, and in 2021 he picked up
+    a speeding ticket in the S63. <span class="mk"><span class="pill r">Credible</span></span>
+  </p>
+
+  <h3>Three names, one habit</h3>
+  <p>
+    The reconstruction of his criminal career rests on two bodies of leaked material and one lapse
+    in operational hygiene. In August 2020 a user called washingt0n32 registered on a Russian
+    cybercrime forum claiming more than ten years of penetration-testing experience; by May 2021 the
+    same person, posting as p1ja, said his access to the <a href="https://research.therenoproject.org/groups/revil">REvil</a> affiliate programme had been
+    withdrawn. 
+    From November 2021 a manager called Tramp appears in the Conti chats that were leaked the
+    following February, already senior enough that analysts doubted it was his first handle, running
+    what he described to a colleague as "a second panel and a second team", co-negotiating a
+    $500,000 ransom and personally holding the wallet for another. 
+    When Conti dissolved in 2022, Tramp's team became Black Basta, and inside its own chat system he
+    became GG. <span class="mk"><span class="pill r">Credible</span></span>
+  </p>
+  <p>
+    The lapse was a password. The string 123123 recurs in files attributed to him across the REvil,
+    Conti and Egregor eras, and a Windows machine name that appears in his Black Basta chats was
+    matched to twenty-eight <a href="https://research.therenoproject.org/groups/lockbit">LockBit</a> victims in 2022. 
+    A phone number tied to domain registrations at a Yoshkar-Ola address shows up in a caller-ID
+    database as "Mr Tramp". <span class="mk"><span class="pill r">Credible</span></span>
+    When the German notice landed in January 2026 it listed, in one line, the handles that the
+    journalists and the chat leak had spent a year stitching together: tramp, tr, gg, AA, kurva,
+    Washingt0n, S.Jimmi. <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+
+  <figure>
+    <div class="pair">
+      <img src="data:image/jpeg;base64,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" alt="Oleg Nefedov, head and shoulders, white t-shirt, from the German federal police wanted notice.">
+      <img src="data:image/jpeg;base64,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" alt="Oleg Nefedov in a patterned cap, from the same notice.">
+    </div>
+    <figcaption>
+      The two photographs the Bundeskriminalamt published with notice wat 019/2026 on 15 January
+      2026, the only authenticated images of him in the public record. The police composited them
+      over a stock "code" background; the pictures themselves read as personal photographs, not
+      booking images. Interpol's Red Notice 2025-100086 holds two further images that are not
+      publicly viewable. <span class="pill c">Confirmed</span>
+    </figcaption>
+  </figure>
+
+  <h3>How he ran it</h3>
+  <p>
+    Black Basta did not run from a bedroom. From late 2023 it had two offices in Moscow, and GG
+    moved between them with a driver, controlled who had keys, and scolded his administrators about
+    the state of the premises. <span class="mk"><span class="pill r">Credible</span></span>
+    He had final say on every ransom figure, set the affiliate splits, supplied the receiving
+    addresses and distributed salaries and commissions; the German charge sheet describes the same
+    role in its own vocabulary, choosing targets, recruiting, assigning tasks, joining negotiations,
+    managing the proceeds. <span class="mk"><span class="pill c">Confirmed</span></span>
+    In May 2024 he approved the attack on Ascension, the 140-hospital American health system, over
+    the objection of his own negotiator, who told him to go to hell; afterwards he told the team he
+    had known what he was doing. <span class="mk"><span class="pill r">Credible</span></span>
+  </p>
+  <p>
+    His administrators described him as driven by personal gain without regard for the team, and
+    the people who had been with him since Conti complained about his fee arithmetic there too. 
+    By the time the internal chats leaked in February 2025 the crew had been mostly inactive for
+    months, and the analysts who read the archive put the collapse down to one cause: him.
+    <span class="mk"><span class="pill r">Credible</span></span>
+  </p>
+</section>
+
+<!-- ============ 03 ============ -->
+<section id="armenia">
+  <h2><span class="num">03 / Seventy-two hours</span>What a courtroom in Yerevan saw</h2>
+
+  <p>
+    On the morning of Friday 21 June 2024, criminal-intelligence officers from Yerevan's Shengavit
+    division detained a 34-year-old Russian on Amiryan Street in the city centre. The Interpol notice
+    they were acting on was not public. It had been raised at the request of the United States, and
+    the first Armenian report placed the underlying charges in the state of Washington.
+    <span class="mk"><span class="pill r">Credible</span></span>
+    Armenian law gives a prosecutor seventy-two hours to get a detained foreigner in front of a judge
+    and obtain a pre-extradition remand. <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <p>
+    The prosecutor filed on Saturday at 13:30, about twenty-six hours in. Judge Artush Gabrielyan of
+    the Yerevan court of general jurisdiction accepted the case the same day and listed the hearing
+    for Monday at 10:00, forty-four hours after the filing and one hour before the clock ran out. 
+    At the hearing the defence lawyer, Hayk Alumyan, pointed out that the American material had not
+    been translated into Russian and asked for a day. The judge refused the day and granted fifteen
+    minutes, with an order that a translator be brought to the hall and that the detainee not leave
+    it. 
+    Nefedov left it. He walked the corridors of the building with his lawyers, took a phone call,
+    went outside, got into a car and was driven away, in view of the court police and the bailiffs.
+    By the time the judge came down to announce a detention order there was nobody to detain.
+    <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <p>
+    The Prosecutor General's Office confirmed the whole sequence in a public statement in September
+    2024, after the judge had argued before the Supreme Judicial Council that the prosecutors were at
+    fault for not supplying a translation. The Council gave Gabrielyan a strict reprimand on 4 October
+    2024. One member, Karen Tumanyan, filed a dissent saying the conduct warranted ending his
+    judicial career. 
+    The judge's defence was that he had a heavy docket, was not obliged to list the case earlier, and
+    had not believed the escape was planned. <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+
+  <h3>What he said about it afterwards</h3>
+  <p>
+    His chat account went silent on 20 June and came back on 3 July. The first message was that he
+    had returned from a place nobody comes back from. In the private conversation that followed,
+    with the operator of the Qakbot botnet who went by Chuck, he explained how.
+    <span class="mk"><span class="pill r">Credible</span></span>
+    Chuck has a name now. The United States indicted Rustam Rafailevich Gallyamov of Moscow in May
+    2025 as the man who built and ran Qakbot from 2008, and listed "Chuck" and "Cortes" among his
+    aliases; the chat account that received Nefedov's account of Armenia sent almost all of its
+    1,374 messages in a private room with him. <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+
+  <div class="slab amber">
+    <q>Remember when I said I had friends at a really high level? This is the level of our first.</q>
+    <q>I just asked for a pass. A green corridor. Our people picked me up.</q>
+    <q>I've been told that number one knows me, and that without his agreement they wouldn't have done anything.</q>
+    <p class="attr">GG to Chuck, early July 2024, Black Basta internal chat as leaked in February 2025 and rendered by Trellix, Intel 471 and LeMagIT. Chuck asked whether "number one" meant Putin. GG neither confirmed nor denied it. <b>Credible as to what was said. Unverified as to what was true.</b></p>
+  </div>
+
+  <p>
+    He told Chuck that Russian law enforcement could block an Interpol request in the country holding
+    a suspect, that he had been shown his own file "but not all of it", and that he suspected someone
+    had informed on him for the $10 million the State Department had offered for Conti's leadership
+    in 2022. 
+    A week later he reported that his phone had been seized in Armenia and that "they" now had total
+    access to his Apple account. 
+    The relationship he was describing was not new. In a Tox conversation from November 2022 he had
+    written that he had "guys from Lubyanka and the GRU" and had been feeding them for a long time.
+    <span class="mk"><span class="pill r">Credible</span></span>
+  </p>
+  <p>
+    What the record does not contain is any Russian fingerprint on the Armenian side. No diplomat,
+    no consular note, no named official. The Armenian material establishes that he drove away from
+    the court; it does not establish how he crossed the border. One detail from the period is worth
+    the weight of a fact: in June 2024 passport control at Yerevan's airport was still staffed by
+    Russian border guards, a Soviet-era arrangement that Armenia ended a few weeks later.
+    <span class="mk"><span class="pill r">Credible</span></span>
+    A man with a "green corridor" and a Russian border post at the airport did not need anyone to
+    break a law for him. <span class="mk"><span class="pill i">Analyst inference</span></span>
+  </p>
+  <p>
+    Two years on, Armenia is still executing American cyber warrants at the same airport, and when
+    it detained a Russian tourist on one in July 2026, a man his lawyers say was mistaken for a
+    namesake, the Russian foreign ministry intervened publicly within days. For Nefedov in 2024 there was no intervention anyone could see, and none was needed.
+    <span class="mk"><span class="pill r">Credible</span></span>
+  </p>
+</section>
+
+<!-- ============ 04 ============ -->
+<section id="twenty">
+  <h2><span class="num">04 / Twenty days</span>What happened to his companies after the car drove off</h2>
+
+  <p>
+    He came home to Moscow and did not go quiet. He went to the registry. The Russian corporate
+    record for the six months after Yerevan reads as a man methodically taking his name off things,
+    and the first move was made before he had even resumed posting in his own chat.
+    <span class="mk"><span class="pill i">Analyst inference</span></span>
+    The dates below are from the Federal Tax Service's own register of legal entities, as mirrored
+    by Russian corporate-data services. <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+
+  <div class="ledger">
+    <div class="row hot"><span class="d">21 Jun 2024</span><span>Arrested in Yerevan.</span></div>
+    <div class="row hot"><span class="d">26 Jun 2024</span><span>Five days later, two of his long-standing Kazan associates, <em>Ekaterina Shafigullina</em> and <em>Ilya Buyskikh</em>, register a fresh company, <em>AV Bar</em>, at the address of his Kazan hookah lounge. <span class="k">It is never used and is struck off in November.</span></span></div>
+    <div class="row hot"><span class="d">10 Jul 2024</span><span>He is removed as a founder of <em>Avangard Bar</em>, the operating company of that Kazan lounge. His stake goes to Shafigullina and Buyskikh, who now hold 80 and 20 percent.</span></div>
+    <div class="row hot"><span class="d">18 Jul 2024</span><span>He is removed as founder and director of <em>Futura Bar</em>, the company that runs all four HookahPlace Futura lounges in central Moscow. His <em>60 percent</em> passes to his wife, <em>Yulia Vladimirovna Nefedova</em>. A 20-percent partner becomes director. <span class="k">The company's revenue that year: 130 million rubles. The next year: 198 million, about $2.4M.</span></span></div>
+    <div class="row"><span class="d">27 Aug 2024</span><span>He registers a charity in Kazan under his own name, <em>Rodina</em> ("Motherland"), with himself as founder and director. <span class="k">Its published work: school supplies for children, and drones, radios and vehicles delivered to Russian units at the front.</span></span></div>
+    <div class="row"><span class="d">20 Sep 2024</span><span>He registers <em>Sistema Dela</em> in Moscow, a property developer, with himself as founder and general director. <span class="k">Within a year it carries a balance sheet of 410 million rubles, about $5M, and is selling flats in Kazan.</span></span></div>
+    <div class="gapline">Feb 2025: chat leak. Mar 2025: named in the press.</div>
+    <div class="row cold"><span class="d">26 May 2025</span><span>Shafigullina registers a <em>personal fund</em> in Moscow. Its founder is not disclosed. <span class="k">Balance sheet at year end: 1.02 billion rubles, about $12.5M.</span></span></div>
+    <div class="row cold"><span class="d">16 Jul 2025</span><span>Buyskikh registers a second <em>personal fund</em> in Odintsovo, outside Moscow. Founder not disclosed.</span></div>
+    <div class="row cold"><span class="d">Sep to Oct 2025</span><span>Over four weeks, Buyskikh's fund takes 100 percent of <em>Sistema Dela</em>. Nefedov is removed as founder and then as general director; Buyskikh replaces him.</span></div>
+    <div class="row"><span class="d">15 Jan 2026</span><span>Germany publishes the wanted notice.</span></div>
+    <div class="row"><span class="d">Feb and Jul 2026</span><span>Nefedova founds two more restaurant companies with the same Futura partners, one of them registered inside a retail complex outside Moscow that her husband's nominee fund appears to own (section 05).</span></div>
+    <div class="row"><span class="d">22 Oct 2026</span><span>Still in his own name: the sole-trader registration (active), half of a door-and-window firm in his home republic, a courier franchise now being wound up, and the Rodina fund.</span></div>
+  </div>
+
+  <p>
+    The pattern needs no decoration. Within four weeks of a near-extradition, the two businesses
+    with real revenue were moved to his wife and to Shafigullina and Buyskikh, two associates from his home republic. Within
+    fifteen months, the one substantial asset he created afterwards was moved into a vehicle that
+    Russian law designed, in 2022, to let a founder settle property without appearing in any public
+    register. 
+    The charity, which holds nothing, stays in his name. <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+
+  <div class="orig">
+    <h4>theRENOproject finding</h4>
+    <p>
+      Russian independent reporting in January 2026 said the Futura stake had belonged to his wife
+      "since 2022". The register says otherwise: the transfer is dated 18 July 2024, twenty-seven days
+      after the Yerevan arrest, and the Avangard Bar transfer eight days before that. The 2022 date
+      appears to be an error. The correction moves both transfers from "ordinary family
+      restructuring" to "response to a specific event", and that is the finding this section rests on.
+      <span class="pill c">Confirmed</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 05 ============ -->
+<section id="roof">
+  <h2><span class="num">05 / The roof has a balance sheet</span>A wife, two nominees, one home town</h2>
+
+  <p>
+    The "personal fund" is a recent invention in Russian civil law, in force since 2022: a private
+    foundation into which a living founder settles assets, run by a manager of the founder's
+    choosing, with the founder and the beneficiaries left out of the public register.
+    <span class="mk"><span class="pill c">Confirmed</span></span>
+    It was sold to the public as an estate-planning tool for wealthy Russians cut off from Western
+    trusts by sanctions. It is also, exactly, the instrument a man would want if he expected to be
+    named on a wanted poster within the year. <span class="mk"><span class="pill i">Analyst inference</span></span>
+  </p>
+  <p>
+    Two of them appear in his orbit within six weeks of each other in the summer of 2025. Neither
+    discloses a founder. Both are run by people who have been holding things for him for years.
+    <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <p>
+    The first, registered in Moscow in May 2025, is directed by Ekaterina Shafigullina. She was the
+    director of his Kazan restaurant company Polis from 2020 until he took the chair himself for
+    three weeks in 2022 to wind it down; she took over Avangard Bar when he left it in July 2024; she
+    owns the small accounting firm, registered at the Kazan lounge's address in October 2024, that
+    does the books for the whole cluster. 
+    Her own record starts small and local: a toy-retail sole trader in Yoshkar-Ola in 2012 under her
+    maiden name, Davidova; the Tatar surname she carries now arrived with a marriage sometime before
+    2020, to a husband no registry has surfaced. 
+    Her fund reported a balance sheet of 1.02 billion rubles at the end of 2025, roughly $12.5
+    million, the largest figure anywhere in the network. Its accounts show what that is: 786 million
+    rubles of fixed assets and 232 million of receivables, paid in entirely as a founder's property
+    contribution during the fund's first seven months, with no borrowing.
+    <span class="mk"><span class="pill c">Confirmed</span></span>
+    The fund's own website describes a single asset: the Eco Polis retail complex at Gribanovo, on the
+    Ilyinskoye highway outside Moscow, "where shops, restaurants and service companies are already
+    open". The restaurant company Nefedova founded in February 2026 is registered at that exact
+    address. <span class="mk"><span class="pill r">Credible</span></span>
+    Someone settled a shopping centre worth roughly $10 million into a foundation run by his former
+    restaurant manager, and his wife opened a business inside it. The title deed is not public.
+    <span class="mk"><span class="pill i">Analyst inference</span></span>
+  </p>
+  <p>
+    The second, registered in Odintsovo in July 2025, is directed by Ilya Buyskikh, whose tax number
+    comes from Medvedevo, the district next to Yoshkar-Ola, where he sold groceries as a sole trader
+    from 2018 until the end of 2024. 
+    He has been the director of record at Nefedov's Kazan parcel-delivery franchise since 2020, a
+    real CDEK counter whose revenue fell from 8 million rubles in 2023 to 3,000 in 2025 before he
+    was appointed to wind it up; he held the other 20 percent of Avangard Bar, registered the
+    abortive AV Bar five days after the arrest, and in September 2025 bought into a Kazan seafood
+    restaurant alongside a Moscow restaurateur. In March 2026 he registered himself as a real-estate
+    broker. 
+    His fund is the one that absorbed Sistema Dela, the developer, in the autumn of 2025, and it
+    has since founded a Kazan housing project with a 141-million-ruble balance sheet, a second
+    developer, and a bathhouse business in Lapino, the gated stretch of the Rublyovka where Moscow's
+    money lives. 
+    Its registered address is shared with the bathhouse. The gymnastics tournament his charity runs
+    every May is held in the same district, sponsored by Sistema Dela.
+    <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <figure class="wide">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1260 800" font-family="IBM Plex Mono,ui-monospace,monospace" role="img" aria-label="Ownership chart of the Nefedov network">
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#f0a326"/></marker></defs>
+<rect width="1260" height="800" fill="#0e0a18"/>
+<text x="24" y="26" font-size="10" fill="#f0a326" letter-spacing=".3em">WHO HOLDS WHAT · 22 OCT 2026</text>
+<text x="1236" y="26" text-anchor="end" font-size="9.5" fill="#b7ae9f" letter-spacing=".12em">RUSSIAN REGISTRY OF LEGAL ENTITIES · BALANCES AT END 2025</text>
+<text x="170" y="52" text-anchor="middle" font-size="15" font-weight="600" fill="#f2ece1" font-family="Fraunces,Georgia,serif">Oleg Nefedov</text>
+<text x="170" y="70" text-anchor="middle" font-size="10" fill="#b7ae9f" letter-spacing=".14em">THE SUBJECT</text>
+<line x1="70" y1="82" x2="270" y2="82" stroke="rgba(177,140,255,.28)" stroke-width="1"/>
+<text x="478" y="52" text-anchor="middle" font-size="15" font-weight="600" fill="#f2ece1" font-family="Fraunces,Georgia,serif">Yulia Nefedova</text>
+<text x="478" y="70" text-anchor="middle" font-size="10" fill="#b7ae9f" letter-spacing=".14em">WIFE</text>
+<line x1="378" y1="82" x2="578" y2="82" stroke="rgba(177,140,255,.28)" stroke-width="1"/>
+<text x="786" y="52" text-anchor="middle" font-size="15" font-weight="600" fill="#f2ece1" font-family="Fraunces,Georgia,serif">Ekaterina Shafigullina</text>
+<text x="786" y="70" text-anchor="middle" font-size="10" fill="#b7ae9f" letter-spacing=".14em">EX-POLIS DIRECTOR · BOOKKEEPER</text>
+<line x1="686" y1="82" x2="886" y2="82" stroke="rgba(177,140,255,.28)" stroke-width="1"/>
+<text x="1094" y="52" text-anchor="middle" font-size="15" font-weight="600" fill="#f2ece1" font-family="Fraunces,Georgia,serif">Ilya Buyskikh</text>
+<text x="1094" y="70" text-anchor="middle" font-size="10" fill="#b7ae9f" letter-spacing=".14em">NOMINEE DIRECTOR SINCE 2020</text>
+<line x1="994" y1="82" x2="1194" y2="82" stroke="rgba(177,140,255,.28)" stroke-width="1"/>
+<rect x="348.0" y="122.0" width="260" height="76" rx="3" fill="rgba(76,29,149,.22)" stroke="rgba(177,140,255,.6)" stroke-width="1" />
+<text x="358.0" y="139.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">FUTURA BAR</text>
+<text x="358.0" y="154.0" font-size="10.5" fill="#b7ae9f">Moscow · four Futura hookah lounges</text>
+<text x="358.0" y="168.0" font-size="10.5" fill="#b7ae9f">198M rubles revenue 2025</text>
+<text x="358.0" y="182.0" font-size="10.5" fill="#b7ae9f">60% since 18 Jul 2024</text>
+<rect x="348.0" y="231.0" width="260" height="62" rx="3" fill="rgba(76,29,149,.22)" stroke="rgba(177,140,255,.6)" stroke-width="1" />
+<text x="358.0" y="248.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">GASTROUSADBA</text>
+<text x="358.0" y="263.0" font-size="10.5" fill="#b7ae9f">Krasnogorsk · inside Eco Polis</text>
+<text x="358.0" y="277.0" font-size="10.5" fill="#b7ae9f">Feb 2026 · 25%</text>
+<rect x="348.0" y="324.0" width="260" height="48" rx="3" fill="rgba(76,29,149,.22)" stroke="rgba(177,140,255,.6)" stroke-width="1" />
+<text x="358.0" y="341.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">BAR U DOMA</text>
+<text x="358.0" y="356.0" font-size="10.5" fill="#b7ae9f">Moscow · Jul 2026 · 40%</text>
+<line x1="478" y1="82" x2="478" y2="122.0" stroke="#b18cff" stroke-width="1.2"  opacity=".9"/>
+<line x1="478" y1="198.0" x2="478" y2="231.0" stroke="#b18cff" stroke-width="1.2"  opacity=".9"/>
+<line x1="478" y1="293.0" x2="478" y2="324.0" stroke="#b18cff" stroke-width="1.2"  opacity=".9"/>
+<rect x="656.0" y="122.0" width="260" height="76" rx="3" fill="rgba(76,29,149,.22)" stroke="rgba(177,140,255,.6)" stroke-width="1" />
+<text x="666.0" y="139.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">AVANGARD BAR</text>
+<text x="666.0" y="154.0" font-size="10.5" fill="#b7ae9f">Kazan lounge, Yamasheva 100G</text>
+<text x="666.0" y="168.0" font-size="10.5" fill="#b7ae9f">67M rubles revenue 2025</text>
+<text x="666.0" y="182.0" font-size="10.5" fill="#b7ae9f">80% and director · Buyskikh 20%</text>
+<rect x="656.0" y="236.0" width="260" height="76" rx="3" fill="rgba(240,163,38,.06)" stroke="#f0a326" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="666.0" y="253.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">PERSONAL FUND "SISTEMNOE NASLEDIE"</text>
+<text x="666.0" y="268.0" font-size="10.5" fill="#b7ae9f">Moscow · May 2025 · founder hidden</text>
+<text x="666.0" y="282.0" font-size="10.5" fill="#b7ae9f">1.02bn rubles, 786M in fixed assets</text>
+<text x="666.0" y="296.0" font-size="10.5" fill="#b7ae9f">paid in by the founder · director: her</text>
+<rect x="656.0" y="351.0" width="260" height="62" rx="3" fill="none" stroke="rgba(240,163,38,.55)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="666.0" y="368.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">ECO POLIS retail complex</text>
+<text x="666.0" y="383.0" font-size="10.5" fill="#b7ae9f">Gribanovo, Ilyinskoye highway</text>
+<text x="666.0" y="397.0" font-size="10.5" fill="#f0a326">on the fund's site · title not public</text>
+<rect x="656.0" y="447.0" width="260" height="62" rx="3" fill="rgba(76,29,149,.22)" stroke="rgba(177,140,255,.6)" stroke-width="1" />
+<text x="666.0" y="464.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">FINSERVICE</text>
+<text x="666.0" y="479.0" font-size="10.5" fill="#b7ae9f">Kazan · the cluster's accountant</text>
+<text x="666.0" y="493.0" font-size="10.5" fill="#b7ae9f">100% and director · Oct 2024</text>
+<line x1="786" y1="82" x2="786" y2="122.0" stroke="#b18cff" stroke-width="1.2"  opacity=".9"/>
+<line x1="786" y1="198.0" x2="786" y2="236.0" stroke="#b18cff" stroke-width="1.2"  opacity=".9"/>
+<line x1="786" y1="312.0" x2="786" y2="351.0" stroke="#f0a326" stroke-width="1.2" stroke-dasharray="3 4" opacity=".9"/>
+<line x1="786" y1="413.0" x2="786" y2="447.0" stroke="#b18cff" stroke-width="1.2"  opacity=".9"/>
+<path d="M656.0,382.0 C632.0,382.0 632.0,262.0 608.0,262.0" fill="none" stroke="#f0a326" stroke-width="1" stroke-dasharray="3 4" opacity=".95"/>
+<rect x="964.0" y="129.0" width="260" height="62" rx="3" fill="rgba(240,163,38,.06)" stroke="#f0a326" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="974.0" y="146.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">PERSONAL FUND "OBSHCHEE DELO"</text>
+<text x="974.0" y="161.0" font-size="10.5" fill="#b7ae9f">Odintsovo · Jul 2025 · founder hidden</text>
+<text x="974.0" y="175.0" font-size="10.5" fill="#b7ae9f">179M rubles · director: him</text>
+<rect x="964.0" y="227.0" width="260" height="62" rx="3" fill="rgba(76,29,149,.22)" stroke="rgba(177,140,255,.6)" stroke-width="1" />
+<text x="974.0" y="244.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">SISTEMA DELA</text>
+<text x="974.0" y="259.0" font-size="10.5" fill="#b7ae9f">Moscow developer · 410M rubles</text>
+<text x="974.0" y="273.0" font-size="10.5" fill="#b7ae9f">100% fund since Oct 2025 · GD: him</text>
+<rect x="964.0" y="313.0" width="260" height="62" rx="3" fill="rgba(76,29,149,.22)" stroke="rgba(177,140,255,.6)" stroke-width="1" />
+<text x="974.0" y="330.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">SZ ZhK SEVERNY</text>
+<text x="974.0" y="345.0" font-size="10.5" fill="#b7ae9f">Kazan housing · 141M rubles</text>
+<text x="974.0" y="359.0" font-size="10.5" fill="#b7ae9f">100% fund · sales from May 2026</text>
+<rect x="964.0" y="402.0" width="260" height="48" rx="3" fill="rgba(76,29,149,.22)" stroke="rgba(177,140,255,.6)" stroke-width="1" />
+<text x="974.0" y="419.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">SZ "SD"</text>
+<text x="974.0" y="434.0" font-size="10.5" fill="#b7ae9f">Kazan developer · Jan 2026 · 100% fund</text>
+<rect x="964.0" y="475.0" width="260" height="62" rx="3" fill="rgba(76,29,149,.22)" stroke="rgba(177,140,255,.6)" stroke-width="1" />
+<text x="974.0" y="492.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">BANI-LAPINO</text>
+<text x="974.0" y="507.0" font-size="10.5" fill="#b7ae9f">Rublyovka · Jul 2025 · 85% fund</text>
+<text x="974.0" y="521.0" font-size="10.5" fill="#b7ae9f">director: Shafigullina</text>
+<line x1="1094" y1="82" x2="1094" y2="129.0" stroke="#b18cff" stroke-width="1.2"  opacity=".9"/>
+<line x1="1094" y1="191.0" x2="1094" y2="227.0" stroke="#f0a326" stroke-width="1.2"  opacity=".9"/>
+<line x1="1094" y1="289.0" x2="1094" y2="313.0" stroke="#f0a326" stroke-width="1.2"  opacity=".9"/>
+<line x1="1094" y1="375.0" x2="1094" y2="402.0" stroke="#f0a326" stroke-width="1.2"  opacity=".9"/>
+<line x1="1094" y1="450.0" x2="1094" y2="475.0" stroke="#f0a326" stroke-width="1.2"  opacity=".9"/>
+<text x="1232.0" y="333.0" font-size="9" fill="#f0a326" letter-spacing=".12em" text-anchor="middle" transform="rotate(90 1232.0 333.0)">HELD BY THE FUND</text>
+<path d="M964.0,167.0 C930,167.0 930,177.0 916.0,177.0" fill="none" stroke="#b18cff" stroke-width="1" opacity=".95"/>
+<path d="M916.0,478.0 C940.0,478.0 940.0,527.0 964.0,527.0" fill="none" stroke="#b18cff" stroke-width="1" stroke-dasharray="2 4" opacity=".95"/>
+<text x="170" y="124" text-anchor="middle" font-size="9.5" fill="#f0a326" letter-spacing=".14em">MOVED OUT OF HIS NAME</text>
+<rect x="40.0" y="129.0" width="260" height="62" rx="3" fill="none" stroke="rgba(240,163,38,.55)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="50.0" y="146.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">FUTURA BAR</text>
+<text x="50.0" y="161.0" font-size="10.5" fill="#b7ae9f">60%, director · Mar 2022 to 18 Jul 2024</text>
+<text x="50.0" y="175.0" font-size="10.5" fill="#f0a326">to his wife, 27 days after Yerevan</text>
+<rect x="40.0" y="213.0" width="260" height="62" rx="3" fill="none" stroke="rgba(240,163,38,.55)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="50.0" y="230.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">AVANGARD BAR</text>
+<text x="50.0" y="245.0" font-size="10.5" fill="#b7ae9f">founder, 23 Nov 2022 to 10 Jul 2024</text>
+<text x="50.0" y="259.0" font-size="10.5" fill="#f0a326">to Shafigullina and Buyskikh, 19 days</text>
+<rect x="40.0" y="297.0" width="260" height="62" rx="3" fill="none" stroke="rgba(240,163,38,.55)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="50.0" y="314.0" font-size="11.5" font-weight="600" fill="#f2ece1" letter-spacing=".06em">SISTEMA DELA</text>
+<text x="50.0" y="329.0" font-size="10.5" fill="#b7ae9f">100% and GD, Sep 2024 to 9 Oct 2025</text>
+<text x="50.0" y="343.0" font-size="10.5" fill="#f0a326">into Buyskikh's fund</text>
+<line x1="170" y1="82" x2="170" y2="129.0" stroke="#f0a326" stroke-width="1.2" stroke-dasharray="3 4" opacity=".9"/>
+<text x="170" y="404" text-anchor="middle" font-size="9.5" fill="#b7ae9f" letter-spacing=".14em">STILL IN HIS OWN NAME</text>
+<rect x="40.0" y="416.0" width="260" height="48" rx="3" fill="rgba(242,236,225,.03)" stroke="rgba(242,236,225,.22)" stroke-width="1" />
+<text x="50.0" y="433.0" font-size="11.5" font-weight="600" fill="#b7ae9f" letter-spacing=".06em">SOLE TRADER</text>
+<text x="50.0" y="448.0" font-size="10.5" fill="#b7ae9f">Moscow, Presnensky · active</text>
+<rect x="40.0" y="485.0" width="260" height="62" rx="3" fill="rgba(242,236,225,.03)" stroke="rgba(242,236,225,.22)" stroke-width="1" />
+<text x="50.0" y="502.0" font-size="11.5" font-weight="600" fill="#b7ae9f" letter-spacing=".06em">RODINA charity fund</text>
+<text x="50.0" y="517.0" font-size="10.5" fill="#b7ae9f">Kazan · Aug 2024 · founder, director</text>
+<text x="50.0" y="531.0" font-size="10.5" fill="#b7ae9f">drones and radios to the front</text>
+<rect x="40.0" y="567.0" width="260" height="62" rx="3" fill="rgba(242,236,225,.03)" stroke="rgba(242,236,225,.22)" stroke-width="1" />
+<text x="50.0" y="584.0" font-size="11.5" font-weight="600" fill="#b7ae9f" letter-spacing=".06em">LIDER-SDEK</text>
+<text x="50.0" y="599.0" font-size="10.5" fill="#b7ae9f">Kazan parcel point · 100%</text>
+<text x="50.0" y="613.0" font-size="10.5" fill="#b7ae9f">in liquidation · Buyskikh liquidator</text>
+<rect x="40.0" y="648.0" width="260" height="48" rx="3" fill="rgba(242,236,225,.03)" stroke="rgba(242,236,225,.22)" stroke-width="1" />
+<text x="50.0" y="665.0" font-size="11.5" font-weight="600" fill="#b7ae9f" letter-spacing=".06em">MILS</text>
+<text x="50.0" y="680.0" font-size="10.5" fill="#b7ae9f">Medvedevo · doors and windows · 50%</text>
+<line x1="170" y1="464.0" x2="170" y2="485.0" stroke="rgba(242,236,225,.3)" stroke-width="1.2"  opacity=".9"/>
+<line x1="170" y1="547.0" x2="170" y2="567.0" stroke="rgba(242,236,225,.3)" stroke-width="1.2"  opacity=".9"/>
+<line x1="170" y1="629.0" x2="170" y2="648.0" stroke="rgba(242,236,225,.3)" stroke-width="1.2"  opacity=".9"/>
+<text x="40.0" y="722.0" font-size="9.5" fill="#b7ae9f">Yerevan arrest: 21 Jun 2024.</text>
+<path d="M300.0,160.0 C340.0,160.0 310.0,96 350.0,96 L388.0,96 C412.0,96 418.0,96 418.0,120.0" fill="none" stroke="#f0a326" stroke-width="2.2" marker-end="url(#ah)" opacity=".95"/>
+<path d="M300.0,244.0 C340.0,244.0 310.0,102 350.0,102 L696.0,102 C720.0,102 726.0,102 726.0,120.0" fill="none" stroke="#f0a326" stroke-width="2.2" marker-end="url(#ah)" opacity=".95"/>
+<path d="M300.0,328.0 C340.0,328.0 310.0,108 350.0,108 L918.0,108 C942.0,108 942.0,108 942.0,132 L942.0,242.0 C942.0,258.0 942.0,258.0 961.0,258.0" fill="none" stroke="#f0a326" stroke-width="2.2" marker-end="url(#ah)" opacity=".95"/>
+<line x1="24" y1="760" x2="56" y2="760" stroke="#f0a326" stroke-width="2.2" marker-end="url(#ah)"/><text x="64" y="764" font-size="10" fill="#b7ae9f">stake transferred out of Nefedov's name</text>
+<line x1="330" y1="760" x2="362" y2="760" stroke="#b18cff" stroke-width="1.2"/><text x="370" y="764" font-size="10" fill="#b7ae9f">holds or directs today</text>
+<rect x="540" y="752" width="22" height="16" rx="2" fill="rgba(240,163,38,.06)" stroke="#f0a326" stroke-dasharray="5 4"/><text x="570" y="764" font-size="10" fill="#b7ae9f">personal fund: founder and beneficiaries not public</text>
+<text x="1236" y="786" text-anchor="end" font-size="9.5" fill="#b7ae9f" letter-spacing=".12em">theRENOproject analysis · not an official chart</text>
+</svg>
+    <figcaption>
+      Who holds what, as the Russian register of legal entities shows it on 22 October 2026. Amber
+      arrows are the three stakes that left Nefedov's name after Yerevan; dashed amber boxes are the
+      two personal funds, whose founders no public register discloses; grey is what still sits in his
+      own name. Balances are year-end 2025 figures from the companies' filed accounts. theRENOproject
+      analysis, not an official chart. <span class="pill c">Confirmed</span>
+    </figcaption>
+  </figure>
+
+  <p>
+    The wife's own footprint is the quietest of the three and the most telling. Yulia Nefedova's tax
+    number was issued in Yoshkar-Ola; she has been a sole trader letting property since 2016, moved
+    to the Moscow region in 2021, and had no company to her name until 18 July 2024. 
+    In February 2024, four months before Armenia, she filed a trademark through a Moscow patent
+    bureau for a beauty-services brand, giving as her address an apartment in the Headliner towers
+    beside Moscow City. <span class="mk"><span class="pill c">Confirmed</span></span>
+    Russian leak-based reporting says she flew to the United States to give birth there in 2018 and
+    again in 2021, with her mother along on the second trip, which is why the children of a man
+    wanted by the Americans hold American papers. <span class="mk"><span class="pill r">Credible</span></span>
+    Since July 2024 she holds the Futura lounges outright, with 198 million rubles of revenue in
+    2025, and has founded two more venue companies with the same partners this year.
+    <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <p>
+    Nobody in this cluster appears in any cybercrime reporting under their own name. They are not
+    affiliates. They are the people from home who sign. 
+    What the structure says is the same thing the Kovalev profile found in a different shape: the
+    fortune is visible, it is in Russia, and it is held by people the sanctions lists have never heard
+    of. <span class="mk"><span class="pill i">Analyst inference</span></span>
+  </p>
+
+  <div class="gap">
+    <h4>Collection gap &middot; unresolved</h4>
+    <p>
+      <b>Hypothesis.</b> The 1.02-billion-ruble fund is the consolidation vehicle for Black Basta
+      proceeds converted to rubles through Russian exchangers and real estate, and the Odintsovo fund
+      is the operating arm that spends them on development. The leaked chats describe exactly this
+      conversion path: bitcoin to Monero to Tether, then Russian instant exchangers and cash, with one
+      documented 12-million-ruble cash-out in November 2023.
+    </p>
+    <p>
+      <b>Where the answers sit.</b> The two funds' charters and founder resolutions, which are filed
+      with the tax service but not published. The accounts of the Kazan accounting firm that services
+      the cluster. The Moscow and Kazan land registry (Rosreestr) for the Eco Polis complex at
+      Gribanovo, the Headliner apartment, and the Lapino, Zubovsky Boulevard and Yamasheva Avenue
+      addresses. The Tatarstan construction permits for the Severny project,
+      which name the project's financing. The alcohol licences of Futura Bar, renewed as recently as
+      September 2026, which require a declared beneficial owner. And the Yandex Food delivery
+      records from the 2022 breach, which place him at specific residential addresses.
+    </p>
+    <p>
+      <b>What would close it.</b> Any one of the four exchangers that Elliptic traced Black Basta
+      proceeds through, matched against the fund's bank. No open source gets there. A liaison request
+      to a Russian bank does not either. This is the gap that sanctions designation of the two funds
+      and their directors would make visible, because the funds hold real estate that cannot leave
+      Russia and cannot be sold without a registered buyer.
+    </p>
+  </div>
+</section>
+
+<!-- ============ 06 ============ -->
+<section id="money">
+  <h2><span class="num">06 / The money</span>What the crew took and what he kept</h2>
+
+  <p>
+    Elliptic's reconstruction of Black Basta's receiving wallets found at least $107 million paid by
+    more than ninety victims between the spring of 2022 and November 2023, with a largest single
+    payment of $9 million and eighteen payments above $1 million. 
+    The operator's average cut was about 14 percent, affiliates kept the rest, and about a tenth of
+    each ransom was forwarded to the Qakbot operators when Qakbot had supplied the access.
+    <span class="mk"><span class="pill r">Credible</span></span>
+    Millions went to <a href="https://research.therenoproject.org/exchanges/garantex">Garantex</a>,
+    the Moscow exchange the United States sanctioned in 2022 and seized in March 2025; when the
+    Treasury re-designated it together with Grinex, the exchange that reopened under a new name with
+    the same operators, on 14 August 2025, it named Black Basta among the crews whose proceeds the
+    pair had laundered. Where that cash-out moved afterwards is
+    <a href="https://endkrysha.com/after-garantex.html">its own story</a>. <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <p>
+    GG's own share can be glimpsed in the chats. A $1.3 million ransom paid in January 2024 came into
+    an address under his control and a tenth of it went out to his senior administrator; a $6 million
+    ransom in May 2024 was split with $2.4 million passed to another actor for distribution. 
+    French reporting based on the same material put his personal holdings at more than 20 bitcoin
+    and his control, in January 2023, at about 2,000 bitcoin, which was roughly $45 million at the
+    time. <span class="mk"><span class="pill r">Credible</span></span>
+  </p>
+  <h3>On the chain</h3>
+  <p>
+    He posted his own wallets. Twice in the Conti chats and more than forty times in the Black
+    Basta chats, GG typed a bitcoin or Ethereum address into a conversation that later leaked, and
+    the public blockchain records what happened to each one. Nothing below needs a vendor's
+    clustering; it is his own words matched against a block explorer.
+    <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <p>
+    On 30 November 2021 an address was posted in a Conti payment thread as "the BTC wallet for
+    payment"; 19.54 BTC, about $1.1 million, landed in it the next day. On 18 January 2022 Tramp
+    posted another in his own name; 24.14 BTC, about $870,000, arrived six days later. Both were
+    emptied within days. 
+    On 12 January 2024, in the Black Basta chat, he told his negotiator "I think 1,500 and we give
+    them the wallet", pasted an address, and said "here is the wallet for them". Two days later it
+    received 31.2161 BTC, about $1.3 million. 
+    On 24 December 2023 he wrote "we're done with her", pasted an address and the word "20%"; it
+    took 0.68 BTC the next day. On 14 March 2024 he posted "7.52 btc =" and an address; 7.52 BTC moved
+    through it that day. On 26 May 2024 he pasted a ransom note line, "Our BTC wallet for payment
+    is", with an address that received 7.86 BTC two days later.
+    <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <p>
+    The one that matters most is dated 3 July 2024. That afternoon, in the private room where he
+    had just told Chuck about Armenia and the green corridor, he pasted a fresh address and wrote
+    "here, minus 10%". 38.20 BTC, about $2.3 million, passed through it the same day.
+    <span class="mk"><span class="pill c">Confirmed</span></span>
+    Nine days out of an Armenian courtroom, with his phone in police hands and his Apple account
+    compromised, he was back at the till. <span class="mk"><span class="pill i">Analyst inference</span></span>
+  </p>
+  <p>
+    He also posted an Ethereum address, on 31 January 2024, as his own. The public ledger shows
+    $16.0 million in Tether moving through it between October 2022 and 1 July 2024, in 789 transfers,
+    with $11,000 of it going to the address Lapa had identified as his personal Tether wallet.
+    The last outgoing transfer, $4,761, is dated 1 July 2024, a week after the walk-out. It has not
+    moved since. <span class="mk"><span class="pill c">Confirmed</span></span>
+    Where the $16 million went next is a question for the people with clustering tools. What the
+    open ledger establishes is the scale, the dates, and that the man who could not be extradited was
+    still settling accounts the week he got home. <span class="mk"><span class="pill i">Analyst inference</span></span>
+  </p>
+
+  <table class="tbl addr">
+    <tr><th>Wallet he posted</th><th>Where and when</th><th>What the ledger shows</th></tr>
+    <tr><td class="n">1LYiEgq9k3xSAddbqMZcsVTayJVoKbTFub</td><td>Conti chat, payment thread, 30 Nov 2021</td><td>19.54 BTC in, 1 Dec 2021; emptied 21 Dec</td></tr>
+    <tr><td class="n">112qJRWfQCAqKzSk3ZcQnq1A1YwqyfLbgp</td><td>Conti chat, posted by Tramp, 18 Jan 2022</td><td>24.14 BTC in, 24 Jan 2022; emptied 26 Jan</td></tr>
+    <tr><td class="n">bc1q002v9y6chgz9pp9hfacqzettgs9ndf8e6wlc43yy3ydq7l8g34dqhfp53d</td><td>Black Basta chat, GG, 30 Nov 2023</td><td>3.40 BTC, 30 Nov to 1 Dec 2023</td></tr>
+    <tr><td class="n">bc1qzz4lgg9t5kdk5k9zr9x4088xx7ns0rlat3wsxe6cns5hs072qqrslmtwc8</td><td>GG, 24 Dec 2023, "20%"</td><td>0.68 BTC, 25 Dec 2023</td></tr>
+    <tr><td class="n">bc1qj0j33dfehrn2df0k7l2a89psuycrfvg4f9tcenwuprhst7a2uwfs2hgxhh</td><td>GG to the negotiator, 12 Jan 2024, "the wallet for them"</td><td>31.2161 BTC, 14 Jan 2024</td></tr>
+    <tr><td class="n">bc1q6euq6tqdyknvpv6mlrq4udtp2t5sfq4hvxlnw84wpgja5h4jlk0sraw73a</td><td>GG, 23 Feb 2024, ransom wallet</td><td>2.95 BTC, 23 Feb 2024</td></tr>
+    <tr><td class="n">bc1qa7q2l4309e0e5vtaeykdjyf622thpz40aecewx</td><td>GG, 14 Mar 2024, "7.52 btc ="</td><td>7.52 BTC, 14 Mar 2024</td></tr>
+    <tr><td class="n">bc1qpdltstzkx3et8kmcgxldk3u0j8f40gme85tqnf</td><td>GG, 26 May 2024, "Our BTC wallet for payment is"</td><td>7.86 BTC, 28 May 2024</td></tr>
+    <tr><td class="n">bc1qyy3wdds6za83sdstgf727vg08nmttk7gcenu6d</td><td>GG, 3 Jul 2024, "here, minus 10%"</td><td>38.20 BTC, 3 Jul 2024</td></tr>
+    <tr><td class="n">0xB54c17E5ea215f45A61E8790cf546AD175Af2Cf0</td><td>GG, 31 Jan 2024, Ethereum</td><td>$16.0M USDT, Oct 2022 to 1 Jul 2024, dormant since</td></tr>
+  </table>
+
+  <p>
+    Above ground, the register shows what a 14 percent cut of nine figures buys. Six luxury vehicles
+    insured between 2018 and 2025, from a Porsche Macan to a Mercedes G63.
+    <span class="mk"><span class="pill r">Credible</span></span>
+    Four hookah lounges on Prospekt Mira, Nikolskaya, Strastnoy and at Supermetall, grossing 198
+    million rubles in 2025, held since July 2024 by his wife, in a franchise chain whose venues in Dubai, Abu Dhabi, Baku and
+    Bali he told associates he held a share of the brand in. <span class="mk"><span class="pill c">Confirmed</span></span>
+    Two Moscow offices for the crew. A Dubai property bought together with Chuck. 
+    Four trips to the United States between 2018 and 2021, and children reportedly born there, which
+    gives the family American passports the father can never use. <span class="mk"><span class="pill r">Credible</span></span>
+  </p>
+</section>
+
+<!-- ============ 07 ============ -->
+<section id="wanted">
+  <h2><span class="num">07 / The poster</span>Wanted by Germany. Registered in Moscow.</h2>
+
+  <p>
+    The German notice is unusual in one respect. The United States had the warrant, as Yerevan
+    proved; the United States has published nothing. The $10 million State Department reward from
+    August 2022 names "Tramp" as an alias and no one as a person. No indictment, no FBI poster, no
+    Treasury designation, no reward entry carries his name as of this writing. 
+    The Frankfurt prosecutors and the Bundeskriminalamt went public instead, with the European
+    Union's most-wanted list and a public Interpol notice the same day, and coordinated raids on two
+    hash-cracking contractors in western Ukraine the day before.
+    <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <p>
+    The notice says he is in Russia and that his exact whereabouts are unknown. 
+    His sole-trader registration says Moscow, Presnensky district, and it is active. His charity
+    lists him as director and gives a working phone number. His courier franchise entered liquidation
+    in August 2026 with his nominee as liquidator, a procedure that requires the owner's signature. 
+    The Russian federal press has not printed his name once. The Russian security trade press relays
+    the German notice with the word "alleged" and moves on. There is no Russian case, no Russian
+    statement, no Russian denial. <span class="mk"><span class="pill c">Confirmed</span></span>
+  </p>
+  <p>
+    In the chats he said he and Chuck would keep working "as long as grandpa lives". Who grandpa is
+    was never spelled out. 
+    The crew he led is finished, its members scattered to Cactus, <a href="https://research.therenoproject.org/groups/akira">Akira</a> and <a href="https://research.therenoproject.org/groups/royal">BlackSuit</a>, its leak site
+    dark since February 2025. <span class="mk"><span class="pill r">Credible</span></span>
+    The man is not finished. He has a developer, two foundations, a charity that delivers drones to
+    the front, and a judge's reprimand in Yerevan as the only consequence anyone has managed to
+    impose. <span class="mk"><span class="pill i">Analyst inference</span></span>
+  </p>
+</section>
+
+<!-- ============ 08 ============ -->
+<section id="open">
+  <h2><span class="num">08 / Open</span>Where this profile is thin</h2>
+
+  <div class="gap">
+    <h4>Unresolved</h4>
+    <p>
+      <b>The American case.</b> Armenia acted on a US request and placed the charges in Washington
+      state. No charging document has surfaced. If the case is sealed, the district and the counts are
+      unknown; if it was never a case, the Interpol notice rested on something else. Either answer
+      changes the picture.
+    </p>
+    <p>
+      <b>The release date.</b> Armenian court records put him in the hearing on Monday 24 June. One
+      vendor, citing leaked flight data, has him landing at Sheremetyevo on Sunday 23 June. Both
+      cannot be right. The court record is the primary document and this profile follows it.
+    </p>
+    <p>
+      <b>The border.</b> No Armenian source documents how or where he left the country.
+    </p>
+    <p>
+      <b>The parents.</b> Nothing in the open record identifies either parent, which in a profile
+      built on who holds what is a real hole. The surname is common enough that a name search in
+      Yoshkar-Ola returns nothing attributable.
+    </p>
+    <p>
+      <b>The brand share.</b> He told associates he held intellectual-property rights in the hookah
+      franchise's international venues. The Russian franchisor's register shows no trace of him. If
+      the claim is true, the holding is outside Russia, most plausibly in the Emirates, where the chain
+      has five venues and he reportedly bought property.
+    </p>
+    <p>
+      <b>Eco Polis.</b> The fund's website names the complex and the accounts carry the asset; the
+      Rosreestr title is not public from outside Russia. Until it is seen, "appears to own" is the
+      most the record supports.
+    </p>
+    <p>
+      <b>The other name.</b> In April 2025 the GangExposed leak account published a 16-page case that
+      "Tramp" was not Nefedov at all but Oleg Vyacheslavovich Kucherov, born 1973 in the Samara
+      region, the sanctioned <a href="https://research.therenoproject.org/groups/trickbot">TrickBot</a> member known as "gabr", and that "Nefedov" was a cover identity.
+      Its evidence was dialect, prison slang and a claimed age. Nine months later the German notice
+      carried Nefedov's photograph and a 1990 date of birth. The account later published a second,
+      different claim tying Nefedov to a new ransomware brand, then deleted both pieces. Neither is
+      relied on here.
+    </p>
+    <p>
+      <b>The second Interpol image.</b> The notice holds a photograph that is not the one the German
+      police published. Nobody outside law enforcement has seen it.
+    </p>
+  </div>
+</section>
+
+<div class="sourcing">
+  <h4>Sourcing and method</h4>
+  <p style="font-size:.86rem;line-height:1.65;color:var(--cream-dim);margin:0 0 1rem">
+    Claims are labelled Confirmed where they rest on a primary document (a court or prosecutorial
+    record, a police notice, a registry entry), Credible where they rest on reputable reporting or
+    named vendor analysis of the leaked chats, and Analyst inference where they are our reading. The
+    registry timeline in section 04 and the foundation structure in section 05 are our own, produced
+    by reading the Federal Tax Service's register of legal entities through Russian corporate-data
+    mirrors, entry by entry, rather than by citation. The on-chain figures in section 06 come from
+    matching addresses posted in the leaked Conti and Black Basta chats against the public
+    blockchain; dollar values are rough conversions at the date of each transfer and are not
+    comparable across years, which is why the bitcoin amounts lead. The wife and the two associates are named because they are
+    the registered holders and officers of the companies this profile is about; no tax number, address
+    or other personal identifier of theirs is printed. Minor children appear as a fact only.
+  </p>
+  <ol>
+    <li>Bundeskriminalamt, public notice wat 019/2026, "NEFEDOV, Oleg Evgenievich", 15 January 2026, as mirrored by the state police of Baden-Württemberg, Schleswig-Holstein and Saxony.</li>
+    <li>Interpol, Red Notice 2025-100086 (public extract).</li>
+    <li>Europol, EU Most Wanted entry, January 2026 (since withdrawn from the public list).</li>
+    <li>Office of the Prosecutor General of Armenia, statement of 20 September 2024, as published by 168.am.</li>
+    <li>Supreme Judicial Council of Armenia, disciplinary decision of 4 October 2024 concerning Judge Artush Gabrielyan, as reported by 168.am, iravaban.net and CivilNet (10 October 2024).</li>
+    <li>Federal Tax Service of Russia, Unified State Register of Legal Entities and of Sole Traders, entries for Futura Bar, Avangard Bar, AV Bar, Polis, BitSoft, NG-Group, Lider-SDEK, Mils, Sistema Dela, the Rodina charity, the two personal funds and their subsidiaries, read via vbankcenter.ru and saby.ru, 12 to 13 October 2026.</li>
+    <li>Agentstvo (agents.media), "Германия объявила в розыск хакера, который возглавляет патриотический фонд в Казани", 16 January 2026.</li>
+    <li>LeMagIT / Computer Weekly, Valéry Riess-Marchive, "Ransomware: from REvil to Black Basta, what do we know about Tramp?", 1 March 2025; and "Le leader de Black Basta, Oleg Nefedov, est officiellement recherché", 16 January 2026.</li>
+    <li>Trellix, "Analysis of Black Basta Ransomware Chat Leaks", 18 March 2025.</li>
+    <li>Intel 471, "Black Basta exposed: a look at a cybercrime data leak", 28 February 2025.</li>
+    <li>Analyst1, "Inside Black Basta: actor profiles, extortion tactics, finances", 8 April 2025.</li>
+    <li>Elliptic, "Black Basta ransomware victims have paid over $100 million", 20 November 2023; and "Black Basta and beyond", 4 June 2025.</li>
+    <li>KELA, "ContiLeaks" intelligence report, 15 March 2022; Krebs on Security, "Conti Ransomware Group Diaries, Part III", March 2022.</li>
+    <li>US Treasury, OFAC press release on Garantex and Grinex, 14 August 2025; OFAC SDN list checked 12 October 2026.</li>
+    <li>US Department of State, Rewards for Justice, Conti announcement, 11 August 2022.</li>
+    <li>The Record, CyberScoop, The Register, BleepingComputer and The Hacker News, 16 to 21 January 2026, on the German notice and the Ukrainian raids.</li>
+    <li>The Hacker News, "Armenia detains Russian tourist on US request", 17 July 2026.</li>
+  </ol>
+</div>
+
+<footer>
+  <b>Biographies</b> is a running series on the people Western law enforcement has named, priced and
+  failed to reach. Each file is placed by the state of the roof over it: <b>The Protected</b>,
+  <b>The Tolerated</b>, <b>The Reached</b>. Analysis by <b>theRENOproject</b>. Published by End Krysha.<br>
+  Confidence labelling follows the End Krysha standard: Confirmed, Credible, Analyst inference.<br>
+  This page is a living record and will be updated as material lands.
+</footer>
+
+</main>
+</body>
+</html>
